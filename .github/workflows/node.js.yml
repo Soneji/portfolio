@@ -27,4 +27,8 @@ jobs:
     - run: echo ${{ secrets.ENV }} > .env
     - run: npm ci
     - run: npm run build
+    - name: setup git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
     - run: npm run deploy
