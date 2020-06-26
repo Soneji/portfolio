@@ -39,7 +39,7 @@ jobs:
         git init
         git add .
         git commit -m deploy
-        git remote add origin https://$username:$token@github.com/$usuername/$repo.git
+        git remote add origin https://$username:$token@github.com/$username/$repo.git
         git push --set-upstream origin master --force
         
         
