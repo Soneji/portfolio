@@ -34,14 +34,11 @@ jobs:
         repo=`grep base config.ts | cut -f2 -d\'`
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        
         cd dist
         git init
         git add .
         git commit -m deploy
-        #git remote add origin https://$username:$token@github.com/$username/$repo.git
-        #git push --set-upstream origin master --force
-        git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages
+        git push --force https://$username:$token@github.com/$username/$repo.git
         
         
         
