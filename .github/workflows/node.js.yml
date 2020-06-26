@@ -27,9 +27,24 @@ jobs:
     - run: echo ${{ secrets.ENV }} > .env
     - run: npm ci
     - run: npm run build
-    - name: setup git
+    - name: push
       run: |
-        cd dist
+        token=`grep TOKEN .env | cut -f 2 -d=`
+        username=`grep username: config.ts | cut -f2 -d\'`
+        repo=`grep base config.ts | cut -f2 -d\'`
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-    - run: npm run deploy
+        
+        cd dist
+        git init
+        git add .
+        git commit -m deploy
+        
+        git push --force git@github.com:$username/repo.git master:gh-pages
+        
+        
+        
+        
+        
+        
+        
