@@ -37,10 +37,17 @@ jobs:
     - run: npm ci
     - run: npm run build
 
-    - name: publish:starters
-      uses: johno/actions-push-subdirectories@master
+    - name: push
+      run: |
+        token=`grep TOKEN .env | cut -f 2 -d=`
+        username=`grep username: config.ts | cut -f2 -d\'`
+        repo=`grep base config.ts | cut -f2 -d\'`
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        cd dist
+        git init
+        git add .
+        git commit -m deploy
+        git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages
       env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        args: dist overclockedllama portfolio
