@@ -49,6 +49,7 @@ export default {
       'profile:first_name': 'dhaval',
       'profile:last_name': 'soneji',
       'og:url': 'https://soneji.xyz',
+      'og:description': "Portfolio by Dhaval Soneji",
     },
 
     /**
@@ -148,6 +149,7 @@ export default {
       'Python',
       'JavaScript',
       'C / C++',
+      'PHP',
       'Docker',
       'LaTeX',
       'MATLAB',
