@@ -4,7 +4,9 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HTMLInlineCSSWebpackPlugin from "html-inline-css-webpack-plugin";
 import path from 'path';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import { GenerateSW } from 'workbox-webpack-plugin';
@@ -191,6 +193,11 @@ export default async (env: any, argv: { mode: string; }) => {
       new MiniCssExtractPlugin({
         chunkFilename: 'static/css/[name].[hash].css',
         filename: 'static/[name].[hash].css',
+      }),
+      new HTMLInlineCSSWebpackPlugin(),
+      new PreloadWebpackPlugin({
+        rel: 'preload',
+        include: 'allChunks',
       }),
     ],
     resolve: {

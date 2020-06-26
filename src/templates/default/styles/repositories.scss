@@ -6,9 +6,9 @@
 .repository {
   display: block;
   padding: 15px;
-  color: rgba(0, 0, 0, .9);
+  color: rgba(31, 7, 70, 0.9);
   .repository__name {
-    color: #474a73;
+    color: #34928a;
   }
   .repository__name,
   .repository__bottom {
@@ -16,9 +16,11 @@
   }
   &:hover {
     .repository__name,
-    .repository__bottom {
-      color: #000;
+    .repository__bottom,
+    .repository__description {
+      color: #5eccc3;
     }
+    margin-top: 2px;
   }
 }
 
@@ -33,13 +35,13 @@
   flex: 1 1 auto;
   margin-top: 15px;
   line-height: 1.5;
-  color: rgba(0, 0, 0, .8);
+  color: rgba(255, 255, 255, 0.85);
   font-size: .9rem;
 }
 
 .repository__bottom {
   display: flex;
-  color: rgba(0, 0, 0, .8);
+  color: rgba(255, 255, 255, 0.8);
   > div {
     display: flex;
     align-items: center;

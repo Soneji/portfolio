@@ -17,9 +17,9 @@ function generateRepositoriesHtml(repositories) {
   for (var i = 0; i < repositories.length; i++) {
     output +=
       `<div>
-        <a href="${repositories[i].html_url}" class="repository uk-card uk-card-default uk-card-small uk-card-hover"
+        <a href="${repositories[i].html_url}" class="uk-light uk-background-secondary uk-card uk-card-default uk-card-body repository uk-card uk-card-secondary uk-card-small uk-card-hover"
             uk-scrollspy="cls: uk-animation-scale-up" target="_blank" rel="noopener">
-          <div class="repository__name uk-card-title">${repositories[i].full_name}</div>
+          <div class="repository__name uk-card-title">${(repositories[i].name).split(/[-_]+/).join(" ")}</div>
           <p class="repository__description">${repositories[i].description || '-'}</p>
           <div class="repository__bottom">
             <div class="repository__bottom__language">
@@ -49,117 +49,182 @@ function generateRepositoriesHtml(repositories) {
 %>
 
 <html lang="en" data-template="default" data-compiled="<%= Date.now() %>">
+
 <head>
   <%= headTemplate({ github: modules.github, config, url }) %>
   <%= imagesTemplate({
     avatar: config.data.avatar_url,
     background: config.templates.default.background,
-    defaultBackground: require('@/assets/background.png')
+    defaultBackground: require('@/assets/bg.jpg')
   }) %>
 </head>
-<body>
-<header>
-  <div class="header__background uk-background-cover background--image" uk-parallax="bgy: -100"></div>
-  <div class="header__wrap">
-    <div class="header__wrap__image">
-      <div class="avatar--image uk-background-cover"></div>
-    </div>
-    <h1 class="header__wrap__name uk-h1"><%= config.data.name %></h1>
-    <% if (config.data.position) { %>
-      <span class="header__wrap__position"><%= config.data.position %></span>
-    <% } %>
-    <% if (config.data.socialMedia.length > 0) { %>
-      <div class="header__wrap__social">
-        <% for (const media of config.data.socialMedia) { %>
-          <a href="<%= media.link %>" title="<%= safeQuotes(media.name) %>" target="_blank" rel="noopener">
-            <%= require(`!!svg-inline-loader!@asset/icons/${media.icon}.svg`) %>
-          </a>
-        <% } %>
-      </div>
-    <% } %>
-  </div>
-</header>
-<main>
-  <% if (modules.github && modules.github.repositories.length > 0) { %>
-    <section class="repositories-section uk-section uk-section-default">
-      <div class="uk-container">
-        <h2 class="uk-heading-line">
-          <span>
-            <span uk-icon="grid"></span>
-            <span>Repositories</span>
-          </span>
-        </h2>
-        <div class="repositories uk-child-width-1-3@l uk-child-width-1-2@m uk-grid-small" uk-grid="masonry: true">
-          <%= generateRepositoriesHtml(canShowMoreRepositories ? repositories.slice(0, repositoriesMore) : repositories) %>
-        </div>
-        <% if (canShowMoreRepositories) { %>
-          <div class="show-more-wrap">
-            <button id="github-more" class="uk-button uk-button-default">Show more</button>
-          </div>
-        <% } %>
-      </div>
-    </section>
-  <% } %>
-</main>
-<footer>
-  <hr class="uk-divider-icon">
-  <span><%= new Date().toLocaleDateString(undefined, {
-    year: 'numeric',
-    day: '2-digit',
-    month: '2-digit'
-  }) %></span>
-</footer>
 
-<script type="text/javascript">
+<body>
+  <header>
+    <div class="header__background uk-background-cover background--image" uk-parallax="bgy: -100"></div>
+    <div class="header__wrap uk-position-center">
+      <div class="header__wrap__image">
+        <div class="avatar--image uk-background-cover"></div>
+      </div>
+      <h1 class="header__wrap__name"><%= config.data.name%></h1>
+      <% if (config.data.position) { %>
+      <span class="header__wrap__position"><%= config.data.position %></span>
+      <% } %>
+
+      <hr class="uk-divider-small">
+
+      <% if (config.data.socialMedia.length > 0) { %>
+      <div class="header__wrap__position">Contact me:</div>
+      <div class="header__wrap__social uk-child-width-expand">
+        <% for (const media of config.data.socialMedia) { %>
+        <a href="<%= media.link %>" title="<%= safeQuotes(media.name) %>" target="_blank" rel="noopener">
+          <%= require(`!!svg-inline-loader!@asset/icons/${media.icon}.svg`) %>
+        </a>
+        <% } %>
+      </div>
+      <% } %>
+      <% if (config.data.devTools.length > 0) { %>
+      <div class="header__wrap__position">Personal Sites:</div>
+      <div class="header__wrap__personal uk-child-width-expand">
+        <% for (const media of config.data.devTools) { %>
+        <a href="<%= media.link %>" title="<%= safeQuotes(media.name) %>" target="_blank" rel="noopener">
+          <%= require(`!!svg-inline-loader!@asset/icons/${media.icon}.svg`) %>
+        </a>
+        <% } %>
+      </div>
+      <% } %>
+      <br>
+      <a href="#main" uk-icon="icon: chevron-down; ratio: 2"></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="uk-section-xsmall">
+      <div class="uk-container">
+
+        <div class="uk-grid-match uk-child-width-expand@m" uk-grid>
+          <% if (config.data.aboutMe != null) { %>
+          <div>
+            <div class="uk-light uk-background-secondary uk-card uk-card-default uk-card-body">
+              <h2 class="uk-heading-line">
+                <span>
+                  <span uk-icon="user"></span>
+                  <span>About me</span>
+                </span>
+              </h2>
+              <p>
+                <%= config.data.aboutMe%>
+              </p>
+            </div>
+          </div>
+          <% } %>
+
+          <% if (config.data.technologies.length > 0) { %>
+          <div>
+            <div class="uk-light uk-background-secondary uk-card uk-card-default uk-card-body uk-child-width-expand@s">
+              <h2 class="uk-heading-line">
+                <span>
+                  <span uk-icon="code"></span>
+                  <span>Technologies</span>
+                </span>
+              </h2>
+              <div class="uk-column-1-2">
+                <ul class="uk-list-circle">
+                  <% for (const item of config.data.technologies) { %>
+                  <li><%= item %></li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+
+        <% if (modules.github && modules.github.repositories.length > 0) { %>
+        <section class="uk-section-xsmall">
+          <div class="uk-container">
+            <h2 class="uk-heading-line">
+              <span>
+                <span uk-icon="grid"></span>
+                <span>Some of my projects</span>
+              </span>
+            </h2>
+            <div class="repositories uk-child-width-1-3@l uk-child-width-1-2@m uk-grid-small" uk-grid="masonry: true">
+              <%= generateRepositoriesHtml(canShowMoreRepositories ? repositories.slice(0, repositoriesMore) : repositories) %>
+            </div>
+            <% if (canShowMoreRepositories) { %>
+            <div class="show-more-wrap">
+              <button id="github-more" class="uk-button uk-button-default">Show more</button>
+            </div>
+            <% } %>
+          </div>
+        </section>
+        <% } %>
+  </main>
+  <footer class="uk-background-blend-darken uk-background-cover uk-background-center-center">
+    <span style="font-family: 'Courier New', Courier, monospace;">&copy; <%= config.data.name %>
+      <%= new Date().getFullYear() %></span>
+  </footer>
+
+  <script type="text/javascript">
 <% if (canShowMoreRepositories) {%>
   var repositories = <%= JSON.stringify(modules.github.repositories) %>;
 <% } %>
 
-window.addEventListener('DOMContentLoaded', function () {
+      window.addEventListener('DOMContentLoaded', function () {
   <% if (canShowMoreRepositories) { %>
     /*
      * Github
      */
     var btnMoreGithubRepsEl = document.querySelector('#github-more');
 
-    if (btnMoreGithubRepsEl) {
-      var sectionGithubRepsEl = document.querySelector('.repositories');
-      var per_page = <%= repositoriesMore %>;
-      var len = repositories.length;
-      var page = 1;
+          if (btnMoreGithubRepsEl) {
+            var sectionGithubRepsEl = document.querySelector('.repositories');
+            var per_page = <%= repositoriesMore %>;
+            var len = repositories.length;
+            var page = 1;
 
-      btnMoreGithubRepsEl.addEventListener('click', function () {
-        var current = page * per_page;
-        var next = current + per_page;
-        var html = generateRepositoriesHtml(repositories.slice(current, next));
+            btnMoreGithubRepsEl.addEventListener('click', function () {
+              var current = page * per_page;
+              var next = current + per_page;
+              var html = generateRepositoriesHtml(repositories.slice(current, next));
 
-        var nodes = htmlToElements(html);
-        for (var i = 0; i < nodes.length; i++) {
-          sectionGithubRepsEl.append(nodes[i]);
-        }
+              var nodes = htmlToElements(html);
+              for (var i = 0; i < nodes.length; i++) {
+                sectionGithubRepsEl.append(nodes[i]);
+              }
 
-        if (len <= next) {
-          var showMoreWrapEl = document.querySelector('.repositories-section .show-more-wrap');
-          if (showMoreWrapEl) {
-            showMoreWrapEl.remove();
+              if (len <= next) {
+                var showMoreWrapEl = document.querySelector('.repositories-section .show-more-wrap');
+                if (showMoreWrapEl) {
+                  showMoreWrapEl.remove();
+                }
+              }
+
+              page++;
+            });
           }
-        }
-
-        page++;
-      });
-    }
   <% } %>
 });
-</script>
+  </script>
 
-<script type="text/javascript">
-function htmlToElements(html) {
-  var template = document.createElement('template');
-  template.innerHTML = html;
-  return template.content.childNodes;
-}
+  <script type="text/javascript">
+    function htmlToElements(html) {
+      var template = document.createElement('template');
+      template.innerHTML = html;
+      return template.content.childNodes;
+    }
 
 <%= canShowMoreRepositories ? generateRepositoriesHtml.toString() : '' %>
-</script>
+  </script>
+
 </body>
+
 </html>
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 500,
+      speedAsDuration: true
+    });
+</script>

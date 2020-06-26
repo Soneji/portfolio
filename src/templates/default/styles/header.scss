@@ -2,7 +2,9 @@ header {
   position: relative;
   overflow: hidden;
   min-height: 500px;
-  padding: 70px 20px;
+  padding: 20px 20px;
+  height: 100vh;
+  text-transform: lowercase;
 }
 
 .header__background {
@@ -20,6 +22,7 @@ header {
   font-weight: 600;
   font-size: 2.4rem;
   letter-spacing: 1px;
+  text-transform: lowercase;
 }
 
 .header__wrap__image {
@@ -41,18 +44,46 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 10px;
   a {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 35px;
     height: 35px;
-    padding: 9px;
+    padding: 1px;
     margin: 0 7px;
     color: #fff;
     transition: .2s;
     min-width: 35px;
+    &:hover {
+      background: rgba(0, 0, 0, .5);
+      border-radius: 10px;
+    }
+    svg {
+      width: 100% !important;
+      height: 100% !important;
+      fill: #fff;
+    }
+  }
+}
+
+.header__wrap__personal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    padding: 1px;
+    margin: 0 4px;
+    color: #fff;
+    transition: .2s;
+    min-width: 25px;
     &:hover {
       background: rgba(0, 0, 0, .5);
       border-radius: 10px;

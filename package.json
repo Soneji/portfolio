@@ -36,6 +36,7 @@
   "homepage": "https://github.com/GPortfolio/GPortfolio#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "html-inline-css-webpack-plugin": "^1.8.1",
     "shelljs": "^0.8.3",
     "uikit": "^3.2.1"
   },
@@ -66,6 +67,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
+    "preload-webpack-plugin": "^3.0.0-beta.3",
     "resolve-url-loader": "^3.1.0",
     "sass-loader": "^7.3.1",
     "style-loader": "^1.0.0",
@@ -75,7 +77,7 @@
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
     "typescript": "^3.6.4",
-    "webpack": "^4.41.0",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2",
     "webpack-pwa-manifest": "^4.0.0",
