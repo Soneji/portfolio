@@ -269,6 +269,7 @@ export default {
           { attr: 'owner.login', values: /lena/i, revert: true, more: '' },
           { attr: 'name', values: 'kcsoc_audiobooks', revert: true, more: '' },
           { attr: 'name', values: 'overclockedllama.github.io', revert: true, more: '' },
+          { attr: 'name', values: 'portfolio', revert: true, more: '' },
 
 
 
