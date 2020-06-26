@@ -39,8 +39,8 @@ jobs:
         git init
         git add .
         git commit -m deploy
-        
-        git push --force https://$token@github.com/$username/$repo.git master:gh-pages
+        git remote set-url origin https://$username:$token@github.com/$usuername/$repo.git
+        git push --force master:gh-pages
         
         
         
