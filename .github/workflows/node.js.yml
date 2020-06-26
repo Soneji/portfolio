@@ -38,7 +38,7 @@ jobs:
         git init
         git add .
         git commit -m deploy
-        echo `git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages`
+        echo "git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages"
         
         
         
