@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: echo ${{ secrets.ENV }} > .env
+    - run: echo ${{ secrets.ENV }} >> .env
     - run: npm ci
     - run: npm run build
     - name: push
@@ -38,7 +38,7 @@ jobs:
         git init
         git add .
         git commit -m deploy
-        git push --force https://$username:$token@github.com/$username/$repo.git
+        echo `git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages`
         
         
         
