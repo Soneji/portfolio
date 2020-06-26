@@ -30,7 +30,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - run: echo $E >> .env
+    - run: echo $E > .env
       env:
         E: ${{ secrets.ENV }}
 
