@@ -27,4 +27,4 @@ jobs:
     - run: echo ${{ secrets.ENV }} > .env
     - run: npm ci
     - run: npm run build
-    - run: npm deploy
+    - run: npm run deploy
