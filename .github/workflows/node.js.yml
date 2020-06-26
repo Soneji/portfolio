@@ -40,7 +40,7 @@ jobs:
         git add .
         git commit -m deploy
         
-        git push --force git@github.com:$username/repo.git master:gh-pages
+        git push --force https://$token@github.com/$username/repo.git master:gh-pages
         
         
         
