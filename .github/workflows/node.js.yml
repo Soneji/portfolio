@@ -48,6 +48,6 @@ jobs:
         git init
         git add .
         git commit -m deploy
-        git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages
+        echo "git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
