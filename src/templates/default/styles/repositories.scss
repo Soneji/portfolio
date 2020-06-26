@@ -5,7 +5,7 @@
 
 .repository {
   display: block;
-  padding: 15px;
+  padding: 20px;
   color: rgba(31, 7, 70, 0.9);
   .repository__name {
     color: #34928a;
@@ -20,7 +20,9 @@
     .repository__description {
       color: #5eccc3;
     }
-    margin-top: 2px;
+    .repository__name {
+      font-size: 1.21rem;
+    }
   }
 }
 
