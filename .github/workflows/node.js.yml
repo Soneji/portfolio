@@ -19,30 +19,28 @@ jobs:
         node-version: [14.x]
 
     steps:
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action@0.4.0
+      with:
+        access_token: ${{ github.token }}
+
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: echo ${{ secrets.ENV }} >> .env
+
+    - run: echo $E >> .env
+      env:
+        E: ${{ secrets.ENV }}
+
     - run: npm ci
     - run: npm run build
-    - name: push
-      run: |
-        token=`grep TOKEN .env | cut -f 2 -d=`
-        username=`grep username: config.ts | cut -f2 -d\'`
-        repo=`grep base config.ts | cut -f2 -d\'`
-        git config --global user.email "action@github.com"
-        git config --global user.name "GitHub Action"
-        cd dist
-        git init
-        git add .
-        git commit -m deploy
-        echo "git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages"
-        
-        
-        
-        
-        
-        
-        
+
+    - name: publish:starters
+        uses: johno/actions-push-subdirectories@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: dist overclockedllama portfolio
