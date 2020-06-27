@@ -64,7 +64,7 @@ function generateRepositoriesHtml(repositories) {
     <div class="header__background uk-background-cover background--image" uk-parallax="bgy: -100"></div>
     <div class="header__wrap uk-position-center">
       <div class="header__wrap__image">
-        <div class="avatar--image uk-background-cover"></div>
+        <div onclick="showPersonal()" class="avatar--image uk-background-cover"></div>
       </div>
       <h1 class="header__wrap__name"><%= config.data.name%></h1>
       <% if (config.data.position) { %>
@@ -84,8 +84,8 @@ function generateRepositoriesHtml(repositories) {
       </div>
       <% } %>
       <% if (config.data.devTools.length > 0) { %>
-      <div class="header__wrap__position">Personal Sites:</div>
-      <div class="header__wrap__personal uk-child-width-expand">
+      <div style="display: none;" id="personal-title" class="header__wrap__position">Personal Sites:</div>
+      <div style="display: none;" id="personal-content" class="header__wrap__personal uk-child-width-expand">
         <% for (const media of config.data.devTools) { %>
         <a href="<%= media.link %>" title="<%= safeQuotes(media.name) %>" target="_blank" rel="noopener">
           <%= require(`!!svg-inline-loader!@asset/icons/${media.icon}.svg`) %>
@@ -227,4 +227,13 @@ function generateRepositoriesHtml(repositories) {
       speed: 500,
       speedAsDuration: true
     });
+  function showPersonal() {
+    if (document.getElementById('personal-title').style.display == "none") {
+      document.getElementById('personal-title').style.display = ""
+      document.getElementById('personal-content').style.display = ""
+    } else {
+      document.getElementById('personal-title').style.display = "none"
+      document.getElementById('personal-content').style.display = "none"
+    }
+  }
 </script>
