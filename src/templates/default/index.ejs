@@ -74,7 +74,6 @@ function generateRepositoriesHtml(repositories) {
       <hr class="uk-divider-small">
 
       <% if (config.data.socialMedia.length > 0) { %>
-      <div class="header__wrap__position">Contact me:</div>
       <div class="header__wrap__social uk-child-width-expand">
         <% for (const media of config.data.socialMedia) { %>
         <a href="<%= media.link %>" title="<%= safeQuotes(media.name) %>" target="_blank" rel="noopener">
