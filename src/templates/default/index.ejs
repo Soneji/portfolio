@@ -129,13 +129,11 @@ function generateRepositoriesHtml(repositories) {
                   <span>Technologies</span>
                 </span>
               </h2>
-              <div class="uk-column-1-2">
-                <ul class="uk-list-circle">
-                  <% for (const item of config.data.technologies) { %>
-                  <li><%= item %></li>
-                  <% } %>
-                </ul>
-              </div>
+              <ul class="uk-column-1-2 uk-list-circle">
+                <% for (const item of config.data.technologies) { %>
+                <li><%= item %></li>
+                <% } %>
+              </ul>
             </div>
           </div>
           <% } %>
