@@ -123,7 +123,6 @@ export default {
     socialMedia: [
       { name: 'Github', icon: 'github', link: 'https://github.com/overclockedllama' },
       { name: 'Instagram', icon: 'instagram', link: 'https://instagram.com/dhaval.py' },
-      { name: 'Spotify', icon: 'spotify', link: 'https://open.spotify.com/user/dhaval.soneji' },
       { name: 'Monzo', icon: 'monzo', link: 'https://monzo.me/dhavalsoneji' },
       { name: 'Mail', icon: 'mail', link: 'mailto:dhaval@soneji.xyz' },
     ],
@@ -137,13 +136,14 @@ export default {
       { name: 'Cloud', icon: 'nextcloud', link: 'https://cloud.soneji.xyz/' },
       { name: 'Plex', icon: 'plex', link: 'https://plex.soneji.xyz/' },
       { name: 'QB', icon: 'qi', link: 'https://qb.soneji.xyz/' },
+      { name: 'Spotify', icon: 'spotify', link: 'https://open.spotify.com/user/dhaval.soneji' },
       { name: 'VSCode', icon: 'vscode', link: 'https://code.soneji.xyz/' },
     ],
     aboutMe: `
-    I am an Electronic Engineering Student at the University of Warwick. Topics that interest me include but
-    are not limited to: software engineering, cyber security, open source, developer operations.
+    I am an Electronic Engineering Student at the University of Warwick. Topics that interest me include: 
+    software engineering, cyber security, open source, developer operations.
     <br><br>
-    If you’d like to get in touch with me via email, feel free to click the link at the top.
+    If you’d like to get in touch with me via email, click <a href="mailto:dhaval@soneji.xyz">here</a>.
     `,
     technologies: [
       'Python',
@@ -264,6 +264,7 @@ export default {
 
           //   ], revert: true, more: ''
           // }
+
           { attr: 'fork', values: true, revert: true, more: '&& name!=\'flappy-musk\' ' },
           { attr: 'owner.login', values: /gocode/i, revert: true, more: '' },
           { attr: 'owner.login', values: /lena/i, revert: true, more: '' },
