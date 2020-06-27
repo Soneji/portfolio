@@ -46,10 +46,10 @@ export default {
      *  profile:username => {username}
      */
     opg: {
-      'profile:first_name': 'dhaval',
-      'profile:last_name': 'soneji',
+      'profile:first_name': 'Dhaval',
+      'profile:last_name': 'Soneji',
       'og:url': 'https://soneji.xyz',
-      'og:description': "Portfolio by Dhaval Soneji",
+      'og:description': 'Portfolio by Dhaval Soneji'
     },
 
     /**
