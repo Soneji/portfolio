@@ -84,8 +84,10 @@ function generateRepositoriesHtml(repositories) {
       </div>
       <% } %>
       <% if (config.data.devTools.length > 0) { %>
-      <div style="display: none;" id="personal-title" class="header__wrap__position">Personal Sites:</div>
-      <div style="display: none;" id="personal-content" class="header__wrap__personal uk-child-width-expand">
+      <div style="display: none;" id="personal-title" class="uk-animation-scale-up header__wrap__position">Personal
+        Sites:</div>
+      <div style="display: none;" id="personal-content"
+        class="uk-animation-scale-up header__wrap__personal uk-child-width-expand">
         <% for (const media of config.data.devTools) { %>
         <a href="<%= media.link %>" title="<%= safeQuotes(media.name) %>" target="_blank" rel="noopener">
           <%= require(`!!svg-inline-loader!@asset/icons/${media.icon}.svg`) %>
