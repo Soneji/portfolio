@@ -49,7 +49,9 @@ export default {
       'profile:first_name': 'Dhaval',
       'profile:last_name': 'Soneji',
       'og:url': 'https://soneji.xyz',
-      'og:description': 'Portfolio by Dhaval Soneji'
+      'og:description': 'Portfolio by Dhaval Soneji, Software and Electronic Engineer',
+      'og:keywords': 'Dhaval Soneji, Soneji, soneji, web dev, web development, website developer, web developer, dhavalsoneji, dhavalsonejii, dhaval soneji, students, london developer, london dev, english dev, english developer, graphic design, commercial web design, commercial web development, e-commerce website design, mobile, Search Engine Optimisation, SEO, brand development',
+      'og:author': 'Dhaval Soneji'
     },
 
     /**
