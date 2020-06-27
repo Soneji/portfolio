@@ -57,9 +57,9 @@ export default async (env: any, argv: { mode: string; }) => {
     devServer: {
       clientLogLevel: 'error',
       contentBase: [path.resolve(__dirname, `./src/templates/${template}/index.ejs`)],
+      watchContentBase: true,
       hot: true,
       inline: true,
-      watchContentBase: true,
     },
     devtool: isProd ? false : 'source-map',
     entry: {
