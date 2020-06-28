@@ -16,9 +16,9 @@ function generateRepositoriesHtml(repositories) {
 
   for (var i = 0; i < repositories.length; i++) {
     output +=
-      `<div>
-        <a href="${repositories[i].html_url}" class="uk-light uk-background-secondary uk-card uk-card-default uk-card-body repository uk-card uk-card-secondary uk-card-small uk-card-hover"
-            uk-scrollspy="cls: uk-animation-scale-up" target="_blank" rel="noopener">
+      `<div><div class="uk-light uk-background-secondary uk-card uk-card-default uk-card-body repository uk-card uk-card-secondary uk-card-small uk-card-hover"
+            uk-scrollspy="cls: uk-animation-scale-up" >
+        <a href="${repositories[i].html_url}" target="_blank" rel="noopener">
           <div class="repository__name uk-card-title">${(repositories[i].name).split(/[-_]+/).join(" ")}</div>
           <p class="repository__description">${repositories[i].description || '-'}</p>
           <div class="repository__bottom">
@@ -36,15 +36,19 @@ function generateRepositoriesHtml(repositories) {
             </div>
           </div>
         </a>
-      </div>`;
-  }
+          `;
+    if (repositories[i].homepage != null && repositories[i].homepage != '') {
+      output += `<a class="demo uk-button uk-button-default" href="${repositories[i].homepage}"target="_blank" rel="noopener"><div>Live Demo Available!</div></a>`;
+    }
+    output += `</div></div>`;
+}
 
-  return output;
+return output;
 }
 
 /*
- * Dribbble
- */
+* Dribbble
+*/
 // TODO
 %>
 
