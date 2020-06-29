@@ -80,7 +80,7 @@ return output;
       <% if (config.data.socialMedia.length > 0) { %>
       <div class="header__wrap__social uk-child-width-expand">
         <% for (const media of config.data.socialMedia) { %>
-        <a href="<%= media.link %>" title="<%= safeQuotes(media.name) %>" target="_blank" rel="noopener">
+        <a href="<%= media.link %>" title="<%= safeQuotes(media.name) %>" rel="noopener">
           <%= require(`!!svg-inline-loader!@asset/icons/${media.icon}.svg`) %>
         </a>
         <% } %>
