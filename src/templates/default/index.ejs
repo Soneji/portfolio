@@ -38,7 +38,7 @@ function generateRepositoriesHtml(repositories) {
         </a>
           `;
     if (repositories[i].homepage != null && repositories[i].homepage != '') {
-      output += `<a class="demo uk-button uk-button-default" href="${repositories[i].homepage}"target="_blank" rel="noopener"><div>Live Demo Available!</div></a>`;
+      output += `<a class="demo uk-button uk-button-default" href="${repositories[i].homepage}"target="_blank" rel="noopener"><div class="demo-text">Live Demo Available!</div></a>`;
     }
     output += `</div></div>`;
 }
