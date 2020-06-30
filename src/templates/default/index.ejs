@@ -13,34 +13,43 @@ const canShowMoreRepositories = repositoriesMore && repositoriesMore < repositor
 
 function generateRepositoriesHtml(repositories) {
   var output = '';
-
+  
   for (var i = 0; i < repositories.length; i++) {
-    output +=
-      `<div><div class="uk-light uk-background-secondary uk-card uk-card-default uk-card-body repository uk-card uk-card-secondary uk-card-small uk-card-hover"
-            uk-scrollspy="cls: uk-animation-scale-up" >
-        <a href="${repositories[i].html_url}" target="_blank" rel="noopener">
-          <div class="repository__name uk-card-title">${(repositories[i].name).split(/[-_]+/).join(" ")}</div>
-          <p class="repository__description">${repositories[i].description || '-'}</p>
-          <div class="repository__bottom">
-            <div class="repository__bottom__language">
-              <span uk-icon="code"></span>
-              <span>${repositories[i].language || '-'}</span>
-            </div>
-            <div class="repository__bottom__star">
-              <span uk-icon="star"></span>
-              <span>${repositories[i].stargazers_count}</span>
-            </div>
-            <div class="repository__bottom__forks">
-              <span uk-icon="git-fork"></span>
-              <span>${repositories[i].forks_count}</span>
-            </div>
-          </div>
-        </a>
-          `;
-    if (repositories[i].homepage != null && repositories[i].homepage != '') {
-      output += `<a class="demo uk-button uk-button-default" href="${repositories[i].homepage}"target="_blank" rel="noopener"><div class="demo-text">Live Demo Available!</div></a>`;
-    }
-    output += `</div></div>`;
+    output +=`
+    <div><div class="uk-light uk-background-secondary uk-card uk-card-default uk-card-body repository uk-card uk-card-secondary uk-card-small uk-card-hover"
+    uk-scrollspy="cls: uk-animation-scale-up">
+    <a href="${repositories[i].html_url}" target="_blank" rel="noopener">`
+    if (repositories[i].blobs_url != null && !repositories[i].blobs_url.includes('api.github.com')){
+    output +=`
+    <img width="640px" height="320px" class="repository__pic uk-align-center" src="${repositories[i].blobs_url}">
+    `
+  }
+  
+  
+  
+  output += `   
+  <div class="repository__name uk-card-title">${(repositories[i].name).split(/[-_]+/).join(" ")}</div>
+  <p class="repository__description">${repositories[i].description || '-'}</p>
+  <div class="repository__bottom">
+  <div class="repository__bottom__language">
+  <span uk-icon="code"></span>
+  <span>${repositories[i].language || '-'}</span>
+  </div>
+  <div class="repository__bottom__star">
+  <span uk-icon="star"></span>
+  <span>${repositories[i].stargazers_count}</span>
+  </div>
+  <div class="repository__bottom__forks">
+  <span uk-icon="git-fork"></span>
+  <span>${repositories[i].forks_count}</span>
+  </div>
+  </div>
+  </a>
+  `;
+  if (repositories[i].homepage != null && repositories[i].homepage != '') {
+    output += `<a class="demo uk-button uk-button-default" href="${repositories[i].homepage}"target="_blank" rel="noopener"><div class="demo-text">Live Demo Available!</div></a>`;
+  }
+  output += `</div></div>`;
 }
 
 return output;
