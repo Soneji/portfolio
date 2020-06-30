@@ -52,17 +52,9 @@ jobs:
           git add .
           git commit -m deploy
           git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages
-          sleep 10
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  lighthouse:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v3
-        with:
-          urls: |
-            https://soneji.xyz
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+      - run: sleep 10 # wait for GH pages update
+      - run: npm install && npm install -g @lhci/cli@0.4.x
+      - run: npm run build
+      - run: lhci autorun --upload.target=temporary-public-storage
