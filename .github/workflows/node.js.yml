@@ -5,15 +5,14 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
   schedule:
     - cron: 0 9-17,0,3 * * *
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,37 +20,49 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - name: Cancel Previous Runs
-      uses: styfle/cancel-workflow-action@0.4.0
-      with:
-        access_token: ${{ github.token }}
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.0
+        with:
+          access_token: ${{ github.token }}
 
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - run: echo $E > .env
-      env:
-        E: ${{ secrets.ENV }}
+      - run: echo $E > .env
+        env:
+          E: ${{ secrets.ENV }}
 
-    - run: npm ci
-    - run: npm run build
+      - run: npm ci
+      - run: npm run build
 
-    - name: push
-      run: |
-        token=(`grep TOKEN .env | cut -f 2 -d=`)
-        username=(`grep username: config.ts | cut -f2 -d\'`)
-        repo=(`grep base config.ts | cut -f2 -d\'`)
-        cname=(`grep customDomain config.ts | cut -f 2 -d\'`)
-        git config --global user.email "action@github.com"
-        git config --global user.name "GitHub Action"
-        cd dist
-        echo $cname > CNAME
-        git init
-        git add .
-        git commit -m deploy
-        git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: push
+        run: |
+          token=(`grep TOKEN .env | cut -f 2 -d=`)
+          username=(`grep username: config.ts | cut -f2 -d\'`)
+          repo=(`grep base config.ts | cut -f2 -d\'`)
+          cname=(`grep customDomain config.ts | cut -f 2 -d\'`)
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          cd dist
+          echo $cname > CNAME
+          git init
+          git add .
+          git commit -m deploy
+          git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages
+          sleep 10
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          urls: |
+            https://soneji.xyz
+          uploadArtifacts: true # save results as an action artifacts
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
