@@ -36,7 +36,7 @@ header {
 .header__wrap__position {
   display: block;
   margin-top: 20px;
-  color: rgba(255, 255, 255, .95);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 1.1rem;
 }
 
@@ -49,15 +49,15 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
-    padding: 1px;
+    width: 35px !important;
+    height: 35px !important;
+    padding: 5px;
     margin: 0 7px;
     color: #fff;
-    transition: .2s;
+    transition: 0.2s;
     min-width: 35px;
     &:hover {
-      background: rgba(0, 0, 0, .5);
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 10px;
     }
     svg {
@@ -82,10 +82,10 @@ header {
     padding: 1px;
     margin: 0 4px;
     color: #fff;
-    transition: .2s;
+    transition: 0.2s;
     min-width: 25px;
     &:hover {
-      background: rgba(0, 0, 0, .5);
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 10px;
     }
     svg {
