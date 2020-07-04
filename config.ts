@@ -125,7 +125,7 @@ export default {
      */
     socialMedia: [
       { name: 'Github', icon: 'github', link: 'https://github.com/overclockedllama' },
-      { name: 'Instagram', icon: 'instagram', link: 'https://instagram.com/dhaval.py' },
+      // { name: 'Instagram', icon: 'instagram', link: 'https://instagram.com/dhaval.py' },
       { name: 'Monzo', icon: 'monzo', link: 'https://monzo.me/dhavalsoneji' },
       { name: 'Mail', icon: 'mail', link: 'mailto:dhaval@soneji.xyz' },
     ],
