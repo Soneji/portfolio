@@ -21,7 +21,7 @@ function generateRepositoriesHtml(repositories) {
     <a href="${repositories[i].html_url}" target="_blank" rel="noopener">`
     if (repositories[i].blobs_url != null && !repositories[i].blobs_url.includes('api.github.com')){
     output +=`
-    <img width="640px" height="320px" class="repository__pic uk-align-center" src="${repositories[i].blobs_url}">
+    <img width="640px" height="320px" class="repository__pic uk-align-center" src="${repositories[i].blobs_url}" loading="lazy">
     `
   }
   
