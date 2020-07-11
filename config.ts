@@ -160,6 +160,8 @@ export default {
       'Arduino',
       'Shell Scripting',
       'MySQL',
+      'Adobe Photoshop',
+      'Adobe Illustrator',
       'MS Office',
     ]
   },
