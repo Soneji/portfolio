@@ -33,20 +33,21 @@ jobs:
         env:
           E: ${{ secrets.ENV }}
 
-      - run: cat .env
-
       - run: npm ci
       - name: build
         run: |
-          GITHUB_TOKEN=(`grep TOKEN .env | cut -f 2 -d=`)
           npm run build
 
       - name: push
         run: |
           token=(`grep TOKEN .env | cut -f 2 -d=`)
+          echo "$token"
           username=(`grep username: config.ts | cut -f2 -d\'`)
+          echo "$username"
           repo=(`grep base config.ts | cut -f2 -d\'`)
+          echo "$repo"
           cname=(`grep customDomain config.ts | cut -f 2 -d\'`)
+          echo "$cname"
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           cd dist
