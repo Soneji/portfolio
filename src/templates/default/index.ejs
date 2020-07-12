@@ -43,6 +43,10 @@ function generateRepositoriesHtml(repositories) {
   <span uk-icon="git-fork"></span>
   <span>${repositories[i].forks_count}</span>
   </div>
+  <div class="repository__bottom__clones">
+    <span uk-icon="download"></span>
+    <span>${repositories[i].git_tags_url}</span>
+  </div>
   </div>
   </a>
   `;

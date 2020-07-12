@@ -5,7 +5,7 @@ import Sort from "../../classes/Sort";
 import { IGithubRepository } from "../../interfaces/IGithub";
 import variables from "../../variables";
 import Github from "./Github";
-const axios = require("axios");
+import axios, { AxiosInstance } from "axios";
 const cheerio = require("cheerio");
 
 /**
@@ -77,6 +77,23 @@ export default async (): Promise<IGithubRepository[]> => {
         }
       }
     });
+    const axiosInstance: AxiosInstance = axios.create({
+      headers: {
+        Authorization: config.modules.github.token
+          ? `token ${config.modules.github.token}`
+          : null,
+      },
+    });
+    var full_name = repo.full_name;
+    let url2 = "https://api.github.com/repos/" + full_name + "/traffic/clones";
+    let response;
+    try {
+      response = await axiosInstance.get(url2);
+    } catch (e) {
+      Github.log(Github.sections.repositories, e).error();
+      throw new Error(e);
+    }
+    repo.git_tags_url = JSON.stringify(response.data.count);
   }
   return repositories;
 };
