@@ -6,7 +6,9 @@ import {
   IGithubProfile,
   IGithubRepository,
 } from "../../interfaces/IGithub";
-console.log(config);
+
+console.log(process.env);
+
 /** @type {AxiosInstance} */
 const axiosInstance: AxiosInstance = axios.create({
   headers: {
