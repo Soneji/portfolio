@@ -77,24 +77,21 @@ export default async (): Promise<IGithubRepository[]> => {
         }
       }
     });
-    const axiosInstance: AxiosInstance = axios.create({
-      headers: {
-        Authorization: config.modules.github.token
-          ? `token ${config.modules.github.token}`
-          : null,
-      },
-    });
-    console.log(config.modules.github.token);
     var full_name = repo.full_name;
-    let url2 = "https://api.github.com/repos/" + full_name + "/traffic/clones";
-    let response;
+    url = "https://api.github.com/repos/" + full_name + "/traffic/clones";
     try {
-      response = await axiosInstance.get(url2);
+      axios(url, {
+        headers: {
+          Authorization: `token ${config.modules.github.token}`,
+        },
+      }).then(
+        (response: { data: any }) =>
+          (repo.git_tags_url = JSON.stringify(response.data.count))
+      );
     } catch (e) {
       Github.log(Github.sections.repositories, e).error();
       throw new Error(e);
     }
-    repo.git_tags_url = JSON.stringify(response.data.count);
   }
   return repositories;
 };
