@@ -82,7 +82,7 @@ export default async (): Promise<IGithubRepository[]> => {
     try {
       axios(url, {
         headers: {
-          Authorization: `token ${config.modules.github.token}`,
+          Authorization: `bearer ${config.modules.github.token}`,
         },
       }).then(
         (response: { data: any }) =>
