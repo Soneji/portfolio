@@ -34,7 +34,10 @@ jobs:
           E: ${{ secrets.ENV }}
 
       - run: npm ci
-      - run: npm run build
+      - name: build
+        run: |
+          GITHUB_TOKEN=(`grep TOKEN .env | cut -f 2 -d=`)
+          npm run build
 
       - name: push
         run: |
