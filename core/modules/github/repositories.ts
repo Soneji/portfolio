@@ -79,7 +79,7 @@ export default async (): Promise<IGithubRepository[]> => {
     });
     url = "https://api.github.com/repos/" + repo.full_name + "/traffic/clones";
     console.log(`Authorization: token ${config.modules.github.token}`);
-    console.log(config.modules.github.token);
+    console.log(config);
     console.log(process.env);
     try {
       await axios({
