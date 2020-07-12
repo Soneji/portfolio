@@ -60,8 +60,8 @@ export default async (): Promise<IGithubRepository[]> => {
   }
   for (let i = 0; i < repositories.length; i++) {
     const repo = repositories[i];
-    // let url = `https://raw.githubusercontent.com/${repo.owner.login}/${repo.name}/master/.github/preview.jpg`;
-    let url = repo.html_url;
+    let url;
+    url = repo.html_url;
     axios(url).then((response: { data: any }) => {
       const html = response.data;
       const $ = cheerio.load(html);
@@ -77,12 +77,16 @@ export default async (): Promise<IGithubRepository[]> => {
         }
       }
     });
-    var full_name = repo.full_name;
-    url = "https://api.github.com/repos/" + full_name + "/traffic/clones";
+    url = "https://api.github.com/repos/" + repo.full_name + "/traffic/clones";
+    console.log(`Authorization: bearer ${config.modules.github.token}`);
+    console.log(config.modules.github.token);
+    console.log(process.env.GITHUB_TOKEN);
     try {
-      axios(url, {
+      axios({
+        url: url,
         headers: {
           Authorization: `bearer ${config.modules.github.token}`,
+          "User-Agent": "overclockedllama",
         },
       }).then(
         (response: { data: any }) =>
