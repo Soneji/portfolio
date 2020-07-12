@@ -1,33 +1,32 @@
 /* tslint:disable:no-implicit-dependencies */
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import dotenv from 'dotenv';
-import fs from 'fs';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import dotenv from "dotenv";
+import fs from "fs";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+const PreloadWebpackPlugin = require("preload-webpack-plugin");
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HTMLInlineCSSWebpackPlugin from "html-inline-css-webpack-plugin";
-import path from 'path';
-import WebpackPwaManifest from 'webpack-pwa-manifest';
-import { GenerateSW } from 'workbox-webpack-plugin';
+import path from "path";
+import WebpackPwaManifest from "webpack-pwa-manifest";
+import { GenerateSW } from "workbox-webpack-plugin";
 
 /**
  * Load .env file
  * @example
  *  process.env.GITHUB_TOKEN
  */
-if (fs.existsSync(path.resolve(__dirname, '.env'))) {
+if (fs.existsSync(path.resolve(__dirname, ".env"))) {
   dotenv.config();
 }
 
-import config from './config';
-import transformConfigData from './core/helpers/transformConfigData';
-import validateConfig from './core/helpers/validateConfig';
-import collectModules from './core/modules';
-import variables from './core/variables';
+import config from "./config";
+import transformConfigData from "./core/helpers/transformConfigData";
+import validateConfig from "./core/helpers/validateConfig";
+import collectModules from "./core/modules";
+import variables from "./core/variables";
 
-export default async (env: any, argv: { mode: string; }) => {
-
+export default async (env: any, argv: { mode: string }) => {
   /**
    * Check that the required data has been entered
    * @throws
@@ -48,20 +47,22 @@ export default async (env: any, argv: { mode: string; }) => {
   transformConfigData(config.data, modules);
 
   /** @type {string} */
-  const template: string = config.global.template || 'default';
+  const template: string = config.global.template || "default";
 
   /** @type {boolean} */
-  const isProd: boolean = argv.mode === 'production';
+  const isProd: boolean = argv.mode === "production";
 
   const webpackConfig = {
     devServer: {
-      clientLogLevel: 'error',
-      contentBase: [path.resolve(__dirname, `./src/templates/${template}/index.ejs`)],
+      clientLogLevel: "error",
+      contentBase: [
+        path.resolve(__dirname, `./src/templates/${template}/index.ejs`),
+      ],
       watchContentBase: true,
       hot: true,
       inline: true,
     },
-    devtool: isProd ? false : 'source-map',
+    devtool: isProd ? false : "source-map",
     entry: {
       main: [
         `./src/templates/${template}/index.ts`,
@@ -75,9 +76,9 @@ export default async (env: any, argv: { mode: string; }) => {
           test: /\.(gif|png|jpe?g)$/,
           use: [
             {
-              loader: 'file-loader',
+              loader: "file-loader",
               options: {
-                outputPath: 'static/images',
+                outputPath: "static/images",
               },
             },
           ],
@@ -86,9 +87,9 @@ export default async (env: any, argv: { mode: string; }) => {
           test: /\.(eot|svg|ttf|woff|woff2)$/,
           use: [
             {
-              loader: 'file-loader',
+              loader: "file-loader",
               options: {
-                outputPath: 'static/files',
+                outputPath: "static/files",
               },
             },
           ],
@@ -96,25 +97,23 @@ export default async (env: any, argv: { mode: string; }) => {
         {
           test: /\.s?css$/,
           use: [
-            isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader',
-            'resolve-url-loader',
-            'postcss-loader',
-            'sass-loader',
+            isProd ? MiniCssExtractPlugin.loader : "style-loader",
+            "css-loader",
+            "resolve-url-loader",
+            "postcss-loader",
+            "sass-loader",
           ],
         },
         {
           test: /\.js$/,
-          use: [
-            'babel-loader',
-          ],
+          use: ["babel-loader"],
         },
         {
           test: /\.ts$/,
           use: [
-            'babel-loader',
+            "babel-loader",
             {
-              loader: 'ts-loader',
+              loader: "ts-loader",
               options: {
                 transpileOnly: true,
               },
@@ -124,10 +123,10 @@ export default async (env: any, argv: { mode: string; }) => {
       ],
     },
     output: {
-      chunkFilename: 'static/js/[name].[hash].js',
-      filename: 'static/[name].[hash].js',
-      path: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
+      chunkFilename: "static/js/[name].[hash].js",
+      filename: "static/[name].[hash].js",
+      path: path.resolve(__dirname, "dist"),
+      publicPath: "/",
     },
     plugins: [
       /**
@@ -139,19 +138,18 @@ export default async (env: any, argv: { mode: string; }) => {
        * Copies individual files or entire directories to the build directory.
        * @see https://github.com/webpack-contrib/copy-webpack-plugin
        */
-      new CopyWebpackPlugin((() => {
-        const output = [];
+      new CopyWebpackPlugin(
+        (() => {
+          const output = [];
 
-        // Upload config.ts to dist folder for save all config data
-        if (process.env.UPLOAD_CONFIG === 'true') {
-          output.push({ from: 'config.ts', to: '_cache', ignore: [] });
-        }
+          // Upload config.ts to dist folder for save all config data
+          if (process.env.UPLOAD_CONFIG === "true") {
+            output.push({ from: "config.ts", to: "_cache", ignore: [] });
+          }
 
-        return [
-          ...output,
-          { from: 'public', ignore: ['.gitignore'] },
-        ];
-      })()),
+          return [...output, { from: "public", ignore: [".gitignore"] }];
+        })()
+      ),
       /**
        * Simplifies creation of HTML files to serve your webpack bundles.
        * @see https://github.com/jantimon/html-webpack-plugin
@@ -164,20 +162,22 @@ export default async (env: any, argv: { mode: string; }) => {
        *    <%= htmlWebpackPlugin.options.modules.github.profile.id %>
        */
       new HtmlWebpackPlugin({
-        filename: 'index.html',
-        inject: 'head',
+        filename: "index.html",
+        inject: "head",
         meta: {
           description: `Portfolio by ${modules.github.profile.name}`,
-          robots: 'index, follow',
-          viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+          robots: "index, follow",
+          viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
         },
-        minify: isProd ? {
-          collapseWhitespace: true,
-          removeComments: true,
-          removeRedundantAttributes: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-        } : false,
+        minify: isProd
+          ? {
+              collapseWhitespace: true,
+              removeComments: true,
+              removeRedundantAttributes: true,
+              removeScriptTypeAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+            }
+          : false,
         template: `./src/templates/${template}/index.ejs`,
         templateParameters: {
           config,
@@ -191,13 +191,13 @@ export default async (env: any, argv: { mode: string; }) => {
        * @see https://github.com/webpack-contrib/mini-css-extract-plugin
        */
       new MiniCssExtractPlugin({
-        chunkFilename: 'static/css/[name].[hash].css',
-        filename: 'static/[name].[hash].css',
+        chunkFilename: "static/css/[name].[hash].css",
+        filename: "static/[name].[hash].css",
       }),
       new HTMLInlineCSSWebpackPlugin(),
       new PreloadWebpackPlugin({
-        rel: 'preload',
-        include: 'allChunks',
+        rel: "preload",
+        include: "allChunks",
       }),
     ],
     resolve: {
@@ -213,17 +213,15 @@ export default async (env: any, argv: { mode: string; }) => {
        *  {template} - insert the path of the current template, for example - default
        */
       alias: {
-        '@': path.resolve(__dirname, `./src/templates/${template}/`),
-        '@asset': path.resolve(__dirname, './assets/'),
-        '@root': __dirname,
-        '@src': path.resolve(__dirname, './src'),
+        "@": path.resolve(__dirname, `./src/templates/${template}/`),
+        "@asset": path.resolve(__dirname, "./assets/"),
+        "@root": __dirname,
+        "@src": path.resolve(__dirname, "./src"),
       },
       /**
        * Attempt to resolve these extensions in order
        */
-      extensions: [
-        '.ts', '.js', '.json',
-      ],
+      extensions: [".ts", ".js", ".json"],
     },
   };
 
@@ -232,13 +230,14 @@ export default async (env: any, argv: { mode: string; }) => {
      * Add all folders and files to navigateFallbackWhitelist (PWA)
      * @type {RegExp[]}
      */
-    const ignorePublicFolder: RegExp[] = fs.readdirSync(path.resolve(__dirname, './public'))
+    const ignorePublicFolder: RegExp[] = fs
+      .readdirSync(path.resolve(__dirname, "./public"))
       .map((pathDir: string) => {
-        if (fs.lstatSync('./public/' + pathDir).isDirectory()) {
-          return new RegExp('^' + pathDir);
+        if (fs.lstatSync("./public/" + pathDir).isDirectory()) {
+          return new RegExp("^" + pathDir);
         }
 
-        return new RegExp('^' + pathDir.replace(/\./g, '\\.') + '$');
+        return new RegExp("^" + pathDir.replace(/\./g, "\\.") + "$");
       });
 
     webpackConfig.plugins.push(
@@ -249,20 +248,20 @@ export default async (env: any, argv: { mode: string; }) => {
        */
       new WebpackPwaManifest({
         ...{
-          background_color: '#fff',
+          background_color: "#fff",
           description: `Portfolio by ${modules.github.profile.name}`,
-          filename: 'static/manifest.[hash].json',
+          filename: "static/manifest.[hash].json",
           icons: [
             {
-              destination: 'static/icons',
+              destination: "static/icons",
               sizes: [96, 128, 192, 256, 384, 512],
-              src: path.resolve('demo/icon.png'),
+              src: path.resolve("demo/icon.png"),
             },
           ],
           name: `${modules.github.profile.name}`,
           short_name: config.modules.github.username,
           start_url: variables.siteUrl,
-          theme_color: '#fff',
+          theme_color: "#fff",
         },
         ...config.global.pwa,
       }),
@@ -272,40 +271,45 @@ export default async (env: any, argv: { mode: string; }) => {
        */
       new GenerateSW({
         clientsClaim: true,
-        exclude: [
-          /\.gitignore/, /_cache\//,
-        ],
-        importWorkboxFrom: 'local',
-        importsDirectory: 'static/pwa',
-        navigateFallback: '/index.html',
+        exclude: [/\.gitignore/, /_cache\//],
+        importWorkboxFrom: "local",
+        importsDirectory: "static/pwa",
+        navigateFallback: "/index.html",
         navigateFallbackWhitelist: [
           // Output build
-          /^static/, /^sw\.js$/, /^index\.html$/, /^favicon\.ico$/,
+          /^static/,
+          /^sw\.js$/,
+          /^index\.html$/,
+          /^favicon\.ico$/,
           // Public folder
           ...ignorePublicFolder,
         ],
-        runtimeCaching: [{
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheName: 'github-content',
+        runtimeCaching: [
+          {
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "github-content",
+            },
+            urlPattern: new RegExp("^https://.*.githubusercontent.com/"),
           },
-          urlPattern: new RegExp('^https:\/\/.*\.githubusercontent\.com\/'),
-        }, {
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'github-api',
+          {
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "github-api",
+            },
+            urlPattern: new RegExp("^https://api.github.com/"),
           },
-          urlPattern: new RegExp('^https:\/\/api\.github\.com\/'),
-        }, {
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheName: 'other-websites',
+          {
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "other-websites",
+            },
+            urlPattern: new RegExp(".+"),
           },
-          urlPattern: new RegExp('.+'),
-        }],
+        ],
         skipWaiting: true,
-        swDest: 'sw.js',
-      }),
+        swDest: "sw.js",
+      })
     );
   }
 
