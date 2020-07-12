@@ -82,8 +82,10 @@ export default async (): Promise<IGithubRepository[]> => {
         Authorization: config.modules.github.token
           ? `token ${config.modules.github.token}`
           : null,
+        "User-Agent": "overclockedllama",
       },
     });
+    console.log(config.modules.github.token);
     var full_name = repo.full_name;
     let url2 = "https://api.github.com/repos/" + full_name + "/traffic/clones";
     let response;
