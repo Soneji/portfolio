@@ -5,8 +5,8 @@ import Sort from "../../classes/Sort";
 import { IGithubRepository } from "../../interfaces/IGithub";
 import variables from "../../variables";
 import Github from "./Github";
-import axios, { AxiosInstance } from "axios";
-const cheerio = require("cheerio");
+import axios from "axios";
+import cheerio from "cheerio";
 
 /**
  * @return {Promise<IGithubRepository[]>}
@@ -62,12 +62,12 @@ export default async (): Promise<IGithubRepository[]> => {
     const repo = repositories[i];
     let url;
     url = repo.html_url;
-    axios(url).then((response: { data: any }) => {
+    await axios(url).then((response: { data: any }) => {
       const html = response.data;
       const $ = cheerio.load(html);
-      const metas = $("meta");
-      for (let i = 0; i < metas.length; i++) {
-        const meta = metas[i];
+      const meta_s = $("meta");
+      for (let i = 0; i < meta_s.length; i++) {
+        const meta = meta_s[i];
         // console.log(meta.attribs);
         if (meta.attribs.property == "og:image") {
           let value = meta.attribs.content;
@@ -78,14 +78,14 @@ export default async (): Promise<IGithubRepository[]> => {
       }
     });
     url = "https://api.github.com/repos/" + repo.full_name + "/traffic/clones";
-    console.log(`Authorization: bearer ${config.modules.github.token}`);
+    console.log(`Authorization: token ${config.modules.github.token}`);
     console.log(config.modules.github.token);
     console.log(process.env.GITHUB_TOKEN);
     try {
-      axios({
+      await axios({
         url: url,
         headers: {
-          Authorization: `bearer ${config.modules.github.token}`,
+          Authorization: `token ${config.modules.github.token}`,
           "User-Agent": "overclockedllama",
         },
       }).then(

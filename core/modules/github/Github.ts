@@ -1,16 +1,18 @@
-import axios, { AxiosInstance } from 'axios';
-import config from '../../../config';
-import Module from '../../classes/Module';
+import axios, { AxiosInstance } from "axios";
+import config from "../../../config";
+import Module from "../../classes/Module";
 import {
   IGithubContributor,
   IGithubProfile,
   IGithubRepository,
-} from '../../interfaces/IGithub';
+} from "../../interfaces/IGithub";
 
 /** @type {AxiosInstance} */
 const axiosInstance: AxiosInstance = axios.create({
   headers: {
-    Authorization: config.modules.github.token ? `token ${config.modules.github.token}` : null,
+    Authorization: config.modules.github.token
+      ? `token ${config.modules.github.token}`
+      : null,
   },
 });
 
@@ -18,21 +20,20 @@ const axiosInstance: AxiosInstance = axios.create({
 const MAX_COUNT: number = 100;
 
 /** @type {string} */
-const SELF_OWNER: string = 'gportfolio';
+const SELF_OWNER: string = "gportfolio";
 
 /** @type {string} */
-const SELF_REP: string = 'gportfolio';
+const SELF_REP: string = "gportfolio";
 
 export default class Github extends Module {
-
   /**
    * Logger sections
    */
-  static get sections () {
+  static get sections() {
     return {
-      contributors: 'Contributors',
-      profile: 'Profile',
-      repositories: 'Repositories',
+      contributors: "Contributors",
+      profile: "Profile",
+      repositories: "Repositories",
     };
   }
 
@@ -40,9 +41,9 @@ export default class Github extends Module {
    * Full url to get list of the repositories
    * @return {string}
    */
-  static get URL_REPOSITORIES (): string {
+  static get URL_REPOSITORIES(): string {
     const append = config.modules.github.token
-      ? 'user/repos'
+      ? "user/repos"
       : `users/${config.modules.github.username}/repos`;
 
     return `${this.API}/${append}`;
@@ -52,12 +53,12 @@ export default class Github extends Module {
    * Full url to get profile
    * @return {string}
    */
-  static get URL_PROFILE (): string {
+  static get URL_PROFILE(): string {
     return `${this.API}/users/${config.modules.github.username}`;
   }
 
-  public static NAME = 'Github';
-  public static API = 'https://api.github.com';
+  public static NAME = "Github";
+  public static API = "https://api.github.com";
 
   /**
    * Full url to get list contributors.
@@ -65,7 +66,7 @@ export default class Github extends Module {
    * @param {string} repo
    * @return {string}
    */
-  public static URL_LIST_CONTRIBUTORS (owner: string, repo: string): string {
+  public static URL_LIST_CONTRIBUTORS(owner: string, repo: string): string {
     return `${this.API}/repos/${owner}/${repo}/contributors`;
   }
 
@@ -75,8 +76,8 @@ export default class Github extends Module {
    * @throws
    * @see https://developer.github.com/v3/users/#get-a-single-user docs
    */
-  public static async fetchProfile (): Promise<IGithubProfile> {
-    Github.log(Github.sections.profile, 'Fetching data from API..').info();
+  public static async fetchProfile(): Promise<IGithubProfile> {
+    Github.log(Github.sections.profile, "Fetching data from API..").info();
     let response;
 
     try {
@@ -86,7 +87,7 @@ export default class Github extends Module {
       throw new Error(e);
     }
 
-    Github.log(Github.sections.profile, 'Complete').success();
+    Github.log(Github.sections.profile, "Complete").success();
 
     return response.data;
   }
@@ -97,13 +98,16 @@ export default class Github extends Module {
    * @throws
    * @see https://developer.github.com/v3/repos/#list-user-repositories docs
    */
-  public static async fetchRepositories (): Promise<IGithubRepository[]> {
+  public static async fetchRepositories(): Promise<IGithubRepository[]> {
     let fetchRepositories;
     const repositories = [];
     let page = 1;
 
     do {
-      Github.log(Github.sections.repositories, `Fetching data from API.. | ${page} page`).info();
+      Github.log(
+        Github.sections.repositories,
+        `Fetching data from API.. | ${page} page`
+      ).info();
 
       try {
         fetchRepositories = await axiosInstance.get(Github.URL_REPOSITORIES, {
@@ -111,7 +115,9 @@ export default class Github extends Module {
             ...config.modules.github.parse.repositories,
             page: page++,
             per_page: MAX_COUNT,
-            type: config.modules.github.token ? undefined : config.modules.github.parse.repositories.type,
+            type: config.modules.github.token
+              ? undefined
+              : config.modules.github.parse.repositories.type,
           },
         });
       } catch (e) {
@@ -120,10 +126,12 @@ export default class Github extends Module {
       }
 
       repositories.push(...fetchRepositories.data);
-
     } while (fetchRepositories.data.length === MAX_COUNT);
 
-    Github.log(Github.sections.repositories, `Complete, ${repositories.length} length`).success();
+    Github.log(
+      Github.sections.repositories,
+      `Complete, ${repositories.length} length`
+    ).success();
     return repositories;
   }
 
@@ -133,14 +141,17 @@ export default class Github extends Module {
    * @throws
    * @see https://developer.github.com/v3/repos/#list-contributors docs
    */
-  public static async fetchSelfContributors (): Promise<IGithubContributor[]> {
+  public static async fetchSelfContributors(): Promise<IGithubContributor[]> {
     const fetchUrl = Github.URL_LIST_CONTRIBUTORS(SELF_OWNER, SELF_REP);
     const contributors = [];
     let fetchContributors;
     let page = 1;
 
     do {
-      Github.log(Github.sections.contributors, `Fetching data from API.. | ${page} page`).info();
+      Github.log(
+        Github.sections.contributors,
+        `Fetching data from API.. | ${page} page`
+      ).info();
 
       try {
         fetchContributors = await axiosInstance.get(fetchUrl, {
@@ -156,10 +167,12 @@ export default class Github extends Module {
       }
 
       contributors.push(...fetchContributors.data);
-
     } while (fetchContributors.data.length === MAX_COUNT);
 
-    Github.log(Github.sections.contributors, `Complete, ${contributors.length} length`).success();
+    Github.log(
+      Github.sections.contributors,
+      `Complete, ${contributors.length} length`
+    ).success();
     return contributors;
   }
 }

@@ -1,6 +1,6 @@
 /* tslint:disable:max-line-length */
-import { getDeepByKey } from './core/helpers/utils';
-import { triggerAsyncId } from 'async_hooks';
+import { getDeepByKey } from "./core/helpers/utils";
+import { triggerAsyncId } from "async_hooks";
 
 /*
  * After editing - restart the server for the change to take effect.
@@ -8,7 +8,6 @@ import { triggerAsyncId } from 'async_hooks';
 
 export default {
   global: {
-
     /**
      * The value is the name of the folder, all templates
      * you can find by the current path:
@@ -19,7 +18,7 @@ export default {
      * @type {string}
      * @default default
      */
-    template: 'default',
+    template: "default",
 
     /**
      * If the repository is called: <username>.github.io
@@ -28,7 +27,7 @@ export default {
      *  Then the value of <name of repository>
      * @type {string}
      */
-    base: 'portfolio',
+    base: "portfolio",
 
     /**
      * The Open Graph protocol
@@ -46,13 +45,16 @@ export default {
      *  profile:username => {username}
      */
     opg: {
-      'profile:first_name': 'Dhaval',
-      'profile:last_name': 'Soneji',
-      'og:url': 'https://soneji.xyz',
-      'og:description': 'Portfolio by Dhaval Soneji, Software and Electronic Engineer',
-      'description': 'Portfolio by Dhaval Soneji, Software and Electronic Engineer',
-      'og:keywords': 'Dhaval Soneji, Soneji, soneji, web dev, web development, website developer, web developer, dhavalsoneji, dhavalsonejii, dhaval soneji, students, london developer, london dev, english dev, english developer, graphic design, commercial web design, commercial web development, e-commerce website design, mobile, Search Engine Optimisation, SEO, brand development',
-      'og:author': 'Dhaval Soneji'
+      "profile:first_name": "Dhaval",
+      "profile:last_name": "Soneji",
+      "og:url": "https://soneji.xyz",
+      "og:description":
+        "Portfolio by Dhaval Soneji, Software and Electronic Engineer",
+      description:
+        "Portfolio by Dhaval Soneji, Software and Electronic Engineer",
+      "og:keywords":
+        "Dhaval Soneji, Soneji, soneji, web dev, web development, website developer, web developer, dhavalsoneji, dhavalsonejii, dhaval soneji, students, london developer, london dev, english dev, english developer, graphic design, commercial web design, commercial web development, e-commerce website design, mobile, Search Engine Optimisation, SEO, brand development",
+      "og:author": "Dhaval Soneji",
     },
 
     /**
@@ -64,7 +66,12 @@ export default {
      *    { description: 'My portfolio', background_color: '#333' }
      */
     pwa: {
-      //
+      name: "Dhaval Soneji",
+      short_name: "Dhaval.S",
+      background_color: "#34928a",
+      theme_color: "#34928a",
+      ios: true,
+      inject: true,
     },
 
     /**
@@ -73,20 +80,19 @@ export default {
      * @example
      *  www.example.com
      */
-    customDomain: 'soneji.xyz',
+    customDomain: "soneji.xyz",
   },
 
   data: {
-
     /**
      * Your name
      * @type {string}
      */
     name: (modules: any) => {
-      let val = getDeepByKey(modules, ['github', 'profile', 'name']);
+      let val = getDeepByKey(modules, ["github", "profile", "name"]);
 
       if (!val) {
-        val = getDeepByKey(modules, ['dribbble', 'profile', 'name']);
+        val = getDeepByKey(modules, ["dribbble", "profile", "name"]);
       }
 
       return val;
@@ -97,10 +103,10 @@ export default {
      * @type {string}
      */
     avatar_url: (modules: any) => {
-      let val = getDeepByKey(modules, ['github', 'profile', 'avatar_url']);
+      let val = getDeepByKey(modules, ["github", "profile", "avatar_url"]);
 
       if (!val) {
-        val = getDeepByKey(modules, ['dribbble', 'profile', 'avatar_url']);
+        val = getDeepByKey(modules, ["dribbble", "profile", "avatar_url"]);
       }
 
       return val;
@@ -109,14 +115,14 @@ export default {
     /**
      * @type {string}
      */
-    position: 'Software and Electronic Engineer',
+    position: "Software and Electronic Engineer",
 
     /**
      * Searching for a job
      * @type {boolean}
      */
     hire: (modules: any) => {
-      return !!getDeepByKey(modules, ['github', 'profile', 'hireable']);
+      return !!getDeepByKey(modules, ["github", "profile", "hireable"]);
     },
 
     /**
@@ -124,23 +130,43 @@ export default {
      * @type {Array}
      */
     socialMedia: [
-      { name: 'Github', icon: 'github', link: 'https://github.com/overclockedllama' },
+      {
+        name: "Github",
+        icon: "github",
+        link: "https://github.com/overclockedllama",
+      },
       // { name: 'Instagram', icon: 'instagram', link: 'https://instagram.com/dhaval.py' },
-      { name: 'Monzo', icon: 'monzo', link: 'https://monzo.me/dhavalsoneji' },
-      { name: 'Mail', icon: 'mail', link: 'mailto:dhaval@soneji.xyz' },
+      { name: "Monzo", icon: "monzo", link: "https://monzo.me/dhavalsoneji" },
+      { name: "Mail", icon: "mail", link: "mailto:dhaval@soneji.xyz" },
     ],
 
     devTools: [
-      { name: 'Cloudflare', icon: 'cloudflare', link: 'https://dash.cloudflare.com/' },
-      { name: 'Droppy', icon: 'dropbox', link: 'https://droppy.soneji.xyz/' },
-      { name: 'Chrome', icon: 'googlechrome', link: 'https://chrome.soneji.xyz/' },
-      { name: 'Firefox', icon: 'mozillafirefox', link: 'https://firefox.soneji.xyz/' },
-      { name: 'Images', icon: 'images', link: 'https://images.soneji.xyz/' },
-      { name: 'Cloud', icon: 'nextcloud', link: 'https://cloud.soneji.xyz/' },
-      { name: 'Plex', icon: 'plex', link: 'https://plex.soneji.xyz/' },
-      { name: 'QB', icon: 'qi', link: 'https://qb.soneji.xyz/' },
-      { name: 'Spotify', icon: 'spotify', link: 'https://open.spotify.com/user/dhaval.soneji' },
-      { name: 'VSCode', icon: 'vscode', link: 'https://code.soneji.xyz/' },
+      {
+        name: "Cloudflare",
+        icon: "cloudflare",
+        link: "https://dash.cloudflare.com/",
+      },
+      { name: "Droppy", icon: "dropbox", link: "https://droppy.soneji.xyz/" },
+      {
+        name: "Chrome",
+        icon: "googlechrome",
+        link: "https://chrome.soneji.xyz/",
+      },
+      {
+        name: "Firefox",
+        icon: "mozillafirefox",
+        link: "https://firefox.soneji.xyz/",
+      },
+      { name: "Images", icon: "images", link: "https://images.soneji.xyz/" },
+      { name: "Cloud", icon: "nextcloud", link: "https://cloud.soneji.xyz/" },
+      { name: "Plex", icon: "plex", link: "https://plex.soneji.xyz/" },
+      { name: "QB", icon: "qi", link: "https://qb.soneji.xyz/" },
+      {
+        name: "Spotify",
+        icon: "spotify",
+        link: "https://open.spotify.com/user/dhaval.soneji",
+      },
+      { name: "VSCode", icon: "vscode", link: "https://code.soneji.xyz/" },
     ],
     aboutMe: `
     I am an Electronic Engineering Student at the University of Warwick. Topics that interest me include: 
@@ -149,26 +175,25 @@ export default {
     If you’d like to get in touch with me via email, click <a href="mailto:dhaval@soneji.xyz">here</a>.
     `,
     technologies: [
-      'Python',
-      'JavaScript',
-      'C / C++',
-      'PHP',
-      'Docker',
-      'LaTeX',
-      'MATLAB',
-      'Autodesk Fusion 360',
-      'Arduino',
-      'Shell Scripting',
-      'MySQL',
-      'Adobe Photoshop',
-      'Adobe Illustrator',
-      'MS Office',
-    ]
+      "Python",
+      "JavaScript",
+      "C / C++",
+      "PHP",
+      "Docker",
+      "LaTeX",
+      "MATLAB",
+      "Autodesk Fusion 360",
+      "Arduino",
+      "Shell Scripting",
+      "MySQL",
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "MS Office",
+    ],
   },
 
   modules: {
     github: {
-
       /**
        * Set your login from github, after the build we will receive
        * data from this profile (name, projects, etc.)
@@ -178,7 +203,7 @@ export default {
        *    alexeykhr
        *  From url https://github.com/alexeykhr
        */
-      username: 'overclockedllama',
+      username: "overclockedllama",
 
       /**
        * NOTICE: Set value in .env file
@@ -189,7 +214,7 @@ export default {
        * @type {string}
        * @see https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line
        */
-      token: process.env.GITHUB_TOKEN || '',
+      token: process.env.GITHUB_TOKEN || "",
 
       /**
        * Various configurations are stored that will filter
@@ -197,35 +222,33 @@ export default {
        * @type {object}
        */
       parse: {
-
         /** @see https://developer.github.com/v3/repos/#list-user-repositories docs */
         repositories: {
-
           /**
            * Not used if token is present. Instead, use: visibility, affiliation.
            * @type {string} - all, owner, member
            * @default owner
            */
-          type: 'owner',
+          type: "owner",
 
           /**
            * @type {string} - created, updated, pushed, full_name
            * @default full_name
            */
-          sort: 'full_name',
+          sort: "full_name",
 
           /**
            * @type {string} - asc, desc
            * @default asc when using full_name, otherwise desc
            */
-          direction: 'asc',
+          direction: "asc",
 
           /**
            * ONLY IF THE TOKEN IS SPECIFIED
            * @type {string} - all, public, private
            * @default all
            */
-          visibility: 'public',
+          visibility: "public",
 
           /**
            * ONLY IF THE TOKEN IS SPECIFIED
@@ -237,54 +260,37 @@ export default {
            *    of an organization. This includes every repository on every team that the user is on.
            * @default owner,collaborator,organization_member
            */
-          affiliation: 'owner,collaborator,organization_member',
+          affiliation: "owner,collaborator,organization_member",
         },
       },
 
       filter: {
-
         /**
          * @type {IFilters[]}
          * @see core/interfaces/IGithib.ts identify attributes
          * @see docs/config.md #Filters
          */
         repositories: [
-          //
-
-          // {
-          //   attr: 'name', values: [
-          //     "gocode-academy.github.io",
-          //     "gocode2018.github.io",
-          //     "echo360",
-          //     "greenlight",
-          //     "lenamd.com",
-          //     "double-pendulum",
-          //     "GPortfolio",
-          //     "kcsoc_audiobooks",
-          //     "overclockedllama.github.io",
-          //     "shodan-python",
-          //     "repo",
-          //     "WhatsAppForiPad",
-          //     ""
-
-          //   ], revert: true, more: ''
-          // }
-
-          { attr: 'fork', values: true, revert: true, more: '&& name!=\'flappy-musk\' ' },
-          { attr: 'owner.login', values: /gocode/i, revert: true, more: '' },
-          { attr: 'owner.login', values: /lena/i, revert: true, more: '' },
-          { attr: 'name', values: 'kcsoc_audiobooks', revert: true, more: '' },
-          { attr: 'name', values: 'overclockedllama.github.io', revert: true, more: '' },
-          { attr: 'name', values: 'portfolio', revert: true, more: '' },
-
-
-
-
+          {
+            attr: "fork",
+            values: true,
+            revert: true,
+            more: "&& name!='flappy-musk' ",
+          },
+          { attr: "owner.login", values: /gocode/i, revert: true, more: "" },
+          { attr: "owner.login", values: /lena/i, revert: true, more: "" },
+          { attr: "name", values: "kcsoc_audiobooks", revert: true, more: "" },
+          {
+            attr: "name",
+            values: "overclockedllama.github.io",
+            revert: true,
+            more: "",
+          },
+          { attr: "name", values: "portfolio", revert: true, more: "" },
         ],
       },
 
       sort: {
-
         /**
          * @type {ISort}
          * @see core/interfaces/IGithib.ts identify attributes
@@ -293,7 +299,7 @@ export default {
          *  { attr: 'owner.id', enable: true, sortByDesc: false }
          */
         repositories: {
-          attr: 'stargazers_count',
+          attr: "stargazers_count",
           enable: true,
           sortByDesc: true,
         },
@@ -301,30 +307,28 @@ export default {
     },
 
     dribbble: {
-
       auth: {
         /**
          * NOTICE: Set value in .env file
          * @type {string}
          */
-        client_id: process.env.DRIBBBLE_CLIENT_ID || '',
+        client_id: process.env.DRIBBBLE_CLIENT_ID || "",
 
         /**
          * NOTICE: Set value in .env file
          * @type {string}
          */
-        client_secret: process.env.DRIBBBLE_CLIENT_SECRET || '',
+        client_secret: process.env.DRIBBBLE_CLIENT_SECRET || "",
 
         /**
          * NOTICE: Set value in .env file
          * NOTE: Code is valid only once when receiving a token
          * @type {string}
          */
-        code: process.env.DRIBBBLE_CODE || '',
+        code: process.env.DRIBBBLE_CODE || "",
       },
 
       filter: {
-
         /**
          * @type {IFilters[]}
          * @see core/interfaces/IDribbble.ts identify attributes
@@ -336,7 +340,6 @@ export default {
       },
 
       sort: {
-
         /**
          * @type {ISort}
          * @see core/interfaces/IDribbble.ts identify attributes
@@ -344,7 +347,7 @@ export default {
          *  { attr: 'id', enable: true, sortByDesc: true }
          */
         shots: {
-          attr: 'id',
+          attr: "id",
           enable: false,
           sortByDesc: true,
         },
@@ -354,12 +357,11 @@ export default {
 
   templates: {
     default: {
-
       /**
        * @type {string}
        * @see docs/config.md #Image
        */
-      background: '',
+      background: "",
 
       /**
        * Number of items to display, the rest will be hidden and displayed
