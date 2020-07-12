@@ -41,12 +41,11 @@ jobs:
       - name: push
         run: |
           token=(`grep TOKEN .env | cut -f 2 -d=`)
-          echo "$token"
-          username=(`grep username: config.ts | cut -f2 -d\'`)
+          username=(`grep username: config.ts | cut -f3 -d\"`)
           echo "$username"
-          repo=(`grep base config.ts | cut -f2 -d\'`)
+          repo=(`grep base config.ts | cut -f2 -d\"`)
           echo "$repo"
-          cname=(`grep customDomain config.ts | cut -f 2 -d\'`)
+          cname=(`grep customDomain config.ts | cut -f 2 -d\"`)
           echo "$cname"
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
