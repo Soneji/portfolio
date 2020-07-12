@@ -33,6 +33,8 @@ jobs:
         env:
           E: ${{ secrets.ENV }}
 
+      - run: cat .env
+
       - run: npm ci
       - name: build
         run: |
