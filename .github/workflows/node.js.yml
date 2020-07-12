@@ -41,7 +41,7 @@ jobs:
       - name: push
         run: |
           token=(`grep TOKEN .env | cut -f 2 -d=`)
-          username=(`grep username: config.ts | cut -f3 -d\"`)
+          username=(`grep username: config.ts | cut -f2 -d\"`)
           echo "$username"
           repo=(`grep base config.ts | cut -f2 -d\"`)
           echo "$repo"
