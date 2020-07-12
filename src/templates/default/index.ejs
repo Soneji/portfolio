@@ -43,11 +43,16 @@ function generateRepositoriesHtml(repositories) {
   <span uk-icon="git-fork"></span>
   <span>${repositories[i].forks_count}</span>
   </div>
+  `;
+if (repositories[i].git_tags_url != null && !repositories[i].git_tags_url.includes('api.github.com')){
+  output+=`
   <div class="repository__bottom__clones">
     <span uk-icon="download"></span>
     <span>${repositories[i].git_tags_url}</span>
-  </div>
-  </div>
+  </div>`;
+}
+output+=` 
+</div>
   </a>
   `;
   if (repositories[i].homepage != null && repositories[i].homepage != '') {

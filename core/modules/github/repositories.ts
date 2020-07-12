@@ -91,7 +91,7 @@ export default async (): Promise<IGithubRepository[]> => {
       response = await axiosInstance.get(url2);
     } catch (e) {
       Github.log(Github.sections.repositories, e).error();
-      throw new Error(e);
+      continue;
     }
     repo.git_tags_url = JSON.stringify(response.data.count);
   }
