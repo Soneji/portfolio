@@ -82,7 +82,6 @@ export default async (): Promise<IGithubRepository[]> => {
         Authorization: config.modules.github.token
           ? `token ${config.modules.github.token}`
           : null,
-        "User-Agent": "overclockedllama",
       },
     });
     console.log(config.modules.github.token);
