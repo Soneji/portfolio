@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-env": "^7.10.4",
     "@types/cheerio": "^0.22.21",
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/dotenv": "^6.1.1",
