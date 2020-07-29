@@ -57,7 +57,3 @@ jobs:
           git push --force https://$username:$token@github.com/$username/$repo.git master:gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: sleep 10 # wait for GH pages update
-      - run: npm install && npm install -g @lhci/cli@0.4.x
-      - run: npm run build
-      - run: lhci autorun --upload.target=temporary-public-storage
