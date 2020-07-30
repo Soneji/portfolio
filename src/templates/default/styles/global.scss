@@ -39,9 +39,9 @@ a {
 //   padding: 0;
 // }
 
-// li {
-//   list-style-type: none;
-// }
+li {
+  list-style-type: none;
+}
 
 h2 {
     display: flex;
@@ -63,4 +63,8 @@ main {
   background-color: #1a1a1a;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.uk-list-circle{
+  padding-left: 10px !important;
 }
