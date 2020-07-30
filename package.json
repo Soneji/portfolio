@@ -1,5 +1,5 @@
 {
-  "name": "@gportfolio/gportfolio",
+  "name": "@overclockedllama/gportfolio",
   "version": "3.4.1",
   "description": "Create Your Portfolio Online",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GPortfolio/GPortfolio.git"
+    "url": "git+https://github.com/overclockedllama/portfolio.git"
   },
   "keywords": [
     "github-portfolio",
@@ -29,12 +29,12 @@
     "resume",
     "open-source"
   ],
-  "author": "Alexey Khrushch, alexeykhr@outlook.com",
+  "author": "Dhaval Soneji, dhaval@soneji.xyz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GPortfolio/GPortfolio/issues"
+    "url": "https://github.com/overclockedllama/portfolio/issues"
   },
-  "homepage": "https://github.com/GPortfolio/GPortfolio#readme",
+  "homepage": "https://github.com/overclockedllama/portfolio#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
