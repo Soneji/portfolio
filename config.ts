@@ -133,7 +133,7 @@ export default {
       {
         name: "Github",
         icon: "github",
-        link: "https://github.com/overclockedllama",
+        link: "https://github.com/soneji",
       },
       // { name: 'Instagram', icon: 'instagram', link: 'https://instagram.com/dhaval.py' },
       { name: "Monzo", icon: "monzo", link: "https://monzo.me/dhavalsoneji" },
@@ -203,7 +203,7 @@ export default {
        *    alexeykhr
        *  From url https://github.com/alexeykhr
        */
-      username: "overclockedllama",
+      username: "soneji",
 
       /**
        * NOTICE: Set value in .env file

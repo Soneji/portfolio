@@ -1,5 +1,5 @@
 {
-  "name": "@overclockedllama/gportfolio",
+  "name": "@soneji/gportfolio",
   "version": "3.4.1",
   "description": "Create Your Portfolio Online. Special Thanks to https://github.com/GPortfolio/GPortfolio",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/overclockedllama/portfolio.git"
+    "url": "git+https://github.com/soneji/portfolio.git"
   },
   "keywords": [
     "github-portfolio",
@@ -32,9 +32,9 @@
   "author": "Dhaval Soneji, dhaval@soneji.xyz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/overclockedllama/portfolio/issues"
+    "url": "https://github.com/soneji/portfolio/issues"
   },
-  "homepage": "https://github.com/overclockedllama/portfolio#readme",
+  "homepage": "https://github.com/soneji/portfolio#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
