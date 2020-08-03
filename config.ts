@@ -282,7 +282,7 @@ export default {
           { attr: "name", values: "kcsoc_audiobooks", revert: true, more: "" },
           {
             attr: "name",
-            values: "overclockedllama.github.io",
+            values: "soneji.github.io",
             revert: true,
             more: "",
           },
