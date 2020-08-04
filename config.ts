@@ -287,6 +287,17 @@ export default {
             more: "",
           },
           { attr: "name", values: "portfolio", revert: true, more: "" },
+          { attr: "name", values: "repo", revert: true, more: "" },
+        ],
+        contributions: [
+          { attr: "owner.login", values: "soneji", revert: true, more: "" },
+          { attr: "owner.login", values: "education", revert: true, more: "" },
+          {
+            attr: "nameWithOwner",
+            values: /github\.io/i,
+            revert: true,
+            more: "",
+          },
         ],
       },
 
@@ -300,6 +311,12 @@ export default {
          */
         repositories: {
           attr: "stargazers_count",
+          enable: true,
+          sortByDesc: true,
+        },
+
+        contributions: {
+          attr: "stargazers.totalCount",
           enable: true,
           sortByDesc: true,
         },

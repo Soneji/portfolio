@@ -8,6 +8,7 @@ const imagesTemplate = require('ejs-loader!@src/parts/images.ejs')
  * Github
  */
 const repositories = modules.github.repositories
+const contributions = modules.github.contributions
 const repositoriesMore = config.templates.default.github_repositories_more
 const canShowMoreRepositories = repositoriesMore && repositoriesMore < repositories.length
 
@@ -64,6 +65,49 @@ output+=`
 return output;
 }
 
+
+function generateContributionsHtml(repositories) {
+var output = '';
+
+for (var i = 0; i < repositories.length; i++) { output +=` <div>
+  <div
+    class="uk-light uk-background-secondary uk-card uk-card-default uk-card-body repository uk-card uk-card-secondary uk-card-small uk-card-hover"
+    uk-scrollspy="cls: uk-animation-scale-up">
+    <a href="${repositories[i].url}" target="_blank" rel="noopener">`
+      if (repositories[i].img != null){
+      output +=`
+      <img width="640px" height="320px" class="repository__pic uk-align-center" src="${repositories[i].img}"
+        loading="lazy">
+      `
+      }
+
+
+
+      output += `
+      <div class="repository__name uk-card-title">${(repositories[i].nameWithOwner).split("/").join("'s ")}</div>
+      <p class="repository__description">${repositories[i].description || '-'}</p>
+      <div class="repository__bottom">
+        <div class="repository__bottom__language">
+          <span uk-icon="code"></span>
+          <span>${repositories[i].primaryLanguage.name || '-'}</span>
+        </div>
+        <div class="repository__bottom__star">
+          <span uk-icon="star"></span>
+          <span>${repositories[i].stargazers.totalCount}</span>
+        </div>
+        `;
+
+        output+=`
+      </div>
+    </a>
+    `;
+    
+    output += `</div>
+  </div>`;
+  }
+
+  return output;
+  }
 /*
 * Dribbble
 */
@@ -171,13 +215,23 @@ return output;
               </span>
             </h2>
             <div class="repositories uk-child-width-1-3@l uk-child-width-1-2@m uk-grid-small" uk-grid="masonry: true">
-              <%= generateRepositoriesHtml(canShowMoreRepositories ? repositories.slice(0, repositoriesMore) : repositories) %>
+              <%= generateRepositoriesHtml(repositories) %>
             </div>
-            <% if (canShowMoreRepositories) { %>
-            <div class="show-more-wrap">
-              <button id="github-more" class="uk-button uk-button-default">Show more</button>
+          </div>
+        </section>
+        <% } %>
+        <% if (modules.github && modules.github.contributions.length > 0) { %>
+        <section class="uk-section-xsmall">
+          <div class="uk-container">
+            <h2 class="uk-heading-line">
+              <span>
+                <span uk-icon="users"></span>
+                <span>Open Source Projects I've Contributed To</span>
+              </span>
+            </h2>
+            <div class="repositories uk-child-width-1-3@l uk-child-width-1-2@m uk-grid-small" uk-grid="masonry: true">
+              <%= generateContributionsHtml(contributions) %>
             </div>
-            <% } %>
           </div>
         </section>
         <% } %>

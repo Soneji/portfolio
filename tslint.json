@@ -1,15 +1,11 @@
 {
-  "extends": [
-    "tslint:latest"
-  ],
+  "extends": ["tslint:latest"],
   "linterOptions": {
-    "exclude": [
-      "node_modules/**"
-    ]
+    "exclude": ["node_modules/**"]
   },
   "rules": {
     "quotemark": [true, "single"],
-    "indent": [true, "spaces", 2],
+    "indent": [true, "spaces", 4],
     "space-before-function-paren": true,
     "no-console": false,
     "no-bitwise": false
