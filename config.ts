@@ -292,12 +292,22 @@ export default {
         contributions: [
           { attr: "owner.login", values: "soneji", revert: true, more: "" },
           { attr: "owner.login", values: "education", revert: true, more: "" },
+          { attr: "name", values: "NoClutter", revert: true, more: "" },
+          { attr: "name", values: "WhatsAppForiPad", revert: true, more: "" },
+          { attr: "name", values: "sudoku-solver", revert: true, more: "" },
+          { attr: "name", values: "c_music_fractal", revert: true, more: "" },
           {
-            attr: "nameWithOwner",
-            values: /github\.io/i,
+            attr: "name",
+            values: "iOS-OTA-Downgrader",
             revert: true,
             more: "",
           },
+          // {
+          //   attr: "nameWithOwner",
+          //   values: /github\.io/i,
+          //   revert: true,
+          //   more: "",
+          // },
         ],
       },
 

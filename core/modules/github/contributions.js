@@ -36,6 +36,7 @@ export default async () => {
                                 owner {
                                     login
                                 }
+                                name
                                 nameWithOwner
                                 url
                                 stargazers {
