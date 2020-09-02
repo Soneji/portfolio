@@ -43,7 +43,7 @@
     "uikit": "^3.5.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
+    "@babel/core": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@types/cheerio": "^0.22.21",
     "@types/copy-webpack-plugin": "^5.0.0",
