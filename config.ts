@@ -279,7 +279,7 @@ export default {
           },
           { attr: "owner.login", values: /gocode/i, revert: true, more: "" },
           { attr: "owner.login", values: /lena/i, revert: true, more: "" },
-          { attr: "name", values: "kcsoc_audiobooks", revert: true, more: "" },
+          { attr: "name", values: /kcsoc/i, revert: true, more: "" },
           {
             attr: "name",
             values: "soneji.github.io",
