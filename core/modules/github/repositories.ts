@@ -77,21 +77,21 @@ export default async (): Promise<IGithubRepository[]> => {
         }
       }
     });
-    url = "https://api.github.com/repos/" + repo.full_name + "/traffic/clones";
-    try {
-      await axios({
-        url: url,
-        headers: {
-          Authorization: `token ${config.modules.github.token}`,
-        },
-      }).then(
-        (response: { data: any }) =>
-          (repo.git_tags_url = JSON.stringify(response.data.count))
-      );
-    } catch (e) {
-      Github.log(Github.sections.repositories, e).error();
-      throw new Error(e);
-    }
+    // url = "https://api.github.com/repos/" + repo.full_name + "/traffic/clones";
+    // try {
+    //   await axios({
+    //     url: url,
+    //     headers: {
+    //       Authorization: `token ${config.modules.github.token}`,
+    //     },
+    //   }).then(
+    //     (response: { data: any }) =>
+    //       (repo.git_tags_url = JSON.stringify(response.data.count))
+    //   );
+    // } catch (e) {
+    //   Github.log(Github.sections.repositories, e).error();
+    //   throw new Error(e);
+    // }
   }
   return repositories;
 };
