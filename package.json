@@ -4,7 +4,7 @@
   "description": "Create Your Portfolio Online. Special Thanks to https://github.com/GPortfolio/GPortfolio",
   "scripts": {
     "start": "nodemon --watch config.ts ./node_modules/.bin/webpack-dev-server --progress",
-    "dev": "webpack-dev-server --hot --progress",
+    "dev": "webpack serve --hot --progress",
     "build": "webpack --mode=production",
     "lint": "tslint core/**/*.ts src/**/*.ts scripts/**/*.ts webpack.config.ts",
     "lint:fix": "npm run lint -- --fix",
