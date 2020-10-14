@@ -21,7 +21,7 @@ export default async () => {
       url: "https://api.github.com/graphql",
       method: "POST",
       headers: {
-        Authorization: `token ${config.modules.github.token}`,
+        Authorization: `bearer ${config.modules.github.token}`,
       },
       data: {
         query: `
