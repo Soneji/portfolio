@@ -62,21 +62,27 @@ export default async (): Promise<IGithubRepository[]> => {
     const repo = repositories[i];
     let url;
     url = repo.html_url;
-    await axios(url).then((response: { data: any }) => {
-      const html = response.data;
-      const $ = cheerio.load(html);
-      const meta_s = $("meta");
-      for (let i = 0; i < meta_s.length; i++) {
-        const meta = meta_s[i];
-        // console.log(meta.attribs);
-        if (meta.attribs.property == "og:image") {
-          let value = meta.attribs.content;
-          if (!value.includes("avatars")) {
-            repo.blobs_url = value;
+    console.log(url)
+    try {
+      await axios(url).then((response: { data: any }) => {
+        const html = response.data;
+        const $ = cheerio.load(html);
+        const meta_s = $("meta");
+        for (let i = 0; i < meta_s.length; i++) {
+          const meta = meta_s[i];
+          // console.log(meta.attribs);
+          if (meta.attribs.property == "og:image") {
+            let value = meta.attribs.content;
+            if (!value.includes("avatars")) {
+              repo.blobs_url = value;
+            }
           }
         }
-      }
-    });
+        
+      });
+    } catch(e) {
+      console.log(e)
+    }
     // url = "https://api.github.com/repos/" + repo.full_name + "/traffic/clones";
     // try {
     //   await axios({
