@@ -93,25 +93,25 @@ export default async () => {
       ? sort.desc(github.sort.contributions.attr)
       : sort.asc(github.sort.contributions.attr);
   }
-  for (let i = 0; i < contributions.length; i++) {
-    const repo = contributions[i];
-    let url;
-    url = repo.url;
-    await axios(url).then((response) => {
-      const html = response.data;
-      const $ = cheerio.load(html);
-      const meta_s = $("meta");
-      for (let i = 0; i < meta_s.length; i++) {
-        const meta = meta_s[i];
-        // console.log(meta.attribs);
-        if (meta.attribs.property == "og:image") {
-          let value = meta.attribs.content;
-          if (!value.includes("avatars")) {
-            repo.img = value;
-          }
-        }
-      }
-    });
-  }
+  // for (let i = 0; i < contributions.length; i++) {
+  //   const repo = contributions[i];
+  //   let url;
+  //   url = repo.url;
+  //   await axios(url).then((response) => {
+  //     const html = response.data;
+  //     const $ = cheerio.load(html);
+  //     const meta_s = $("meta");
+  //     for (let i = 0; i < meta_s.length; i++) {
+  //       const meta = meta_s[i];
+  //       // console.log(meta.attribs);
+  //       if (meta.attribs.property == "og:image") {
+  //         let value = meta.attribs.content;
+  //         if (!value.includes("avatars")) {
+  //           repo.img = value;
+  //         }
+  //       }
+  //     }
+  //   });
+  // }
   return contributions;
 };
