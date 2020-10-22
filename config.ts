@@ -297,6 +297,7 @@ export default {
           { attr: "name", values: "WhatsAppForiPad", revert: true, more: "" },
           { attr: "name", values: "sudoku-solver", revert: true, more: "" },
           { attr: "name", values: "c_music_fractal", revert: true, more: "" },
+          { attr: "name", values: "society-email-scrape", revert: true, more: "" },
           {
             attr: "name",
             values: "iOS-OTA-Downgrader",
