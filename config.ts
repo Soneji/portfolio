@@ -291,6 +291,7 @@ export default {
           { attr: "name", values: "portfolio", revert: true, more: "" },
           { attr: "name", values: "repo", revert: true, more: "" },
           { attr: "name", values: "noor-gate.github.io", revert: true, more: "" },
+          { attr: "name", values: "auto-whatsapp", revert: true, more: "" },
         ],
         contributions: [
           { attr: "owner.login", values: "soneji", revert: true, more: "" },
