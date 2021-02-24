@@ -296,6 +296,7 @@ export default {
         contributions: [
           { attr: "owner.login", values: "soneji", revert: true, more: "" },
           { attr: "owner.login", values: "education", revert: true, more: "" },
+          { attr: "owner.login", values: "Warwick-Engineering-Society", revert: true, more: "" },
           { attr: "name", values: "NoClutter", revert: true, more: "" },
           { attr: "name", values: "WhatsAppForiPad", revert: true, more: "" },
           { attr: "name", values: "sudoku-solver", revert: true, more: "" },
