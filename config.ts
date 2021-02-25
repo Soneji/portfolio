@@ -47,7 +47,7 @@ export default {
     opg: {
       "profile:first_name": "Dhaval",
       "profile:last_name": "Soneji",
-      "og:url": "https://soneji.xyz",
+      "og:url": "https://dhavalsoneji.com",
       "og:description":
         "Portfolio by Dhaval Soneji, Software and Electronic Engineer",
       description:
@@ -80,7 +80,7 @@ export default {
      * @example
      *  www.example.com
      */
-    customDomain: "soneji.xyz",
+    customDomain: "dhavalsoneji.com",
   },
 
   data: {
@@ -140,34 +140,7 @@ export default {
       { name: "Mail", icon: "mail", link: "mailto:dhaval@soneji.xyz" },
     ],
 
-    devTools: [
-      // {
-      //   name: "Cloudflare",
-      //   icon: "cloudflare",
-      //   link: "https://dash.cloudflare.com/",
-      // },
-      // { name: "Droppy", icon: "dropbox", link: "https://droppy.soneji.xyz/" },
-      // {
-      //   name: "Chrome",
-      //   icon: "googlechrome",
-      //   link: "https://chrome.soneji.xyz/",
-      // },
-      // {
-      //   name: "Firefox",
-      //   icon: "mozillafirefox",
-      //   link: "https://firefox.soneji.xyz/",
-      // },
-      // { name: "Images", icon: "images", link: "https://images.soneji.xyz/" },
-      // { name: "Cloud", icon: "nextcloud", link: "https://cloud.soneji.xyz/" },
-      // { name: "Plex", icon: "plex", link: "https://plex.soneji.xyz/" },
-      // { name: "QB", icon: "qi", link: "https://qb.soneji.xyz/" },
-      // {
-      //   name: "Spotify",
-      //   icon: "spotify",
-      //   link: "https://open.spotify.com/user/dhaval.soneji",
-      // },
-      // { name: "VSCode", icon: "vscode", link: "https://code.soneji.xyz/" },
-    ],
+    devTools: [],
     aboutMe: `
     I am an Electronic Engineering Student at the University of Warwick. Topics that interest me include: 
     software engineering, cyber security, open source, developer operations.
