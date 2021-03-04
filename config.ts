@@ -136,8 +136,8 @@ export default {
         link: "https://github.com/soneji",
       },
       // { name: 'Instagram', icon: 'instagram', link: 'https://instagram.com/dhaval.py' },
-      { name: "Monzo", icon: "monzo", link: "https://monzo.me/dhavalsoneji" },
-      { name: "Mail", icon: "mail", link: "mailto:dhaval@soneji.xyz" },
+      // { name: "Monzo", icon: "monzo", link: "https://monzo.me/dhavalsoneji" },
+      { name: "Mail", icon: "mail", link: "mailto:website@soneji.xyz" },
     ],
 
     devTools: [],
