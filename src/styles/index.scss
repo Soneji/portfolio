@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "Product Sans Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Product Sans Regular"), url(ProductSans-Regular.woff) format("woff");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Product Sans Bold";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Product Sans Bold"), url(ProductSans-Bold.woff) format("woff");
+    font-display: swap;
+}
+
+* {
+    // box-sizing: border-box;
+    font-family: "Product Sans Regular", sans-serif !important;
+    // font-size: 1.02em;
+}
+h1,
+h2 {
+    font-family: "Product Sans Bold", sans-serif !important;
+    font-size: 1.1em;
+}
+
+a {
+    color: inherit;
+}
+ul {
+    columns: 2;
+    padding-left: 2.7em;
+}

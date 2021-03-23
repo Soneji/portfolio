@@ -1,0 +1,38 @@
+{
+    "name": "portfolio",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Dhaval Soneji's Personal Portfolio",
+    "author": "Dhaval Soneji",
+    "keywords": [
+        "gatsby"
+    ],
+    "scripts": {
+        "develop": "gatsby develop",
+        "start": "gatsby develop",
+        "build": "gatsby build",
+        "serve": "gatsby serve",
+        "clean": "gatsby clean"
+    },
+    "dependencies": {
+        "@material-ui/core": "^4.11.3",
+        "@material-ui/icons": "^4.11.2",
+        "@svgr/webpack": "^5.5.0",
+        "gatsby": "^3.0.1",
+        "gatsby-image": "^3.1.0",
+        "gatsby-plugin-graphql-config": "^0.10.0",
+        "gatsby-plugin-image": "^1.1.1",
+        "gatsby-plugin-sass": "^4.1.0",
+        "gatsby-plugin-sharp": "^3.1.1",
+        "gatsby-plugin-smoothscroll": "^1.2.0",
+        "gatsby-source-filesystem": "^3.1.0",
+        "gatsby-source-graphql": "^3.1.0",
+        "gatsby-theme-material-ui": "^1.0.13",
+        "gatsby-transformer-remark": "^3.1.0",
+        "gatsby-transformer-sharp": "^3.1.0",
+        "marked": "^2.0.1",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "sass": "^1.32.8"
+    }
+}
