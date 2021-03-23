@@ -4,6 +4,7 @@ require("dotenv").config();
 module.exports = {
     siteMetadata: {
         title: "Dhaval Soneji",
+        description: "Dhaval's personal portfolio website...",
     },
     plugins: [
         "gatsby-plugin-sass",
@@ -32,5 +33,18 @@ module.exports = {
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: `Dhaval Soneji`,
+                short_name: `Dhaval.S`,
+                start_url: `/`,
+                background_color: `#34928a`,
+                theme_color: `#34928a`,
+                display: `standalone`,
+                icon: `src/assets/code-512.png`,
+            },
+        },
+        "gatsby-plugin-react-helmet",
     ],
 };
