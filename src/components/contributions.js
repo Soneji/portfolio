@@ -155,7 +155,6 @@ const Contributions = classes => {
                                                     : r.descriptionHTML,
                                         }}
                                     ></Box>
-                                    >
                                 </Typography>
                                 <div
                                     style={{
