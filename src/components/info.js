@@ -1,7 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-
-import { Container, Card, CardContent, Grid, Typography } from "@material-ui/core";
+import { Box, Container, Card, CardContent, Grid, Typography } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import CodeIcon from "@material-ui/icons/Code";
 
@@ -49,9 +48,9 @@ const Info = classes => {
                                     about me
                                 </Typography>
                             </div>
-                            <Typography
-                                dangerouslySetInnerHTML={{ __html: data.about_me }}
-                            ></Typography>
+                            <Typography>
+                                <Box dangerouslySetInnerHTML={{ __html: data.about_me }}></Box>
+                            </Typography>
                         </CardContent>
                     </Card>
                 </Grid>
@@ -74,9 +73,9 @@ const Info = classes => {
                                     technologies
                                 </Typography>
                             </div>
-                            <Typography
-                                dangerouslySetInnerHTML={{ __html: data.technologies }}
-                            ></Typography>
+                            <Typography>
+                                <Box dangerouslySetInnerHTML={{ __html: data.technologies }}></Box>
+                            </Typography>
                         </CardContent>
                     </Card>
                 </Grid>

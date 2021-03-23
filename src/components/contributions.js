@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import config from "../../config";
 
 import {
+    Box,
     Card,
     CardActions,
     CardContent,
@@ -145,13 +146,17 @@ const Contributions = classes => {
                                         WebkitBoxOrient: "vertical",
                                         overflow: "hidden",
                                     }}
-                                    dangerouslySetInnerHTML={{
-                                        __html:
-                                            r.descriptionHTML === "<div></div>"
-                                                ? "-"
-                                                : r.descriptionHTML,
-                                    }}
-                                ></Typography>
+                                >
+                                    <Box
+                                        dangerouslySetInnerHTML={{
+                                            __html:
+                                                r.descriptionHTML === "<div></div>"
+                                                    ? "-"
+                                                    : r.descriptionHTML,
+                                        }}
+                                    ></Box>
+                                    >
+                                </Typography>
                                 <div
                                     style={{
                                         marginTop: "1em",
