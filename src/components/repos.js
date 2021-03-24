@@ -118,6 +118,7 @@ const Repos = classes => {
                                         className={classes.cardMedia}
                                         title="Repository Picture"
                                         image={getImage(r.openGraphImageFile)}
+                                        alt=""
                                     />
                                 </Button>
                             )}
@@ -137,6 +138,7 @@ const Repos = classes => {
                                     </Typography>
                                 </ButtonBase>
                                 <Typography
+                                    component="div"
                                     style={{
                                         height: "70px",
                                         textOverflow: "ellipsis",

@@ -118,7 +118,8 @@ const Header = classes => {
                                             return (
                                                 <Grid
                                                     style={{ height: "64px", width: "64px" }}
-                                                    item
+                                                    // item
+                                                    key={index}
                                                 >
                                                     <Button style={{ minWidth: 50 }}>
                                                         <a

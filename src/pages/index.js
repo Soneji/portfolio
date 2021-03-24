@@ -28,7 +28,6 @@ const theme = createMuiTheme({
 });
 
 export default function IndexPage() {
-
     const classes = useStyles();
     const { title, description } = useSiteMetadata();
 
@@ -39,7 +38,7 @@ export default function IndexPage() {
                 <title>{title}</title>
                 <meta name="description" content={description} />
             </Helmet>
- 
+
             <ThemeProvider theme={theme}>
                 <CssBaseline />
 

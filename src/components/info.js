@@ -48,7 +48,7 @@ const Info = classes => {
                                     about me
                                 </Typography>
                             </div>
-                            <Typography>
+                            <Typography component="div">
                                 <Box dangerouslySetInnerHTML={{ __html: data.about_me }}></Box>
                             </Typography>
                         </CardContent>
@@ -73,7 +73,7 @@ const Info = classes => {
                                     technologies
                                 </Typography>
                             </div>
-                            <Typography>
+                            <Typography component="div">
                                 <Box dangerouslySetInnerHTML={{ __html: data.technologies }}></Box>
                             </Typography>
                         </CardContent>

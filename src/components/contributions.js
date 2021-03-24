@@ -138,6 +138,7 @@ const Contributions = classes => {
                                 </ButtonBase>
 
                                 <Typography
+                                    component="div"
                                     style={{
                                         height: "25px",
                                         textOverflow: "ellipsis",
