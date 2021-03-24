@@ -7,6 +7,10 @@
   Dhaval's Personal Portfolio
 </h1>
 
+## 🌐 Live site
+
+### [dhavalsoneji.com](https://dhavalsoneji.com)
+
 ## 🚀 Quick start
 
 1.  **Git clone this repo**
@@ -34,7 +38,7 @@
 
 ## 📝 Notes
 
-By Default it will only show repositories with `Social Previews` set. You can change this if you want in `src/components/repos.js`
+By Default it will only show repositories with [Social Previews](https://docs.github.com/en/github/administering-a-repository/customizing-your-repositorys-social-media-preview) set. You can change this if you want in `src/components/repos.js`
 
 <details>
 <summary>References</summary>
