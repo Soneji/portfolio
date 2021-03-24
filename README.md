@@ -31,3 +31,16 @@
     Your site is now running at http://localhost:8000!
 
     Edit `src/pages/index.js` to see your site update in real-time!
+
+## 📝 Notes
+
+By Default it will only show repositories with `Social Previews` set. You can change this if you want in `src/components/repos.js`
+
+<details>
+<summary>References</summary>
+
+## 🙏 Special thanks
+
+Special thanks to [GPortfolio](https://github.com/GPortfolio/GPortfolio) which I previously built my personal portfolio site on and on which the new Gatsby concept is based.
+
+</details>
