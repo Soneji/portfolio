@@ -5,6 +5,8 @@ import Repos from "../components/repos";
 import Contributions from "../components/contributions";
 import Footer from "../components/footer";
 import Info from "../components/info";
+import Shynet from "../components/shynet";
+
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -49,6 +51,7 @@ export default function IndexPage() {
                     {Contributions(classes)}
                 </main>
                 {Footer(classes)}
+                <Shynet />
             </ThemeProvider>
         </React.Fragment>
     );
