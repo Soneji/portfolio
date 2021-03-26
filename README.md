@@ -19,7 +19,7 @@
     git clone ...
     ```
 
-1.  **Add your GitHub PAT to `config.js`.**
+1.  **Copy `.env.sample` to `.env` and add your [GitHub PAT](https://github.com/settings/tokens) with repo scope.**
 
 1.  **Start developing.**
 
@@ -35,6 +35,8 @@
     Your site is now running at http://localhost:8000!
 
     Edit `src/pages/index.js` to see your site update in real-time!
+
+1. Optional: Edit `config.js` for some more basic options. 
 
 ## 📝 Notes
 
