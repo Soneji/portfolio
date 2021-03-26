@@ -3,3 +3,4 @@ node_modules/
 public
 .env
 .lighthouseci
+.lighthouserc.js
