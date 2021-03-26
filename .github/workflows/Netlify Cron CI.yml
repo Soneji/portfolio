@@ -1,0 +1,23 @@
+# This is a basic workflow to automate netlify builds to keep 
+# stars/forks/new repos/new contributions up to date
+
+name: Netlify Cron CI
+
+
+on:
+  schedule:
+    # Run at 0800 daily
+    - cron: '0 8 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Request Netlify Webhook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl request
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+        run: curl -X POST -d {} "$HOOK"
+        
