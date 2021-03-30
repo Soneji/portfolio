@@ -71,6 +71,7 @@ const Header = classes => {
                                                 height: "200px",
                                                 borderRadius: "20px",
                                             }}
+                                            imgStyle={{ borderRadius: "20px" }}
                                             layout="fullWidth"
                                             alt={"Picture of " + data.name}
                                             image={getImage(data.avatarFile)}
