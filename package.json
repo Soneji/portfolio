@@ -32,7 +32,7 @@
         "gatsby-source-graphql": "^3.2.0",
         "gatsby-theme-material-ui": "^1.0.13",
         "gatsby-transformer-remark": "^3.2.0",
-        "gatsby-transformer-sharp": "^3.1.0",
+        "gatsby-transformer-sharp": "^3.2.0",
         "marked": "^2.0.1",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
