@@ -18,7 +18,7 @@
         "@material-ui/core": "^4.11.3",
         "@material-ui/icons": "^4.11.2",
         "@svgr/webpack": "^5.5.0",
-        "gatsby": "^3.1.2",
+        "gatsby": "^3.2.1",
         "gatsby-image": "^3.2.0",
         "gatsby-plugin-graphql-config": "^0.11.0",
         "gatsby-plugin-image": "^1.2.0",
