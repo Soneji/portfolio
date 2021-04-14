@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Cloudflare() {
+export default function CloudFlareAnalytics() {
     return (
         <script
             defer

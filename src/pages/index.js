@@ -6,7 +6,7 @@ import Contributions from "../components/contributions";
 import Footer from "../components/footer";
 import Info from "../components/info";
 import Shynet from "../components/shynet";
-import Cloudflare from "../components/cloudflare_analytics";
+import CloudFlareAnalytics from "../components/cloudflareanalytics";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
@@ -40,7 +40,7 @@ export default function IndexPage() {
                 <html lang="en" />
                 <title>{title}</title>
                 <meta name="description" content={description} />
-                <Cloudflare />
+                <CloudFlareAnalytics />
             </Helmet>
 
             <ThemeProvider theme={theme}>
