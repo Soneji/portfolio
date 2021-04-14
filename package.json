@@ -29,7 +29,7 @@
         "gatsby-plugin-sharp": "^3.2.1",
         "gatsby-plugin-smoothscroll": "^1.2.0",
         "gatsby-source-filesystem": "^3.3.0",
-        "gatsby-source-graphql": "^3.2.0",
+        "gatsby-source-graphql": "^3.3.0",
         "gatsby-theme-material-ui": "^2.0.1",
         "gatsby-transformer-remark": "^3.2.0",
         "gatsby-transformer-sharp": "^3.2.0",
