@@ -2,15 +2,11 @@ import React from "react";
 
 export default function Cloudflare() {
     return (
-        <div>
-            <noscript>
-                <img
-                    alt=""
-                    src="https://shynetanalytics.com/ingress/501b2e8c-d31d-4401-819b-f9a4f2955ddc/pixel.gif"
-                />
-            </noscript>
-
-            <script src="https://shynetanalytics.com/ingress/501b2e8c-d31d-4401-819b-f9a4f2955ddc/script.js"></script>
-        </div>
+        <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "cc6c39e224ef4250a228afa6bae012f3"}'
+        ></script>
+        
     );
 }
