@@ -1,0 +1,30 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    timezone: Europe/London
+  open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: gatsby
+    versions:
+    - 3.2.0
+  - dependency-name: copy-webpack-plugin
+    versions:
+    - 6.2.1
+  - dependency-name: ejs-loader
+    versions:
+    - 0.5.0
+  - dependency-name: workbox-webpack-plugin
+    versions:
+    - 5.1.4
+  - dependency-name: "@types/workbox-webpack-plugin"
+    versions:
+    - 5.1.5
+  - dependency-name: "@types/node"
+    versions:
+    - 14.11.8
+  - dependency-name: "@types/copy-webpack-plugin"
+    versions:
+    - 6.0.0
