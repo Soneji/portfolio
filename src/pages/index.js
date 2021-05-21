@@ -47,14 +47,14 @@ export default function IndexPage() {
                 <meta property="og:url" content="https://dhavalsoneji.com/" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
-                <meta property="og:image" content="og_image.jpg" />
+                <meta property="og:image" content="https://dhavalsoneji.com/og_image.jpg" />
 
                 {/* <!-- Twitter --> */}
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:url" content="https://dhavalsoneji.com/" />
                 <meta property="twitter:title" content={title} />
                 <meta property="twitter:description" content={description} />
-                <meta property="twitter:image" content="og_image.jpg" />
+                <meta property="twitter:image" content="https://dhavalsoneji.com/og_image.jpg" />
 
             </Helmet>
 
