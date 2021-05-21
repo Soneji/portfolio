@@ -6,22 +6,34 @@ name: PR Build CI
 on:
   pull_request:
     branches: [main]
-  
+  pull_request_target:
+    branches: [main]
+    
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
-    steps:
     
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+    # If the PR is coming from a fork (pull_request_target), ensure it's opened by "dependabot[bot]".
+    # Otherwise, clone it normally.
+    if: |
+        (github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]') ||
+        (github.event_name != 'pull_request_target' && github.actor != 'dependabot[bot]')
+    steps:
+
+      - name: Checkout
+        if: ${{ github.event_name != 'pull_request_target' }}
+        uses: actions/checkout@v2
+      
+      - name: Checkout PR
+        if: ${{ github.event_name == 'pull_request_target' }}
+        uses: actions/checkout@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          ref: ${{ github.event.pull_request.head.sha }}
+      
+      - name: Use Node.js 
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
       - run: echo "$E" > .env
         env:
