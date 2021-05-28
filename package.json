@@ -33,7 +33,7 @@
         "gatsby-theme-material-ui": "^2.0.1",
         "gatsby-transformer-remark": "^4.1.0",
         "gatsby-transformer-sharp": "^3.4.0",
-        "marked": "^2.0.3",
+        "marked": "^2.0.6",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-helmet": "^6.1.0",
