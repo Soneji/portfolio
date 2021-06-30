@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Header from "../components/header";
+import Header from "../components/Header";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { useStyles } from "../styles/styles";

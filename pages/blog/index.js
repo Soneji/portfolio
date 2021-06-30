@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/header";
+import Header from "../../components/Header";   
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { useStyles } from "../../styles/styles";
@@ -68,13 +68,11 @@ export default function BlogPage({ data }) {
 
     return (
         <React.Fragment>
-
-                <HeadMaker
-                    title={"Blog - Dhaval Soneji"}
-                    description={"My Latest Blog Posts!"}
-                    url={"/blog"}
-                />
-
+            <HeadMaker
+                title={"Blog - Dhaval Soneji"}
+                description={"My Latest Blog Posts!"}
+                url={"/blog"}
+            />
 
             <ThemeProvider theme={theme}>
                 <CssBaseline />
