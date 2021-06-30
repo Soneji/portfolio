@@ -13,7 +13,7 @@ export async function getServerSideProps({ params }) {
     const { graphql } = require("@octokit/graphql");
     const graphqlWithAuth = graphql.defaults({
         headers: {
-            authorization: `token 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`,
+            authorization: `token ${process.env.GITHUB_TOKEN}`,
         },
     });
     const {
@@ -59,13 +59,11 @@ export default function ProjectsPage({ repositories }) {
 
     return (
         <React.Fragment>
-
-                <HeadMaker
-                    title={"My Projects - Dhaval Soneji"}
-                    description={"Some of my Public Projects"}
-                    url={"/projects"}
-                />
-
+            <HeadMaker
+                title={"My Projects - Dhaval Soneji"}
+                description={"Some of my Public Projects"}
+                url={"/projects"}
+            />
 
             <ThemeProvider theme={theme}>
                 <CssBaseline />
