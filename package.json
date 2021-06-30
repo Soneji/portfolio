@@ -6,7 +6,6 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "netlify": "netlify dev",
         "lint": "next lint"
     },
     "dependencies": {
@@ -16,7 +15,6 @@
         "capture-website": "^2.0.2",
         "html-loader": "^2.1.2",
         "html-to-text": "^8.0.0",
-        "jimp": "^0.16.1",
         "markdown-loader": "^6.0.0",
         "next": "11.0.1",
         "notion-client": "^4.7.3",
@@ -29,7 +27,6 @@
     },
     "devDependencies": {
         "eslint": "7.29.0",
-        "eslint-config-next": "11.0.1",
-        "netlify-cli": "^4.0.3"
+        "eslint-config-next": "11.0.1"
     }
 }
