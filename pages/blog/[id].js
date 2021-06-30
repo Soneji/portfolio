@@ -55,13 +55,11 @@ const Post = ({ html, title, preview }) => {
 
     return (
         <React.Fragment>
-
-                <HeadMaker
-                    title={title + " - Dhaval's Blog"}
-                    description={preview}
-                    url={`/blog/${id}`}
-                />
-
+            <HeadMaker
+                title={title + " - Dhaval's Blog"}
+                description={preview}
+                url={`/blog/${id}`}
+            />
 
             <ThemeProvider theme={theme}>
                 <CssBaseline />
@@ -83,7 +81,7 @@ const Post = ({ html, title, preview }) => {
                                 sm={12}
                                 md={12}
                             >
-                                <Link href="/blog">
+                                <Link href="/blog" passHref>
                                     <Button
                                         variant="outlined"
                                         color="default"

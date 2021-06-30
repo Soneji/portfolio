@@ -73,7 +73,7 @@ const Contributions = (classes, repos) => {
                     >
                         <AppsIcon color="primary" className={classes.icon} />
                         <Typography variant="h6" component="h6" className={classes.icon}>
-                            top open source projects i've contributed to
+                            top open source projects i&apos;ve contributed to
                         </Typography>
                     </div>
                 </Grid>
@@ -93,7 +93,7 @@ const Contributions = (classes, repos) => {
                                         component="h2"
                                         color="primary"
                                     >
-                                        {r.owner.login}'s {r.name.split(/[-_]+/).join(" ")}
+                                        {r.owner.login}&apos;s {r.name.split(/[-_]+/).join(" ")}
                                     </Typography>
                                 </ButtonBase>
 
