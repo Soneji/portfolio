@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, Typography, Container } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import Link from "next/link";
 import { withRouter } from "next/router";
 

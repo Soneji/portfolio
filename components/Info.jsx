@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Card, CardContent, Grid, Typography, Divider } from "@material-ui/core";
+import { Box, Container, Grid, Typography, Divider } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import CodeIcon from "@material-ui/icons/Code";
 

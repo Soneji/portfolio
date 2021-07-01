@@ -17,7 +17,6 @@ import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
 import AppsIcon from "@material-ui/icons/Apps";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import WebIcon from "@material-ui/icons/Web";
-import Image from "next/image";
 
 const contribFilter = [
     { field: "owner.login", value: "education" },

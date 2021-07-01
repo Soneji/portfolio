@@ -3,21 +3,15 @@ import React from "react";
 import {
     Box,
     Card,
-    CardActions,
     CardContent,
     Typography,
     Container,
     Grid,
-    Button,
     ButtonBase,
 } from "@material-ui/core";
 
-import CodeIcon from "@material-ui/icons/Code";
-import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
 import BookIcon from "@material-ui/icons/Book";
-import MoreIcon from "@material-ui/icons/More";
 import TodayIcon from "@material-ui/icons/Today";
-import EditIcon from "@material-ui/icons/Edit";
 import Image from "next/image";
 
 import Link from "next/link";

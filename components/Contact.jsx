@@ -1,7 +1,5 @@
 import React from "react";
-import { Button, Grid, Typography, Container } from "@material-ui/core";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import Image from "next/image";
+import { Button, Grid, Typography } from "@material-ui/core";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import EmailIcon from "@material-ui/icons/Email";
 
