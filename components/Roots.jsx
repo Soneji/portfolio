@@ -23,23 +23,22 @@ const Roots = ({ router }, classes) => {
                                     // item
                                     key={index}
                                 >
-                                    <Button style={{ minWidth: 50 }}>
-                                        <Link className={classes.linky} href={Value.route}>
-                                            <a
-                                                href={Value.route}
-                                                style={{
-                                                    textDecoration:
-                                                        router.pathname === Value.route
-                                                            ? "underline"
-                                                            : "none",
-                                                    textTransform: "lowercase",
-                                                }}
-                                                title={Value.text}
-                                            >
-                                                {Value.text}
-                                            </a>
-                                        </Link>
-                                    </Button>
+                                    <Link className={classes.linky} href={Value.route} passHref>
+                                        <Button
+                                            style={{
+                                                minWidth: 50,
+                                                textDecoration:
+                                                    router.pathname === Value.route
+                                                        ? "underline"
+                                                        : "none",
+                                                textTransform: "lowercase",
+                                            }}
+                                        >
+                                            {/* <a href={Value.route} style={{}} title={Value.text}>
+                                            </a> */}
+                                            {Value.text}
+                                        </Button>
+                                    </Link>
                                 </Grid>
                             );
                         })}
