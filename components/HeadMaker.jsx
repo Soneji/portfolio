@@ -2,6 +2,8 @@ import React from "react";
 import Head from "next/head";
 
 export default function HeadMaker({ title, description, url, image }) {
+    const buildUrl = process.env.DEPLOY_URL || `http://localhost:8888`;
+
     return (
         <Head>
             {/* <!-- Primary Meta Tags --> */}
@@ -11,21 +13,19 @@ export default function HeadMaker({ title, description, url, image }) {
 
             {/* <!-- Open Graph / Facebook --> */}
             <meta property="og:type" content="website" />
-            <meta property="og:url" content={"https://dhavalsoneji.com" + url} />
+            <meta property="og:url" content={buildUrl + url} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            {image && <meta property="og:image" content={image} />}
-            {!image && <meta property="og:image" content="https://dhavalsoneji.com/og_image.jpg" />}
+            {image && <meta property="og:image" content={`${buildUrl}/${image}`} />}
+            {!image && <meta property="og:image" content={`${buildUrl}/og_image.jpg`} />}
 
             {/* <!-- Twitter --> */}
             <meta property="twitter:card" content="summary_large_image" />
-            <meta property="twitter:url" content={"https://dhavalsoneji.com" + url} />
+            <meta property="twitter:url" content={buildUrl + url} />
             <meta property="twitter:title" content={title} />
             <meta property="twitter:description" content={description} />
-            {image && <meta property="twitter:image" content={image} />}
-            {!image && (
-                <meta property="twitter:image" content="https://dhavalsoneji.com/og_image.jpg" />
-            )}
+            {image && <meta property="twitter:image" content={`${buildUrl}/${image}`} />}
+            {!image && <meta property="twitter:image" content={`${buildUrl}/og_image.jpg`} />}
 
             <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

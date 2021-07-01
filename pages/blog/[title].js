@@ -28,9 +28,10 @@ const errorMessage = `<p align='center'>There was an error :(
 <p align='center'>Please use the back button above to return to the blog</p>`;
 
 export const getServerSideProps = async context => {
-    const { title, id, img } = context.query;
+    const { title, id } = context.query;
     const url = `${context.resolvedUrl}`;
-    const image = img === "/box.jpg" ? "https://dhavalsoneji.com/og_image.jpg" : img;
+
+    const image = `.netlify/functions/og_image?id=${id}`;
 
     let html = "<div></div>";
     let preview = "No Preview";

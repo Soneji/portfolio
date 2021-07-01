@@ -52,7 +52,7 @@ export const getServerSideProps = async () => {
         data.push({
             title: title,
             image: image,
-            url: `/blog/${title}?id=${item.replace(/-/gi, "")}&img=${image}`,
+            url: `/blog/${title}?id=${item.replace(/-/gi, "")}`,
             html: html,
             created: created,
             edited: edited,
