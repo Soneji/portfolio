@@ -1,7 +1,7 @@
 import { NotionAPI } from "notion-client";
 const fetch = require("isomorphic-fetch");
 
-const buildUrl = process.env.DEPLOY_URL || `http://localhost:3000`;
+const buildUrl = process.env.URL || `http://localhost:3000`;
 
 const downloadImage = async url => {
     return await fetch(url).then(res => res.buffer());

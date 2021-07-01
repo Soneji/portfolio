@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 export default function HeadMaker({ title, description, url, image }) {
-    const buildUrl = process.env.DEPLOY_URL || `http://localhost:3000`;
+    const buildUrl = process.env.URL || `http://localhost:3000`;
 
     return (
         <Head>
