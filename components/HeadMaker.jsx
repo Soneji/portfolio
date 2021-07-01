@@ -31,6 +31,12 @@ export default function HeadMaker({ title, description, url, image }) {
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
             <link rel="manifest" href="/site.webmanifest" />
+
+            {/* Prefetchers for other pages */}
+            <link rel="prefetch" href="/" />
+            <link rel="prefetch" href="/blog" />
+            <link rel="prefetch" href="/projects" />
+            <link rel="prefetch" href="/contributions" />
         </Head>
     );
 }
