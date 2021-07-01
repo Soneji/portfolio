@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header";   
+import Header from "../../components/Header";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { useStyles } from "../../styles/styles";
@@ -31,12 +31,12 @@ export const getServerSideProps = async () => {
         let html = "<div></div>";
         try {
             const a = await NotionPageToHtml.convert(
-                `https://notion.so/${process.env.NOTION_USERNAME}/${item.replaceAll("-", "")}`,
+                `https://notion.so/${process.env.NOTION_USERNAME}/${item.replace(/-/gi, "")}`,
                 {
                     bodyContentOnly: true,
                 }
             );
-            html = convert(a.html).replaceAll(/[\n]+/gi, "<br>").slice(0, 120) + "...";
+            html = convert(a.html).replace(/[\n]+/gi, "<br>").slice(0, 120) + "...";
             // console.log(html);
         } catch {
             console.log("no html");
@@ -53,7 +53,7 @@ export const getServerSideProps = async () => {
         data.push({
             title: title,
             image: image,
-            url: `/blog/${title}-(!${item.replaceAll(/-/g, "")}!)`,
+            url: `/blog/${title}-(!${item.replace(/-/gi, "")}!)`,
             html: html,
             created: created,
             edited: edited,

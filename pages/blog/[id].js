@@ -40,7 +40,7 @@ export const getServerSideProps = async context => {
             }
         );
         html = a.html;
-        preview = convert(a.html).replaceAll(/[\n]+/gi, "<br>").slice(0, 120) + "...";
+        preview = convert(a.html).replace(/[\n]+/gi, "<br>").slice(0, 120) + "...";
         title = a.title;
         image = a.image;
     } catch (e) {
@@ -50,7 +50,7 @@ export const getServerSideProps = async context => {
     return { props: { html, title, preview, id } };
 };
 
-const Post = ({ html, title, preview }) => {
+const Post = ({ html, title, preview, id }) => {
     const classes = useStyles();
 
     return (
