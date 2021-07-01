@@ -37,7 +37,6 @@ export const getServerSideProps = async () => {
                 }
             );
             html = convert(a.html).replace(/[\n]+/gi, "<br>").slice(0, 120) + "...";
-            // console.log(html);
         } catch {
             console.log("no html");
         }
@@ -53,7 +52,7 @@ export const getServerSideProps = async () => {
         data.push({
             title: title,
             image: image,
-            url: `/blog/${title}-(!${item.replace(/-/gi, "")}!)`,
+            url: `/blog/${title}?id=${item.replace(/-/gi, "")}&img=${image}`,
             html: html,
             created: created,
             edited: edited,

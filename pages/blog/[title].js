@@ -22,35 +22,48 @@ import Link from "next/link";
 import HeadMaker from "../../components/HeadMaker";
 
 const NotionPageToHtml = require("notion-page-to-html");
+const { convert } = require("html-to-text");
+
+const errorMessage = `<p align='center'>There was an error :( 
+<p align='center'>Please use the back button above to return to the blog</p>`;
 
 export const getServerSideProps = async context => {
-    const { id } = context.query;
-    const newId = id.split("-(!")[1].split("!)")[0];
+    const { title, id, img } = context.query;
+    const url = `${context.resolvedUrl}`;
+    const image = img === "/box.jpg" ? "https://dhavalsoneji.com/og_image.jpg" : img;
 
     let html = "<div></div>";
-    let title = "No Title";
     let preview = "No Preview";
+
     try {
         const a = await NotionPageToHtml.convert(
-            `https://notion.so/${process.env.NOTION_USERNAME}/${newId}`,
+            `https://notion.so/${process.env.NOTION_USERNAME}/${id}`,
             {
                 // bodyContentOnly: true,
                 excludeCSS: true,
                 excludeMetadata: true,
             }
         );
+        const b = await NotionPageToHtml.convert(
+            `https://notion.so/${process.env.NOTION_USERNAME}/${id}`,
+            {
+                bodyContentOnly: true,
+            }
+        );
         html = a.html;
-        preview = convert(a.html).replace(/[\n]+/gi, "<br>").slice(0, 120) + "...";
+        preview =
+            convert(b.html)
+                .replace(/[\n]{2,}/gi, "\n")
+                .slice(0, 120) + "...";
         title = a.title;
-        image = a.image;
     } catch (e) {
         console.log(e);
         console.log("no html");
     }
-    return { props: { html, title, preview, id } };
+    return { props: { html, title, preview, url, image } };
 };
 
-const Post = ({ html, title, preview, id }) => {
+const Post = ({ html, title, preview, url, image }) => {
     const classes = useStyles();
 
     return (
@@ -58,7 +71,8 @@ const Post = ({ html, title, preview, id }) => {
             <HeadMaker
                 title={title + " - Dhaval's Blog"}
                 description={preview}
-                url={`/blog/${id}`}
+                url={url}
+                image={image}
             />
 
             <ThemeProvider theme={theme}>
@@ -96,7 +110,7 @@ const Post = ({ html, title, preview, id }) => {
                             <Grid item xs={12} sm={12} md={12}>
                                 <div
                                     dangerouslySetInnerHTML={{
-                                        __html: html === "<div></div>" ? "-" : html,
+                                        __html: html === "<div></div>" ? errorMessage : html,
                                     }}
                                 ></div>
                             </Grid>
