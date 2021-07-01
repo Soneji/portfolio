@@ -1,6 +1,7 @@
 module.exports = {
     reactStrictMode: true,
     images: {
+        // if you change this remember to change .env and env on netlify.com!
         domains: [
             "github.com",
             "githubusercontent.com",
@@ -10,6 +11,7 @@ module.exports = {
             "notion.so",
             "notion.site",
         ],
+        // if you change this remember to change .env and env on netlify.com!
     },
     webpack: config => {
         config.module.rules.push({
