@@ -87,7 +87,6 @@ const Projects = (classes, repos) => {
                                         width={373}
                                         height={200}
                                         loading="lazy"
-                                        // placeholder="blur"
                                     />
                                 </Button>
                             )}

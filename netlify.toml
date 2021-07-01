@@ -1,6 +1,2 @@
 [build]
   ignore = "git log -1 --pretty=%B | grep dependabot"
-[functions]
-  directory = "functions"
-  node_bundler = "esbuild"
-  external_node_modules = ["keyv", "@ampproject/toolbox-optimizer"]

@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-    Box,
-    Card,
-    CardContent,
-    Typography,
-    Container,
-    Grid,
-    ButtonBase,
-} from "@material-ui/core";
+import { Box, Card, CardContent, Typography, Container, Grid, ButtonBase } from "@material-ui/core";
 
 import BookIcon from "@material-ui/icons/Book";
 import TodayIcon from "@material-ui/icons/Today";
@@ -61,9 +53,9 @@ const Blog = (classes, data) => {
                                             title="Repository Picture"
                                             src={post.image}
                                             alt=""
-                                            layout="fill"
-                                            // width={700}
-                                            // height={500}
+                                            layout="intrinsic"
+                                            width={373}
+                                            height={200}
                                             loading="lazy"
                                         />
                                     </ButtonBase>
@@ -115,14 +107,6 @@ const Blog = (classes, data) => {
 
                                 <Typography
                                     component="div"
-                                    // style={{
-                                    //     height: "70px",
-                                    //     textOverflow: "ellipsis",
-                                    //     display: "-webkit-box",
-                                    //     WebkitLineClamp: 5,
-                                    //     WebkitBoxOrient: "vertical",
-                                    //     overflow: "hidden",
-                                    // }}
                                 >
                                     <Box
                                         dangerouslySetInnerHTML={{

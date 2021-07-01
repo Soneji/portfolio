@@ -31,7 +31,7 @@ export const getServerSideProps = async context => {
     const { title, id } = context.query;
     const url = `${context.resolvedUrl}`;
 
-    const image = `.netlify/functions/og_image?id=${id}`;
+    const image = `api/og_image?id=${id}`;
 
     let html = "<div></div>";
     let preview = "No Preview";

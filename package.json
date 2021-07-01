@@ -6,15 +6,12 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "netlify": "netlify dev",
         "lint": "next lint"
     },
     "dependencies": {
         "@material-ui/core": "^4.11.4",
         "@material-ui/icons": "^4.11.2",
         "@octokit/graphql": "^4.6.4",
-        "capture-website": "^2.0.2",
-        "dotenv": "^10.0.0",
         "html-loader": "^2.1.2",
         "html-to-text": "^8.0.0",
         "isomorphic-fetch": "^3.0.0",
@@ -30,7 +27,6 @@
     },
     "devDependencies": {
         "eslint": "7.29.0",
-        "eslint-config-next": "11.0.1",
-        "netlify-cli": "^4.0.3"
+        "eslint-config-next": "11.0.1"
     }
 }
