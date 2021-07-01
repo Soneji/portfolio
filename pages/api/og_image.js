@@ -1,7 +1,7 @@
 import { NotionAPI } from "notion-client";
 const fetch = require("isomorphic-fetch");
 
-const buildUrl = process.env.URL || `http://localhost:3000`;
+const deploy = process.env.DEPLOY_URL || `http://localhost:3000`;
 
 const downloadImage = async url => {
     return await fetch(url).then(res => res.buffer());
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         const item = blocks[i];
 
         if (item.replace(/-/gi, "") === id) {
-            let url = recordMap.block[blocks[i]].value.format?.page_cover || `${buildUrl}/box.jpg`;
+            let url = recordMap.block[blocks[i]].value.format?.page_cover || `${deploy}/box.jpg`;
             if (url.startsWith("/")) {
                 url = `https://notion.so${url}`;
             }
