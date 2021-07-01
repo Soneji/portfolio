@@ -1,11 +1,5 @@
-<p align="center">
-  
-  <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  
-</p>
-
 <h1 align="center">
-  Dhaval's Personal Portfolio
+  Dhaval's Personal Portfolio and Notion Blog
 </h1>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f3c4bc45-2b8d-4bfa-8ed4-1a3ec1840b28/deploy-status)](https://app.netlify.com/sites/soneji/deploys)
@@ -22,7 +16,7 @@
     git clone ...
     ```
 
-1.  **Copy `.env.sample` to `.env` and add your [GitHub PAT](https://github.com/settings/tokens) with repo scope.**
+1.  **Copy `.env.sample` to `.env.local` and add your [GitHub PAT](https://github.com/settings/tokens) with repo scope, as well as your Notion Blog Page ID and Username.**
 
 1.  **Start developing.**
 
@@ -30,26 +24,52 @@
 
     ```shell
     cd portfolio/
-    npm run develop
+    npm run dev
     ```
 
 1.  **Open the code and start customizing!**
 
-    Your site is now running at http://localhost:8000!
+    Your site is now running at http://localhost:3000!
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+    Edit `pages/index.js` to see your site update in real-time!
 
-1. Optional: Edit `config.js` for some more basic options. 
-
-## 📝 Notes
-
-By Default it will only show repositories with [Social Previews](https://docs.github.com/en/github/administering-a-repository/customizing-your-repositorys-social-media-preview) set. You can change this if you want in `src/components/repos.js`
 
 <details>
-<summary>References</summary>
 
-## 🙏 Special thanks
+<summary>NextJS Documentation</summary>
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Special thanks to [GPortfolio](https://github.com/GPortfolio/GPortfolio) which I previously built my personal portfolio site on and on which the new Gatsby concept is based.
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 </details>
