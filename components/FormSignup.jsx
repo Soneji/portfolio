@@ -7,7 +7,7 @@ import MailIcon from "@material-ui/icons/Mail";
 
 const FormSignup = classes => {
     return (
-        <Container style={{ textAlign: "center" }}>
+        <Container style={{ textAlign: "center", paddingBottom: "1em" }}>
             <div
                 style={{
                     // marginTop: "1em",
@@ -37,6 +37,7 @@ const FormSignup = classes => {
                         style={{ minWidth: 300, margin: 2 }}
                         label="Email"
                         variant="outlined"
+                        type="email"
                     ></TextField>
                     <Button
                         style={{
