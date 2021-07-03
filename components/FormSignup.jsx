@@ -44,6 +44,7 @@ const FormSignup = classes => {
                         }}
                         variant="contained"
                         color="primary"
+                        type="submit"
                     >
                         Submit
                     </Button>
