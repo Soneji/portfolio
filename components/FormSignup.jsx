@@ -23,12 +23,7 @@ const FormSignup = classes => {
                 </Typography>
             </div>
             <Typography>Recieve emails when I write new blog posts</Typography>
-            <form name="mailinglist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                <p class="hidden">
-                    <label>
-                        Hmm: <input name="bot-field" />
-                    </label>
-                </p>
+            <form name="mailinglist" method="POST" data-netlify="true">
                 <div
                     style={{
                         // marginTop: "1em",
