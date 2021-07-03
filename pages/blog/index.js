@@ -7,6 +7,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../mui-theme";
 import Footer from "../../components/Footer";
 import Blog from "../../components/Blog";
+import FormSignup from "../../components/FormSignup";
 import HeadMaker from "../../components/HeadMaker";
 
 import { NotionAPI } from "notion-client";
@@ -77,7 +78,11 @@ export default function BlogPage({ data }) {
                 <CssBaseline />
 
                 {Header(classes)}
-                <main id="main">{Blog(classes, data)}</main>
+                <main id="main">
+                    {Blog(classes, data)}
+                    {FormSignup(classes)}
+                </main>
+
                 {Footer(classes)}
             </ThemeProvider>
         </React.Fragment>
