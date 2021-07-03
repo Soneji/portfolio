@@ -80,7 +80,7 @@ export default function BlogPage({ data }) {
                 {Header(classes)}
                 <main id="main">
                     {Blog(classes, data)}
-                    {FormSignup(classes)}
+                    {/* {FormSignup(classes)} */}
                 </main>
 
                 {Footer(classes)}

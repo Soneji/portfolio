@@ -118,7 +118,7 @@ const Post = ({ html, title, preview, url, image }) => {
                             </Grid>
                         </Grid>
                     </Container>
-                    {FormSignup(classes)}
+                    {/* {FormSignup(classes)} */}
                 </main>
                 {Footer(classes)}
             </ThemeProvider>

@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -6,6 +6,13 @@ import Button from "@material-ui/core/Button";
 import MailIcon from "@material-ui/icons/Mail";
 
 const FormSignup = classes => {
+    const [email, setEmail] = useState("");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log("Email:", email);
+    }
+
     return (
         <Container style={{ textAlign: "center", paddingBottom: "1em" }}>
             <div
@@ -23,7 +30,7 @@ const FormSignup = classes => {
                 </Typography>
             </div>
             <Typography>Recieve emails when I write new blog posts</Typography>
-            <form name="mailinglist" method="POST" data-netlify="true">
+            <form name="mailinglist" data-netlify="true" onSubmit={handleSubmit}>
                 <div
                     style={{
                         // marginTop: "1em",
@@ -38,6 +45,8 @@ const FormSignup = classes => {
                         label="Email"
                         variant="outlined"
                         type="email"
+                        name="email"
+                        onInput={e => setEmail(e.target.value)}
                     ></TextField>
                     <Button
                         style={{
