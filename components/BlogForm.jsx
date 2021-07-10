@@ -14,7 +14,7 @@ const BlogForm = classes => {
     // }
 
     return (
-        <Container style={{ textAlign: "center", paddingBottom: "1em" }}>
+        <Container style={{ textAlign: "center", paddingBottom: "1em", marginTop: "2em" }}>
             <div
                 style={{
                     // marginTop: "1em",
