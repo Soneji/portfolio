@@ -7,7 +7,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../mui-theme";
 import Footer from "../../components/Footer";
 import Blog from "../../components/Blog";
-import FormSignup from "../../components/FormSignup";
+import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
 
 import { NotionAPI } from "notion-client";
@@ -80,7 +80,7 @@ export default function BlogPage({ data }) {
                 {Header(classes)}
                 <main id="main">
                     {Blog(classes, data)}
-                    {/* {FormSignup(classes)} */}
+                    {BlogForm(classes)}
                 </main>
 
                 {Footer(classes)}

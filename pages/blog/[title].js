@@ -19,7 +19,7 @@ import {
 } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Link from "next/link";
-import FormSignup from "../../components/FormSignup";
+import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
 
 const NotionPageToHtml = require("notion-page-to-html");
@@ -119,7 +119,7 @@ const Post = ({ html, newTitle, preview, url, image }) => {
                             </Grid>
                         </Grid>
                     </Container>
-                    {/* {FormSignup(classes)} */}
+                    {BlogForm(classes)}
                 </main>
                 {Footer(classes)}
             </ThemeProvider>

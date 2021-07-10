@@ -5,9 +5,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import MailIcon from "@material-ui/icons/Mail";
 
-const FormSignup = classes => {
+const BlogForm = classes => {
     const [email, setEmail] = useState("");
-    
+
     function handleSubmit(event) {
         event.preventDefault();
         console.log("Email:", email);
@@ -30,7 +30,13 @@ const FormSignup = classes => {
                 </Typography>
             </div>
             <Typography>Recieve emails when I write new blog posts</Typography>
-            <form name="mailinglist" data-netlify="true" onSubmit={handleSubmit}>
+            <form
+                data-netlify-recaptcha="true"
+                name="mailinglist"
+                data-netlify="true"
+                onSubmit={handleSubmit}
+            >
+                <input type="hidden" name="form-name" value="mailinglist" />
                 <div
                     style={{
                         // marginTop: "1em",
@@ -64,4 +70,4 @@ const FormSignup = classes => {
     );
 };
 
-export default FormSignup;
+export default BlogForm;

@@ -42,7 +42,7 @@ export default function WebsitesForm(props) {
                             flexDirection: "column",
                             alignItems: "center",
                         }}
-                        name="websites-contact"
+                        name="i-want-a-website"
                         method="POST"
                         data-netlify="true"
                         data-netlify-recaptcha="true"
@@ -95,6 +95,7 @@ export default function WebsitesForm(props) {
                                 rows={4}
                             />
                         </div>
+                        <input type="hidden" name="form-name" value="i-want-a-website" />
                         <div data-netlify-recaptcha="true"></div>
                         <p>
                             <Button type="submit" variant="contained" color="primary">
