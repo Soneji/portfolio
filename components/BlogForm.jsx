@@ -6,12 +6,12 @@ import Button from "@material-ui/core/Button";
 import MailIcon from "@material-ui/icons/Mail";
 
 const BlogForm = classes => {
-    const [email, setEmail] = useState("");
+    // const [email, setEmail] = useState("");
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log("Email:", email);
-    }
+    // function handleSubmit(event) {
+    //     event.preventDefault();
+    //     console.log("Email:", email);
+    // }
 
     return (
         <Container style={{ textAlign: "center", paddingBottom: "1em" }}>
@@ -31,10 +31,11 @@ const BlogForm = classes => {
             </div>
             <Typography>Recieve emails when I write new blog posts</Typography>
             <form
-                data-netlify-recaptcha="true"
                 name="mailinglist"
                 data-netlify="true"
-                onSubmit={handleSubmit}
+                // data-netlify-recaptcha="true"
+                method="post"
+                // onSubmit={handleSubmit}
             >
                 <input type="hidden" name="form-name" value="mailinglist" />
                 <div

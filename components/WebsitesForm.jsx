@@ -45,7 +45,7 @@ export default function WebsitesForm(props) {
                         name="websites-contact"
                         method="POST"
                         data-netlify="true"
-                        data-netlify-recaptcha="true"
+                        // data-netlify-recaptcha="true"
                     >
                         <input type="hidden" name="form-name" value="websites-contact" />
                         <div
@@ -96,7 +96,7 @@ export default function WebsitesForm(props) {
                                 rows={4}
                             />
                         </div>
-                        <div data-netlify-recaptcha="true"></div>
+                        {/* <div data-netlify-recaptcha="true"></div> */}
                         <p>
                             <Button type="submit" variant="contained" color="primary">
                                 Send
