@@ -30,14 +30,13 @@ const BlogForm = classes => {
                 </Typography>
             </div>
             <Typography>Recieve emails when I write new blog posts</Typography>
-            <form
-                name="mailinglist"
-                data-netlify="true"
-                // data-netlify-recaptcha="true"
-                method="post"
-                // onSubmit={handleSubmit}
-            >
+            <form name="mailinglist" data-netlify="true" method="POST" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="mailinglist" />
+                <p hidden>
+                    <label>
+                        Don’t fill this out: <input name="bot-field" />
+                    </label>
+                </p>
                 <div
                     style={{
                         // marginTop: "1em",
@@ -59,11 +58,11 @@ const BlogForm = classes => {
                         style={{
                             margin: 2,
                         }}
+                        type="submit"
                         variant="contained"
                         color="primary"
-                        type="submit"
                     >
-                        Submit
+                        Subscribe!
                     </Button>
                 </div>
             </form>

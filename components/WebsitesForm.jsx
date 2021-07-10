@@ -45,9 +45,14 @@ export default function WebsitesForm(props) {
                         name="websites-contact"
                         method="POST"
                         data-netlify="true"
-                        // data-netlify-recaptcha="true"
+                        netlify-honeypot="bot-field"
                     >
                         <input type="hidden" name="form-name" value="websites-contact" />
+                        <p hidden>
+                            <label>
+                                Don’t fill this out: <input name="bot-field" />
+                            </label>
+                        </p>
                         <div
                             style={{
                                 margin: "1em",
@@ -96,7 +101,6 @@ export default function WebsitesForm(props) {
                                 rows={4}
                             />
                         </div>
-                        {/* <div data-netlify-recaptcha="true"></div> */}
                         <p>
                             <Button type="submit" variant="contained" color="primary">
                                 Send
