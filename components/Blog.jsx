@@ -38,7 +38,7 @@ const Blog = (classes, data) => {
                     >
                         <BookIcon color="primary" className={classes.icon} />
                         <Typography variant="h6" component="h6" className={classes.icon}>
-                            my blog
+                            My Blog
                         </Typography>
                     </div>
                 </Grid>

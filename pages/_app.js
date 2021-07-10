@@ -6,6 +6,15 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../mui-theme";
 import "../styles/globals.scss";
 
+import Router from "next/router";
+import NProgress from "nprogress"; //nprogress module
+import "../styles/nprogress.scss"; //styles of nprogress
+
+NProgress.configure({ trickleSpeed: 20 });
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
 export default function MyApp(props) {
     const { Component, pageProps } = props;
 

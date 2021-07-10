@@ -70,9 +70,9 @@ const Contributions = (classes, repos) => {
                             flexWrap: "wrap",
                         }}
                     >
-                        <AppsIcon color="primary" className={classes.icon} />
+                        <GitHubIcon color="primary" className={classes.icon} />
                         <Typography variant="h6" component="h6" className={classes.icon}>
-                            top open source projects i&apos;ve contributed to
+                            {"Top Open-Source Projects I've Contributed To"}
                         </Typography>
                     </div>
                 </Grid>

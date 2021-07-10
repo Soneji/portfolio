@@ -5,13 +5,17 @@ export const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2),
     },
     lower: {
-        textTransform: "lowercase",
+        textTransform: "capitalize",
+    },
+    caps: {
+        textTransform: "capitalize",
     },
     heroContent: {
         backgroundPosition: "center",
         width: "100vw",
         height: "60vh",
         minHeight: 450,
+        maxHeight: 600,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

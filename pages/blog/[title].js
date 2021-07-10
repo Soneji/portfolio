@@ -36,6 +36,7 @@ export const getServerSideProps = async context => {
 
     let html = "<div></div>";
     let preview = "No Preview";
+    let newTitle = "No Title";
 
     try {
         const a = await NotionPageToHtml.convert(
@@ -57,21 +58,21 @@ export const getServerSideProps = async context => {
             convert(b.html)
                 .replace(/[\n]{2,}/gi, "\n")
                 .slice(0, 120) + "...";
-        title = a.title;
+        newTitle = a.title;
     } catch (e) {
         console.log(e);
         console.log("no html");
     }
-    return { props: { html, title, preview, url, image } };
+    return { props: { html, newTitle, preview, url, image } };
 };
 
-const Post = ({ html, title, preview, url, image }) => {
+const Post = ({ html, newTitle, preview, url, image }) => {
     const classes = useStyles();
 
     return (
         <React.Fragment>
             <HeadMaker
-                title={title + " - Dhaval's Blog"}
+                title={newTitle + " - Dhaval's Blog"}
                 description={preview}
                 url={url}
                 image={image}

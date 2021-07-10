@@ -21,10 +21,9 @@ const Info = classes => {
                     >
                         <PersonIcon color="primary" className={classes.icon} />
                         <Typography
-
                             variant="h6"
                             component="h6"
-                            className={classes.icon}
+                            className={[classes.icon, classes.caps]}
                         >
                             about me
                         </Typography>
@@ -50,10 +49,9 @@ const Info = classes => {
                     >
                         <CodeIcon color="primary" className={classes.icon} />
                         <Typography
-
                             variant="h6"
                             component="h6"
-                            className={classes.icon}
+                            className={[classes.icon, classes.caps]}
                         >
                             my tech stack
                         </Typography>

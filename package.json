@@ -6,12 +6,14 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "websitegen": "cd $INIT_CWD/data/websites && node getWebsiteImages.js"
     },
     "dependencies": {
         "@material-ui/core": "^4.11.4",
         "@material-ui/icons": "^4.11.2",
         "@octokit/graphql": "^4.6.4",
+        "capture-website": "^2.0.2",
         "html-loader": "^2.1.2",
         "html-to-text": "^8.0.0",
         "isomorphic-fetch": "^3.0.0",
@@ -19,11 +21,13 @@
         "next": "11.0.1",
         "notion-client": "^4.7.6",
         "notion-page-to-html": "^1.1.1",
+        "nprogress": "^0.2.0",
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-notion-x": "^4.7.7",
         "remark": "^13.0.0",
-        "sass": "^1.35.2"
+        "sass": "^1.35.2",
+        "sharp": "^0.28.3"
     },
     "devDependencies": {
         "eslint": "7.30.0",

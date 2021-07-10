@@ -1,0 +1,25 @@
+{
+    "websites": [
+        {
+            "name": "Vanaspati Herbal Medicine",
+            "url": "https://vanaspati.co.uk"
+        },
+        {
+            "name": "Krishna Consciousness Society",
+            "url": "https://kcsoc.com"
+        },
+        {
+            "name": "Warwick Engineering Society - PDR App",
+            "url": "https://pdr.engsoc.uk",
+            "image": "https://raw.githubusercontent.com/Warwick-Engineering-Society/PDR/main/.github/screenshots/pdrapp%20final4.png"
+        },
+        {
+            "name": "Gooby Build",
+            "url": "https://goobybuild.com"
+        },
+        {
+            "name": "Harrow Health Matters",
+            "url": "https://harrowhealthmatters.com"
+        }
+    ]
+}

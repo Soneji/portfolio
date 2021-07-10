@@ -14,7 +14,7 @@ import {
 
 import CodeIcon from "@material-ui/icons/Code";
 import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
-import AppsIcon from "@material-ui/icons/Apps";
+import BuildIcon from "@material-ui/icons/Build";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import WebIcon from "@material-ui/icons/Web";
 import Image from "next/image";
@@ -63,9 +63,9 @@ const Projects = (classes, repos) => {
                             flexWrap: "wrap",
                         }}
                     >
-                        <AppsIcon color="primary" className={classes.icon} />
+                        <BuildIcon color="primary" className={classes.icon} />
                         <Typography variant="h6" component="h6" className={classes.icon}>
-                            some of my projects
+                            Some of my Projects
                         </Typography>
                     </div>
                 </Grid>
@@ -117,7 +117,7 @@ const Projects = (classes, repos) => {
                                             top: "40%",
                                             left: "50%",
                                             transform: "translateX(-50%)",
-                                            textTransform: "lowercase",
+                                            textTransform: "capitalize",
                                         }}
                                     >
                                         {r.name.split(/[-_]+/).join(" ")}
@@ -135,6 +135,7 @@ const Projects = (classes, repos) => {
                                         variant="h6"
                                         component="h2"
                                         color="primary"
+                                        className={classes.caps}
                                     >
                                         {r.name.split(/[-_]+/).join(" ")}
                                     </Typography>

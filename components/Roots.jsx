@@ -7,6 +7,7 @@ const Roots = ({ router }, classes) => {
     const routes = [
         { text: "home", route: "/" },
         { text: "blog", route: "/blog" },
+        { text: "websites", route: "/websites" },
         { text: "projects", route: "/projects" },
         { text: "contributions", route: "/contributions" },
     ];
@@ -32,7 +33,7 @@ const Roots = ({ router }, classes) => {
                                                         router.pathname === Value.route
                                                             ? "underline"
                                                             : "none",
-                                                    textTransform: "lowercase",
+                                                    textTransform: "capitalize",
                                                 }}
                                                 title={Value.text}
                                             >

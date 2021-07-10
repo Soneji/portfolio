@@ -1,6 +1,6 @@
 import { NotionAPI } from "notion-client";
 const fetch = require("isomorphic-fetch");
-
+const sharp = require("sharp");
 const deploy = process.env.URL || `http://localhost:3000`;
 
 const downloadImage = async url => {
@@ -30,7 +30,13 @@ export default async function handler(req, res) {
                 url = `https://notion.so${url}`;
             }
 
-            const image = await downloadImage(url);
+            let image = await downloadImage(url);
+            image = await sharp(image)
+                .resize({
+                    fit: sharp.fit.contain,
+                    width: 800,
+                })
+                .jpeg({ quality: 80, mozjpeg: true });
             res.setHeader("Content-Type", "image/jpg");
             res.send(image);
             return;

@@ -14,14 +14,14 @@ const Contact = classes => {
             {socials.length > 0 && (
                 <div className={classes.heroButtons}>
                     <Typography
-                        className={classes.lower}
+                        className={classes.caps}
                         component="h1"
                         variant="h4"
                         align="center"
                         color="textPrimary"
                         gutterBottom
                     >
-                        contact me
+                        Contact Me
                     </Typography>
                     <Grid container spacing={2} justify="center">
                         {socials.map((Value, index) => {
@@ -29,7 +29,7 @@ const Contact = classes => {
                                 <Grid
                                     style={{
                                         display: "flex",
-                                        
+
                                         height: "64px",
                                         width: "64px",
                                     }}

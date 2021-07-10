@@ -35,7 +35,7 @@ const Header = classes => {
                                 </Grid>
                             </Grid>
                             <Typography
-                                className={classes.lower}
+                                className={classes.caps}
                                 component="h1"
                                 variant="h4"
                                 align="center"
@@ -46,7 +46,7 @@ const Header = classes => {
                             </Typography>
 
                             <Typography
-                                className={classes.lower}
+                                className={classes.caps}
                                 variant="h6"
                                 align="center"
                                 color="textSecondary"

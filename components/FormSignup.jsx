@@ -7,7 +7,7 @@ import MailIcon from "@material-ui/icons/Mail";
 
 const FormSignup = classes => {
     const [email, setEmail] = useState("");
-
+    
     function handleSubmit(event) {
         event.preventDefault();
         console.log("Email:", email);
