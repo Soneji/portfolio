@@ -1,6 +1,7 @@
 import captureWebsite from "capture-website";
 import * as fs from "fs";
 import * as https from "https";
+import sharp from "sharp";
 
 let rawdata = fs.readFileSync("websites.json");
 let websites = JSON.parse(rawdata).websites;
@@ -23,14 +24,18 @@ if (!fs.existsSync(dir)) {
 }
 
 // loop through websites
-websites.forEach(async website => {
+for (var i = 0; i < websites.length; i++) {
+    const website = websites[i];
     if (website.image) {
-        const file = fs.createWriteStream(`${dir}/${website.name}.jpg`);
-        const request = https.get(website.image, function (response) {
-            response.pipe(file);
-        });
+        await new Promise(resolve =>
+            https.get(website.image, response => {
+                response
+                    .pipe(fs.createWriteStream(`${dir}/${website.key}_big.jpg`))
+                    .on("finish", resolve);
+            })
+        );
     } else {
-        await captureWebsite.file(website.url, `${dir}/${website.name}.jpg`, {
+        await captureWebsite.file(website.url, `${dir}/${website.key}_big.jpg`, {
             isJavaScriptEnabled: true,
             removeElements: [
                 "#PopupSignupForm_0",
@@ -45,8 +50,23 @@ websites.forEach(async website => {
                     // console.log("no alert");
                 }
             },
-            delay: 2,
+            delay: 1,
         });
     }
-    // console.log(website);
-});
+
+    console.log(`${dir}/${website.key}_big.jpg`);
+    const sharpImage = await sharp(`${dir}/${website.key}_big.jpg`);
+    await sharpImage
+        .resize({
+            fit: sharp.fit.contain,
+            width: 800,
+        })
+        .jpeg({ quality: 80, mozjpeg: true })
+        .toFile(`${dir}/${website.key}.jpg`)
+        .then(() => {
+            // remove big file
+            fs.unlinkSync(`${dir}/${website.key}_big.jpg`);
+        });
+}
+
+console.log("done");

@@ -20,7 +20,7 @@ import WebsitesForm from "./WebsitesForm";
 
 const websites = data.websites;
 websites.forEach(website => {
-    website.localImage = `/websiteImages/${website.name}.jpg`;
+    website.localImage = `/websiteImages/${website.key}.jpg`;
 });
 
 const Projects = classes => {
@@ -44,7 +44,7 @@ const Projects = classes => {
                     </div>
                 </Grid>
                 {websites.map(website => (
-                    <Grid item key={website.name} xs={12} sm={6} md={4}>
+                    <Grid item key={website.key} xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
                             <Button
                                 onClick={() => {
