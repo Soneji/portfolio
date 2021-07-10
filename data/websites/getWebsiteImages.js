@@ -61,7 +61,7 @@ for (var i = 0; i < websites.length; i++) {
             fit: sharp.fit.contain,
             width: 800,
         })
-        .jpeg({ quality: 80, mozjpeg: true })
+        .jpeg({ quality: 95, mozjpeg: true })
         .toFile(`${dir}/${website.key}.jpg`)
         .then(() => {
             // remove big file
