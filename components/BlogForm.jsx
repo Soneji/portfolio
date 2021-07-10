@@ -6,12 +6,29 @@ import Button from "@material-ui/core/Button";
 import MailIcon from "@material-ui/icons/Mail";
 
 const BlogForm = classes => {
-    // const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("");
 
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    //     console.log("Email:", email);
-    // }
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log("Email:", email);
+
+        const encode = data => {
+            return Object.keys(data)
+                .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+                .join("&");
+        };
+
+        fetch("/netlify_forms", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({
+                "form-name": "mailinglist",
+                email: email,
+            }),
+        })
+            .then(() => (document.querySelector("#onsuccess").style.display = "block"))
+            .catch(error => alert(error));
+    }
 
     return (
         <Container style={{ textAlign: "center", paddingBottom: "1em", marginTop: "2em" }}>
@@ -30,13 +47,7 @@ const BlogForm = classes => {
                 </Typography>
             </div>
             <Typography>Recieve emails when I write new blog posts</Typography>
-            <form name="mailinglist" data-netlify="true" method="POST" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="mailinglist" />
-                <p hidden>
-                    <label>
-                        Don’t fill this out: <input name="bot-field" />
-                    </label>
-                </p>
+            <form name="mailinglist" data-netlify="true" method="POST" onSubmit={handleSubmit}>
                 <div
                     style={{
                         // marginTop: "1em",
@@ -52,7 +63,7 @@ const BlogForm = classes => {
                         variant="outlined"
                         type="email"
                         name="email"
-                        onInput={e => setEmail(e.target.value)}
+                        onChange={e => setEmail(e.target.value)}
                     ></TextField>
                     <Button
                         style={{
@@ -65,6 +76,10 @@ const BlogForm = classes => {
                         Subscribe!
                     </Button>
                 </div>
+                <p id="onsuccess" style={{ display: "none" }}>
+                    Form Submission Received
+                </p>
+                <noscript>Please enable JavaScript to use this form</noscript>
             </form>
         </Container>
     );
