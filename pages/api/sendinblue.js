@@ -27,7 +27,7 @@ export default function handler(req, res) {
                 }),
             };
 
-            console.log(options);
+            console.log(JSON.stringify(options));
             console.log(process.env.SENDINBLUE_API_KEY);
 
             fetch(url, options)
