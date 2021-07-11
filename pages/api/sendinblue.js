@@ -30,16 +30,12 @@ export default async function handler(req, res) {
             console.log(JSON.stringify(options));
             console.log(process.env.SENDINBLUE_API_KEY);
 
-            await fetch(url, options)
-                .then(result => result.json())
-                .then(json => console.log(json))
-                .catch(err => {
-                    console.log("error:" + err);
-                    res.status(405).json({ error: "API Error" });
-                    res.end();
-                });
-
-            res.status(200).json({ message: "Done." });
+            try {
+                await fetch(url, options);
+                res.status(200).json({ message: "OK" });
+            } catch (err) {
+                res.status(405).json({ error: err });
+            }
         }
     } else {
         res.status(405).json({ message: "Error: POST man" });
