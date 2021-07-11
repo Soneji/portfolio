@@ -30,7 +30,8 @@ const BlogForm = classes => {
                         .then(function (msg) {
                             alert(msg.error);
                         })
-                        .catch(() => {
+                        .catch(error => {
+                            console.log(error);
                             alert(
                                 "There was an error, please report it to the email at the bottom of the page"
                             );
@@ -39,7 +40,12 @@ const BlogForm = classes => {
                     document.querySelector("#onsuccess").style.display = "block";
                 }
             })
-            .catch(error => alert(error));
+            .catch(error => {
+                console.log(error);
+                alert(
+                    "There was an error, please report it to the email at the bottom of the page"
+                );
+            });
     }
 
     return (
