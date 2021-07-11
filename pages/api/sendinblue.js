@@ -31,7 +31,7 @@ export default function handler(req, res) {
             console.log(process.env.SENDINBLUE_API_KEY);
 
             fetch(url, options)
-                .then(res => res.json())
+                .then(result => result.json())
                 .then(json => console.log(json))
                 .catch(err => {
                     console.log("error:" + err);
