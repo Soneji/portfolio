@@ -106,6 +106,10 @@ export default function WebsitesForm(props) {
                                 Send
                             </Button>
                         </p>
+                        <p style={{ margin: "auto", maxWidth: 300, fontSize: 10 }} align="center">
+                            Disclaimer: All data sent to us will be kept confidential. Your data
+                            will never be shared with third parties.
+                        </p>
                     </form>
                 </CardContent>
             </Card>

@@ -1,11 +1,9 @@
 import { React, useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import { Button, Card, CardContent, Typography, TextField } from "@material-ui/core";
 import MailIcon from "@material-ui/icons/Mail";
 
 const BlogForm = classes => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
     function handleSubmit(event) {
@@ -18,23 +16,31 @@ const BlogForm = classes => {
                 .join("&");
         };
 
-        fetch("/netlify_forms", {
+        fetch("/api/sendinblue", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: encode({
-                "form-name": "mailinglist",
+                name: name,
                 email: email,
             }),
         })
-            .then(() => (document.querySelector("#onsuccess").style.display = "block"))
+            .then(res => {
+                if (res.status !== 200) {
+                    res.json().then(function (msg) {
+                        alert(msg.error);
+                    });
+                } else {
+                    document.querySelector("#onsuccess").style.display = "block";
+                }
+            })
             .catch(error => alert(error));
     }
 
     return (
-        <Container style={{ textAlign: "center", paddingBottom: "1em", marginTop: "2em" }}>
+        <div style={{ marginBottom: "4em" }}>
             <div
                 style={{
-                    // marginTop: "1em",
+                    margin: "2em",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -42,46 +48,76 @@ const BlogForm = classes => {
                 }}
             >
                 <MailIcon color="primary" className={classes.icon} />
-                <Typography className={classes.icon} variant="h6" component="h6">
-                    Sign up
+                <Typography variant="h6" component="h6" className={classes.icon}>
+                    {"Sign up"}
                 </Typography>
             </div>
-            <Typography>Recieve emails when I write new blog posts</Typography>
-            <form name="mailinglist" data-netlify="true" method="POST" onSubmit={handleSubmit}>
-                <div
-                    style={{
-                        // marginTop: "1em",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexWrap: "wrap",
-                    }}
-                >
-                    <TextField
-                        style={{ minWidth: 300, margin: 2 }}
-                        label="Email"
-                        variant="outlined"
-                        type="email"
-                        name="email"
-                        onChange={e => setEmail(e.target.value)}
-                    ></TextField>
-                    <Button
-                        style={{
-                            margin: 2,
-                        }}
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                    >
-                        Subscribe!
-                    </Button>
-                </div>
-                <p id="onsuccess" style={{ display: "none" }}>
-                    Form Submission Received
-                </p>
-                <noscript>Please enable JavaScript to use this form</noscript>
-            </form>
-        </Container>
+            <Card
+                style={{
+                    margin: "2em",
+                    width: "fit-content",
+                    maxWidth: "90vw",
+                    margin: "auto",
+                }}
+                className={classes.card}
+            >
+                <CardContent className={classes.cardContent}>
+                    <Typography align="center" variant="subtitle2" style={{ maxWidth: 400 }}>
+                        {"Recieve emails when I write new blog posts"}
+                    </Typography>
+                    <form method="POST" onSubmit={handleSubmit}>
+                        <div
+                            style={{
+                                margin: "1em",
+                            }}
+                        >
+                            <TextField
+                                style={{
+                                    width: 300,
+                                    maxWidth: "80vw",
+                                }}
+                                name="name"
+                                label="Name"
+                                variant="outlined"
+                                onChange={e => setName(e.target.value)}
+                            />
+                        </div>
+                        <div
+                            style={{
+                                margin: "1em",
+                            }}
+                        >
+                            <TextField
+                                style={{
+                                    width: 300,
+                                    maxWidth: "80vw",
+                                }}
+                                name="email"
+                                label="Email"
+                                variant="outlined"
+                                type="email"
+                                onChange={e => setEmail(e.target.value)}
+                            />
+                        </div>
+                        <p align="center">
+                            <Button type="submit" variant="contained" color="primary">
+                                Send
+                            </Button>
+                        </p>
+                        <p style={{ margin: "auto", maxWidth: 300, fontSize: 10 }} align="center">
+                            Disclaimer: All data sent to us will be kept confidential. Your data
+                            will never be shared with third parties.
+                        </p>
+                        <p align="center" id="onsuccess" style={{ display: "none" }}>
+                            Form Submission Received
+                        </p>
+                        <noscript>
+                            <p align="center">Please enable JavaScript to use this form</p>
+                        </noscript>
+                    </form>
+                </CardContent>
+            </Card>
+        </div>
     );
 };
 
