@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
         const { name, email } = req.body;
         if (!name || !email) {
-            res.status(400).json({ error: "Missing name or email" });
+            res.status(405).json({ error: "Missing name or email" });
             res.end();
         } else {
             // Send data
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
                 .then(json => console.log(json))
                 .catch(err => {
                     console.log("error:" + err);
-                    res.status(400).json({ error: "API Error" });
+                    res.status(405).json({ error: "API Error" });
                     res.end();
                 });
 

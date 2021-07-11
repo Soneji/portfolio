@@ -80,6 +80,7 @@ const BlogForm = classes => {
                                 label="Name"
                                 variant="outlined"
                                 onChange={e => setName(e.target.value)}
+                                required
                             />
                         </div>
                         <div
@@ -97,6 +98,7 @@ const BlogForm = classes => {
                                 variant="outlined"
                                 type="email"
                                 onChange={e => setEmail(e.target.value)}
+                                required
                             />
                         </div>
                         <p align="center">
