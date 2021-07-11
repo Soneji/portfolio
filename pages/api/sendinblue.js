@@ -1,6 +1,6 @@
 const fetch = require("isomorphic-fetch");
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     if (req.method === "POST") {
         // Process a POST request
         console.log(req.body);
@@ -30,7 +30,7 @@ export default function handler(req, res) {
             console.log(JSON.stringify(options));
             console.log(process.env.SENDINBLUE_API_KEY);
 
-            fetch(url, options)
+            await fetch(url, options)
                 .then(result => result.json())
                 .then(json => console.log(json))
                 .catch(err => {
