@@ -1,13 +1,13 @@
 const fetch = require("isomorphic-fetch");
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     if (req.method === "POST") {
         // Process a POST request
         console.log(req.body);
 
         const { name, email } = req.body;
         if (!name || !email) {
-            res.status(500).json({ error: "Missing name or email" });
+            res.status(405).json({ error: "Missing name or email" });
             res.end();
         } else {
             // Send data
@@ -27,12 +27,15 @@ export default function handler(req, res) {
                 }),
             };
 
-            fetch(url, options)
-                .then(res => res.json())
+            console.log(JSON.stringify(options));
+            console.log(process.env.SENDINBLUE_API_KEY);
+
+            await fetch(url, options)
+                .then(result => result.json())
                 .then(json => console.log(json))
                 .catch(err => {
-                    console.error("error:" + err);
-                    res.status(500).json({ error: "API Error" });
+                    console.log("error:" + err);
+                    res.status(405).json({ error: "API Error" });
                     res.end();
                 });
 

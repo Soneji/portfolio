@@ -26,14 +26,26 @@ const BlogForm = classes => {
         })
             .then(res => {
                 if (res.status !== 200) {
-                    res.json().then(function (msg) {
-                        alert(msg.error);
-                    });
+                    res.json()
+                        .then(function (msg) {
+                            alert(msg.error);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            alert(
+                                "There was an error, please report it to the email at the bottom of the page"
+                            );
+                        });
                 } else {
                     document.querySelector("#onsuccess").style.display = "block";
                 }
             })
-            .catch(error => alert(error));
+            .catch(error => {
+                console.log(error);
+                alert(
+                    "There was an error, please report it to the email at the bottom of the page"
+                );
+            });
     }
 
     return (
@@ -80,6 +92,7 @@ const BlogForm = classes => {
                                 label="Name"
                                 variant="outlined"
                                 onChange={e => setName(e.target.value)}
+                                required
                             />
                         </div>
                         <div
@@ -97,6 +110,7 @@ const BlogForm = classes => {
                                 variant="outlined"
                                 type="email"
                                 onChange={e => setEmail(e.target.value)}
+                                required
                             />
                         </div>
                         <p align="center">
