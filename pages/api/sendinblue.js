@@ -27,11 +27,14 @@ export default function handler(req, res) {
                 }),
             };
 
+            console.log(options);
+            console.log(process.env.SENDINBLUE_API_KEY);
+
             fetch(url, options)
                 .then(res => res.json())
                 .then(json => console.log(json))
                 .catch(err => {
-                    console.error("error:" + err);
+                    console.log("error:" + err);
                     res.status(500).json({ error: "API Error" });
                     res.end();
                 });
