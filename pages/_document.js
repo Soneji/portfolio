@@ -18,6 +18,13 @@ export default class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
+                    <noscript>
+                        <img src="https://shynetanalytics.com/ingress/501b2e8c-d31d-4401-819b-f9a4f2955ddc/pixel.gif" />
+                    </noscript>
+                    <script
+                        defer
+                        src="https://shynetanalytics.com/ingress/501b2e8c-d31d-4401-819b-f9a4f2955ddc/script.js"
+                    />
                 </body>
             </Html>
         );
