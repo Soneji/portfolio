@@ -15,7 +15,7 @@ export default function WebsitesPage() {
     return (
         <React.Fragment>
             <HeadMaker
-                title={"My Websites - Dhaval Soneji"}
+                title={"Websites I've Built - Dhaval Soneji"}
                 description={"A showcase of the websites I've built"}
                 url={"/websites"}
             />
