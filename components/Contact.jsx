@@ -23,7 +23,7 @@ const Contact = classes => {
                     >
                         Contact Me
                     </Typography>
-                    <Grid container spacing={2} justify="center">
+                    <Grid container spacing={2} justifyContent="center">
                         {socials.map((Value, index) => {
                             return (
                                 <Grid

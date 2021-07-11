@@ -20,12 +20,8 @@ const Info = classes => {
                         }}
                     >
                         <PersonIcon color="primary" className={classes.icon} />
-                        <Typography
-                            variant="h6"
-                            component="h6"
-                            className={[classes.icon, classes.caps]}
-                        >
-                            about me
+                        <Typography variant="h6" component="h6" className={classes.icon}>
+                            About Me
                         </Typography>
                     </div>
                     <Typography style={{ textAlign: "center" }} component="div">
@@ -48,12 +44,8 @@ const Info = classes => {
                         }}
                     >
                         <CodeIcon color="primary" className={classes.icon} />
-                        <Typography
-                            variant="h6"
-                            component="h6"
-                            className={[classes.icon, classes.caps]}
-                        >
-                            my tech stack
+                        <Typography variant="h6" component="h6" className={classes.icon}>
+                            My Tech Stack
                         </Typography>
                     </div>
                     <Grid

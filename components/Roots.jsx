@@ -16,7 +16,7 @@ const Roots = ({ router }, classes) => {
         <div>
             {routes.length > 0 && (
                 <div>
-                    <Grid container spacing={2} justify="center">
+                    <Grid container spacing={2} justifyContent="center">
                         {routes.map((Value, index) => {
                             return (
                                 <Grid

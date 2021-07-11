@@ -10,7 +10,7 @@ const Header = classes => {
                 <div className={classes.backgroundDiv}>
                     <div className={classes.heroContent}>
                         <Container maxWidth="sm">
-                            <Grid className={classes.chevron} container justify="center">
+                            <Grid className={classes.chevron} container justifyContent="center">
                                 <Grid item>
                                     <div style={{ display: "grid" }}>
                                         <Image
