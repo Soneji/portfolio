@@ -3,7 +3,8 @@ import { Button, Card, CardContent, Typography, TextField } from "@material-ui/c
 import MailIcon from "@material-ui/icons/Mail";
 
 const BlogForm = classes => {
-    const [name, setName] = useState("");
+    const [fname, setFname] = useState("");
+    const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
 
     function handleSubmit(event) {
@@ -20,7 +21,8 @@ const BlogForm = classes => {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: encode({
-                name: name,
+                fname: fname,
+                lname: lname,
                 email: email,
             }),
         })
@@ -88,10 +90,27 @@ const BlogForm = classes => {
                                     width: 300,
                                     maxWidth: "80vw",
                                 }}
-                                name="name"
-                                label="Name"
+                                name="fname"
+                                label="First Name"
                                 variant="outlined"
-                                onChange={e => setName(e.target.value)}
+                                onChange={e => setFname(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div
+                            style={{
+                                margin: "1em",
+                            }}
+                        >
+                            <TextField
+                                style={{
+                                    width: 300,
+                                    maxWidth: "80vw",
+                                }}
+                                name="lname"
+                                label="Last Name"
+                                variant="outlined"
+                                onChange={e => setLname(e.target.value)}
                                 required
                             />
                         </div>

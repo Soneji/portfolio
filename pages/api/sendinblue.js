@@ -5,9 +5,9 @@ export default async function handler(req, res) {
         // Process a POST request
         console.log(req.body);
 
-        const { name, email } = req.body;
-        if (!name || !email) {
-            res.status(405).json({ error: "Missing name or email" });
+        const { fname, lname, email } = req.body;
+        if (!fname || !lname || !email) {
+            res.status(405).json({ error: "Missing Full Name or Email" });
             res.end();
         } else {
             // Send data
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
                 },
                 body: JSON.stringify({
                     email: email,
-                    attributes: { FIRSTNAME: name },
+                    attributes: { FIRSTNAME: fname, LASTNAME: lname },
                     listIds: [5],
                     updateEnabled: true,
                 }),
