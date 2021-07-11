@@ -24,9 +24,8 @@ const Roots = ({ router }, classes) => {
                                     // item
                                     key={index}
                                 >
-                                    <Link className={classes.linky} href={Value.route}>
+                                    <Link className={classes.linky} href={Value.route} passHref>
                                         <Button
-                                            href={Value.route}
                                             style={{
                                                 minWidth: 50,
                                                 textDecoration:
