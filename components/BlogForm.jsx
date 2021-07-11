@@ -1,11 +1,43 @@
 import { React, useState } from "react";
 import { Button, Card, CardContent, Typography, TextField } from "@material-ui/core";
 import MailIcon from "@material-ui/icons/Mail";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const BlogForm = classes => {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
+
+    const [open, setOpen] = useState(false);
+    const [openFail, setOpenFail] = useState(false);
+
+    const handleClick = which => {
+        if (which === "success") {
+            setOpen(true);
+        } else if (which === "fail") {
+            setOpenFail(true);
+        }
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+
+        setOpen(false);
+    };
+    const handleCloseFail = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+
+        setOpenFail(false);
+    };
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -28,25 +60,14 @@ const BlogForm = classes => {
         })
             .then(res => {
                 if (res.status !== 200) {
-                    res.json()
-                        .then(function (msg) {
-                            alert(msg.error);
-                        })
-                        .catch(error => {
-                            console.log(error);
-                            alert(
-                                "There was an error, please report it to the email at the bottom of the page"
-                            );
-                        });
+                    handleClick("fail");
                 } else {
-                    document.querySelector("#onsuccess").style.display = "block";
+                    handleClick("success");
                 }
             })
             .catch(error => {
                 console.log(error);
-                alert(
-                    "There was an error, please report it to the email at the bottom of the page"
-                );
+                handleClick("fail");
             });
     }
 
@@ -141,9 +162,17 @@ const BlogForm = classes => {
                             Disclaimer: All data sent to us will be kept confidential. Your data
                             will never be shared with third parties.
                         </p>
-                        <p align="center" id="onsuccess" style={{ display: "none" }}>
-                            Form Submission Received
-                        </p>
+                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                            <Alert onClose={handleClose} severity="success">
+                                Form Submission Received
+                            </Alert>
+                        </Snackbar>
+                        <Snackbar open={openFail} autoHideDuration={6000} onClose={handleCloseFail}>
+                            <Alert onClose={handleCloseFail} severity="error">
+                                There was an error, please report it to the email at the bottom of
+                                the page
+                            </Alert>
+                        </Snackbar>
                         <noscript>
                             <p align="center">Please enable JavaScript to use this form</p>
                         </noscript>
