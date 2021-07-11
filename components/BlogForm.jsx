@@ -7,33 +7,37 @@ const BlogForm = classes => {
     const [email, setEmail] = useState("");
 
     function handleSubmit(event) {
-        event.preventDefault();
-        console.log("Email:", email);
+        try {
+            event.preventDefault();
+            console.log("Email:", email);
 
-        const encode = data => {
-            return Object.keys(data)
-                .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-                .join("&");
-        };
+            const encode = data => {
+                return Object.keys(data)
+                    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+                    .join("&");
+            };
 
-        fetch("/api/sendinblue", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: encode({
-                name: name,
-                email: email,
-            }),
-        })
-            .then(res => {
-                if (res.status !== 200) {
-                    res.json().then(function (msg) {
-                        alert(msg.error);
-                    });
-                } else {
-                    document.querySelector("#onsuccess").style.display = "block";
-                }
+            fetch("/api/sendinblue", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: encode({
+                    name: name,
+                    email: email,
+                }),
             })
-            .catch(error => alert(error));
+                .then(res => {
+                    if (res.status !== 200) {
+                        res.json().then(function (msg) {
+                            alert(msg.error);
+                        });
+                    } else {
+                        document.querySelector("#onsuccess").style.display = "block";
+                    }
+                })
+                .catch(error => alert(error));
+        } catch (error) {
+            alert("There was an error, please report it to the email at the bottom of the page");
+        }
     }
 
     return (
