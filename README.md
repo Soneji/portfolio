@@ -16,7 +16,7 @@
     git clone ...
     ```
 
-1.  **Copy `.env.sample` to `.env.local` and add your [GitHub PAT](https://github.com/settings/tokens) with repo scope, as well as your Notion Blog Page ID and Username.**
+1.  **Copy `.env.sample` to `.env.local` and add your [GitHub PAT](https://github.com/settings/tokens) with repo scope, as well as the other values.**
 
 1.  **Start developing.**
 
