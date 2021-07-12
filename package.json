@@ -12,7 +12,7 @@
     "dependencies": {
         "@material-ui/core": "^4.12.1",
         "@material-ui/icons": "^4.11.2",
-        "@material-ui/lab": "*",
+        "@material-ui/lab": "4.0.0-alpha.60",
         "@octokit/graphql": "^4.6.4",
         "capture-website": "^2.0.2",
         "html-loader": "^2.1.2",
