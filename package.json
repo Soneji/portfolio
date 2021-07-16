@@ -25,7 +25,7 @@
         "nprogress": "^0.2.0",
         "react": "17.0.2",
         "react-dom": "17.0.2",
-        "react-notion-x": "^4.7.7",
+        "react-notion-x": "^4.7.9",
         "remark": "^13.0.0",
         "sass": "^1.35.2",
         "sharp": "^0.28.3"
