@@ -20,7 +20,7 @@ import WebIcon from "@material-ui/icons/Web";
 
 const contribFilter = [
     { field: "owner.login", value: "education" },
-    { field: "owner.login", value: "soneji" },
+    { field: "owner.login", value: "Soneji" },
     { field: "owner.login", value: "Warwick-Engineering-Society" },
     // { field: "isPrivate", value: true },
     // { field: "name", value: "ctf" },
