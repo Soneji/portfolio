@@ -55,7 +55,7 @@ const Contributions = (classes, repos) => {
         return b.node.stargazerCount - a.node.stargazerCount;
     });
 
-    repos = repos.splice(0, 9);
+    // repos = repos.splice(0, 9);
 
     return (
         <Container className={classes.cardGrid} maxWidth="lg">
