@@ -30,7 +30,12 @@ export default function WebsitesForm(props) {
                 }}
                 className={props.classes.card}
             >
-                <CardContent className={props.classes.cardContent}>
+                <CardContent
+                    style={{
+                        margin: "auto",
+                    }}
+                    className={props.classes.cardContent}
+                >
                     <Typography align="center" variant="subtitle2" style={{ maxWidth: 450 }}>
                         {
                             "Fill in this form telling me a little about yourself and your website needs and I'll be in touch to see what I can do for you"

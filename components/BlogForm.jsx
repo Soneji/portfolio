@@ -90,13 +90,19 @@ const BlogForm = classes => {
             <Card
                 style={{
                     margin: "2em",
+                    // width: "-moz-fit-content", // the build tool removes this for some reason
                     width: "fit-content",
                     maxWidth: "90vw",
                     margin: "auto",
                 }}
                 className={classes.card}
             >
-                <CardContent className={classes.cardContent}>
+                <CardContent
+                    style={{
+                        margin: "auto",
+                    }}
+                    className={classes.cardContent}
+                >
                     <Typography align="center" variant="subtitle2" style={{ maxWidth: 400 }}>
                         {"Recieve emails when I write new blog posts"}
                     </Typography>
