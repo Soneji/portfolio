@@ -91,6 +91,13 @@ const Contributions = (classes, repos) => {
                                         variant="h6"
                                         component="h2"
                                         color="primary"
+                                        style={{
+                                            position: "absolute",
+                                            top: "40%",
+                                            left: "50%",
+                                            transform: "translateX(-50%)",
+                                            textTransform: "capitalize",
+                                        }}
                                     >
                                         {r.owner.login}&apos;s {r.name.split(/[-_]+/).join(" ")}
                                     </Typography>
