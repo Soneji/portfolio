@@ -7,16 +7,12 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../mui-theme";
 import Footer from "../../components/Footer";
 
-import {
-    Container,
-    Grid,
-    Button,
-} from "@material-ui/core";
+import { Container, Grid, Button } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Link from "next/link";
 import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
-import InnerHTML from 'dangerously-set-html-content'
+import InnerHTML from "dangerously-set-html-content";
 
 const NotionPageToHtml = require("notion-page-to-html-cover-page-fix");
 const { convert } = require("html-to-text");
@@ -49,13 +45,12 @@ export const getServerSideProps = async context => {
                 bodyContentOnly: true,
             }
         );
-        html = a.html;
+        html = a.html.replace(/prism\.css/gi, "prism-okaidia.css");
         preview =
             convert(b.html)
                 .replace(/[\n]{2,}/gi, "\n")
                 .slice(0, 120) + "...";
         newTitle = a.title;
-
     } catch (e) {
         console.log(e);
         console.log("no html");
