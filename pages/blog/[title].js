@@ -16,6 +16,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Link from "next/link";
 import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
+import InnerHTML from 'dangerously-set-html-content'
 
 const NotionPageToHtml = require("notion-page-to-html-cover-page-fix");
 const { convert } = require("html-to-text");
@@ -107,11 +108,7 @@ const Post = ({ html, newTitle, preview, url, image }) => {
                             </Grid>
 
                             <Grid item xs={12} sm={12} md={12}>
-                                <div
-                                    dangerouslySetInnerHTML={{
-                                        __html: html === "<div></div>" ? errorMessage : html,
-                                    }}
-                                ></div>
+                                <InnerHTML html={html === "<div></div>" ? errorMessage : html} />
                             </Grid>
                         </Grid>
                     </Container>
