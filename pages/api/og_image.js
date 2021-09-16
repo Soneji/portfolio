@@ -26,6 +26,17 @@ export default async function handler(req, res) {
 
         if (item.replace(/-/gi, "") === id) {
             let url = recordMap.block[blocks[i]].value.format?.page_cover || `${deploy}/box.jpg`;
+
+            if (url.includes("amazonaws.com") && url.includes("secure.notion-static.com")) {
+                url =
+                    "https://www.notion.so/image/" +
+                    encodeURIComponent(url) +
+                    "?table=block&cache=v2&id=" +
+                    recordMap.block[blocks[i]].value.id;
+            }
+
+            console.log(`Downloading image from ${url}`);
+
             if (url.startsWith("/")) {
                 url = `https://notion.so${url}`;
             }
