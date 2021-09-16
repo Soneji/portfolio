@@ -272,9 +272,16 @@ li {
     }
 }
 code {
-    background: rgba(135,131,120,0.15);
-    color: #EB5757;
+    background: rgba(135, 131, 120, 0.15);
+    color: #eb5757;
 }
 .page-cover-image {
-    display: none
+    display: none;
+}
+blockquote {
+    border-left: 3px solid #d6d0bf;
+}
+.callout {
+    // background-color: #585858 !important;
+    background-color: rgba(69, 75, 78, 0.3) !important;
 }
