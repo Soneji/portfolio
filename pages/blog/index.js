@@ -45,7 +45,7 @@ export const getServerSideProps = async () => {
         let image = recordMap.block[blocks[i]].value.format?.page_cover || "/box.jpg";
 
         if (image.includes("amazonaws.com") && image.includes("secure.notion-static.com")) {
-            image = "https://www.notion.so/image/" + encodeURIComponent(image) + "?table=block&id=" + recordMap.block[blocks[i]].value.id 
+            image = "https://www.notion.so/image/" + encodeURIComponent(image) + "?table=block&cache=v2&id=" + recordMap.block[blocks[i]].value.id 
         }
         // console.log(image)
 

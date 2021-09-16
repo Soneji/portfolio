@@ -4,11 +4,11 @@ import { Box, Card, CardContent, Typography, Container, Grid, ButtonBase } from 
 
 import BookIcon from "@material-ui/icons/Book";
 import TodayIcon from "@material-ui/icons/Today";
-import Image from "next/image";
 
 import Link from "next/link";
 
 import "react-notion-x/src/styles.css";
+import { WhichImage } from "./WhichImage";
 
 function formatDate(date) {
     var d = new Date(date),
@@ -48,20 +48,11 @@ const Blog = (classes, data) => {
                             <Link href={post.url}>
                                 <a style={{ height: 200 }}>
                                     <ButtonBase style={{ height: "100%", width: "100%" }}>
-                                        <Image
-                                            className={classes.cardMedia}
-                                            title="Blog Image"
-                                            src={post.image}
-                                            alt=""
-                                            layout="intrinsic"
-                                            width={373}
-                                            height={200}
-                                            loading="lazy"
-                                        />
+                                        <WhichImage image={post.image} classes={classes} />
                                     </ButtonBase>
                                 </a>
                             </Link>
-                            <CardContent className={classes.cardContent, classes.noTopPadding}>
+                            <CardContent className={(classes.cardContent, classes.noTopPadding)}>
                                 <Link href={post.url}>
                                     <a
                                         style={{
@@ -105,15 +96,15 @@ const Blog = (classes, data) => {
                                     </a>
                                 </Link>
 
-                                <Typography
-                                    component="div"
-                                >
+                                <Typography component="div">
                                     <Box
                                         dangerouslySetInnerHTML={{
-                                            __html: post.shortform === "<div></div>" ? "-" : post.shortform,
+                                            __html:
+                                                post.shortform === "<div></div>"
+                                                    ? "-"
+                                                    : post.shortform,
                                         }}
-                                    >
-                                    </Box>
+                                    ></Box>
                                 </Typography>
                             </CardContent>
                         </Card>
