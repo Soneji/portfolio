@@ -9,6 +9,7 @@ module.exports = {
             "images.unsplash.com",
             "unsplash.com",
             "notion.so",
+            "www.notion.so",
             "notion.site",
         ],
         // if you change this remember to change .env and env on netlify.com!

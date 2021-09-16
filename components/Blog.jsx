@@ -50,7 +50,7 @@ const Blog = (classes, data) => {
                                     <ButtonBase style={{ height: "100%", width: "100%" }}>
                                         <Image
                                             className={classes.cardMedia}
-                                            title="Repository Picture"
+                                            title="Blog Image"
                                             src={post.image}
                                             alt=""
                                             layout="intrinsic"
@@ -61,7 +61,7 @@ const Blog = (classes, data) => {
                                     </ButtonBase>
                                 </a>
                             </Link>
-                            <CardContent className={classes.cardContent}>
+                            <CardContent className={classes.cardContent, classes.noTopPadding}>
                                 <Link href={post.url}>
                                     <a
                                         style={{
@@ -110,9 +110,10 @@ const Blog = (classes, data) => {
                                 >
                                     <Box
                                         dangerouslySetInnerHTML={{
-                                            __html: post.html === "<div></div>" ? "-" : post.html,
+                                            __html: post.shortform === "<div></div>" ? "-" : post.shortform,
                                         }}
-                                    ></Box>
+                                    >
+                                    </Box>
                                 </Typography>
                             </CardContent>
                         </Card>

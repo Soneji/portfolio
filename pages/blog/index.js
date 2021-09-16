@@ -11,8 +11,8 @@ import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
 
 import { NotionAPI } from "notion-client";
-const NotionPageToHtml = require("notion-page-to-html");
-const { convert } = require("html-to-text");
+// const NotionPageToHtml = require("notion-page-to-html");
+// const { convert } = require("html-to-text");
 
 export const getServerSideProps = async () => {
     const api = new NotionAPI();
@@ -29,23 +29,30 @@ export const getServerSideProps = async () => {
     let data = [];
     for (let i = 0; i < blocks.length; i++) {
         const item = blocks[i];
-        let html = "<div></div>";
-        try {
-            const a = await NotionPageToHtml.convert(
-                `https://notion.so/${process.env.NOTION_USERNAME}/${item.replace(/-/gi, "")}`,
-                {
-                    bodyContentOnly: true,
-                }
-            );
-            html = convert(a.html).replace(/[\n]+/gi, "<br>").slice(0, 120) + "...";
-        } catch {
-            console.log("no html");
-        }
+        // let html = "<div></div>";
+        // try {
+        //     const a = await NotionPageToHtml.convert(
+        //         `https://notion.so/${process.env.NOTION_USERNAME}/${item.replace(/-/gi, "")}`,
+        //         {
+        //             bodyContentOnly: true,
+        //         }
+        //     );
+        //     html = convert(a.html).replace(/[\n]+/gi, "<br>").slice(0, 120) + "...";
+        // } catch {
+        //     console.log("no html");
+        // }
         let title = recordMap.block[blocks[i]].value.properties?.title[0][0] || "No Title";
         let image = recordMap.block[blocks[i]].value.format?.page_cover || "/box.jpg";
+        if (image.includes("amazonaws.com")) {
+            image = "https://www.notion.so/image/" + encodeURIComponent(image) + "?table=block&id=" + recordMap.block[blocks[i]].value.id 
+        }
+        // console.log(image)
         let created = recordMap.block[blocks[i]].value.created_time || 0;
         let edited = recordMap.block[blocks[i]].value.last_edited_time || 0;
+        let shortform = recordMap.block[blocks[i]].value.properties["EU?>"][0][0].replace("\n", "<br>") || "";
 
+        // console.log(recordMap.block[blocks[i]].value.id)
+        
         if (!image.includes("http") && image !== "/box.jpg") {
             image = "https://notion.so" + image;
         }
@@ -54,9 +61,10 @@ export const getServerSideProps = async () => {
             title: title,
             image: image,
             url: `/blog/${title.replace(/\s/gi, "-")}?id=${item.replace(/-/gi, "")}`,
-            html: html,
+            // html: html,
             created: created,
             edited: edited,
+            shortform: shortform,
         });
     }
 

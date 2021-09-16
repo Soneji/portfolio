@@ -59,7 +59,8 @@ export const useStyles = makeStyles(theme => ({
     },
     cardMedia: {
         width: 400,
-        height: 200,
+        // height: 200,
+        objectFit: 'contain',
     },
     cardMediaPlaceholder: {
         width: 400,
@@ -68,6 +69,9 @@ export const useStyles = makeStyles(theme => ({
     },
     cardContent: {
         flexGrow: 1,
+    },
+    noTopPadding: {
+        paddingTop: 0,
     },
     footer: {
         paddingTop: 10,

@@ -8,13 +8,8 @@ import theme from "../../mui-theme";
 import Footer from "../../components/Footer";
 
 import {
-    Box,
     Container,
-    Card,
-    CardContent,
     Grid,
-    Typography,
-    Divider,
     Button,
 } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -22,7 +17,7 @@ import Link from "next/link";
 import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
 
-const NotionPageToHtml = require("notion-page-to-html");
+const NotionPageToHtml = require("notion-page-to-html-cover-page-fix");
 const { convert } = require("html-to-text");
 
 const errorMessage = `<p align='center'>There was an error :( 
@@ -59,6 +54,7 @@ export const getServerSideProps = async context => {
                 .replace(/[\n]{2,}/gi, "\n")
                 .slice(0, 120) + "...";
         newTitle = a.title;
+
     } catch (e) {
         console.log(e);
         console.log("no html");
