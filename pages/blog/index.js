@@ -43,13 +43,15 @@ export const getServerSideProps = async () => {
         // }
         let title = recordMap.block[blocks[i]].value.properties?.title[0][0] || "No Title";
         let image = recordMap.block[blocks[i]].value.format?.page_cover || "/box.jpg";
-        if (image.includes("amazonaws.com")) {
+
+        if (image.includes("amazonaws.com") && image.includes("secure.notion-static.com")) {
             image = "https://www.notion.so/image/" + encodeURIComponent(image) + "?table=block&id=" + recordMap.block[blocks[i]].value.id 
         }
         // console.log(image)
+
         let created = recordMap.block[blocks[i]].value.created_time || 0;
         let edited = recordMap.block[blocks[i]].value.last_edited_time || 0;
-        let shortform = recordMap.block[blocks[i]].value.properties["EU?>"][0][0].replace("\n", "<br>") || "";
+        let shortform = recordMap.block[blocks[i]].value.properties["EU?>"][0][0].replace(/\n/g, "<br>") || "";
 
         // console.log(recordMap.block[blocks[i]].value.id)
         
