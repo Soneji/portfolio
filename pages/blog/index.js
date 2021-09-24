@@ -14,7 +14,7 @@ import { NotionAPI } from "notion-client";
 // const NotionPageToHtml = require("notion-page-to-html");
 // const { convert } = require("html-to-text");
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
     const api = new NotionAPI();
 
     const page = await api.getPage(process.env.NOTION_PAGE);
@@ -29,32 +29,26 @@ export const getServerSideProps = async () => {
     let data = [];
     for (let i = 0; i < blocks.length; i++) {
         const item = blocks[i];
-        // let html = "<div></div>";
-        // try {
-        //     const a = await NotionPageToHtml.convert(
-        //         `https://notion.so/${process.env.NOTION_USERNAME}/${item.replace(/-/gi, "")}`,
-        //         {
-        //             bodyContentOnly: true,
-        //         }
-        //     );
-        //     html = convert(a.html).replace(/[\n]+/gi, "<br>").slice(0, 120) + "...";
-        // } catch {
-        //     console.log("no html");
-        // }
-        let title = recordMap.block[blocks[i]].value.properties?.title[0][0] || "No Title";
+
+        let title = recordMap.block[blocks[i]].value.properties?.title[0][0];
         let image = recordMap.block[blocks[i]].value.format?.page_cover || "/box.jpg";
 
         if (image.includes("amazonaws.com") && image.includes("secure.notion-static.com")) {
-            image = "https://www.notion.so/image/" + encodeURIComponent(image) + "?table=block&cache=v2&id=" + recordMap.block[blocks[i]].value.id 
+            image =
+                "https://www.notion.so/image/" +
+                encodeURIComponent(image) +
+                "?table=block&cache=v2&id=" +
+                recordMap.block[blocks[i]].value.id;
         }
         // console.log(image)
 
         let created = recordMap.block[blocks[i]].value.created_time || 0;
         let edited = recordMap.block[blocks[i]].value.last_edited_time || 0;
-        let shortform = recordMap.block[blocks[i]].value.properties["EU?>"][0][0].replace(/\n/g, "<br>") || "";
+        let shortform =
+            recordMap.block[blocks[i]].value.properties["EU?>"][0][0].replace(/\n/g, "<br>") || "";
 
         // console.log(recordMap.block[blocks[i]].value.id)
-        
+
         if (!image.includes("http") && image !== "/box.jpg") {
             image = "https://notion.so" + image;
         }
@@ -62,7 +56,7 @@ export const getServerSideProps = async () => {
         data.push({
             title: title,
             image: image,
-            url: `/blog/${title.replace(/\s/gi, "-")}?id=${item.replace(/-/gi, "")}`,
+            url: `/blog/${title.replace(/\s/gi, "-")}`,
             // html: html,
             created: created,
             edited: edited,
@@ -70,7 +64,7 @@ export const getServerSideProps = async () => {
         });
     }
 
-    return { props: { data } };
+    return { props: { data }, revalidate: 300 };
 };
 
 export default function BlogPage({ data }) {

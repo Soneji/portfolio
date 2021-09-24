@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 import Projects from "../components/Projects";
 import HeadMaker from "../components/HeadMaker";
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
     const { graphql } = require("@octokit/graphql");
     const graphqlWithAuth = graphql.defaults({
         headers: {
@@ -51,7 +51,7 @@ export async function getServerSideProps({ params }) {
             }
         }
     `);
-    return { props: { repositories } };
+    return { props: { repositories }, revalidate: 86400 };
 }
 
 export default function ProjectsPage({ repositories }) {

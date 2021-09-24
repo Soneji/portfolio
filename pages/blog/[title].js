@@ -14,22 +14,43 @@ import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
 import InnerHTML from "dangerously-set-html-content";
 
+import { NotionAPI } from "notion-client";
 const NotionPageToHtml = require("notion-page-to-html-cover-page-fix");
 const { convert } = require("html-to-text");
 
 const errorMessage = `<p align='center'>There was an error :( 
 <p align='center'>Please use the back button above to return to the blog</p>`;
 
-export const getServerSideProps = async context => {
-    const { title, id } = context.query;
-    const url = `${context.resolvedUrl}`;
-
-    const image = `api/og_image?id=${id}`;
+export const getStaticProps = async ({ params }) => {
+    const { title } = params;
+    const url = `${params.resolvedUrl}`;
 
     let html = "<div></div>";
     let preview = "No Preview";
-    let newTitle = "No Title";
 
+    let newTitle = title.replace(/-/gi, " ");
+    const api = new NotionAPI();
+
+    const page = await api.getPage(process.env.NOTION_PAGE);
+
+    const collectionId = Object.keys(page.collection)[0];
+    const collectionViewId = Object.keys(page.collection_view)[0];
+
+    const collectionData = await api.getCollectionData(collectionId, collectionViewId);
+    const recordMap = collectionData.recordMap;
+    const blocks = collectionData.result.blockIds;
+
+    let data = [];
+    let id;
+    for (let i = 0; i < blocks.length; i++) {
+        const item = blocks[i];
+        let apititle = recordMap.block[blocks[i]].value.properties?.title[0][0];
+        if (apititle === newTitle) {
+            id = item.replace(/-/gi, "");
+        }
+    }
+    console.log(id);
+    const image = `api/og_image?id=${id}`;
     try {
         const a = await NotionPageToHtml.convert(
             `https://notion.so/${process.env.NOTION_USERNAME}/${id}`,
@@ -46,6 +67,7 @@ export const getServerSideProps = async context => {
             }
         );
         html = a.html.replace(/prism\.css/gi, "prism-okaidia.css");
+        html = html.replace(/prismjs@1\.22\.0/gi, "prismjs@1.25.0");
         preview =
             convert(b.html)
                 .replace(/[\n]{2,}/gi, "\n")
@@ -55,8 +77,30 @@ export const getServerSideProps = async context => {
         console.log(e);
         console.log("no html");
     }
-    return { props: { html, newTitle, preview, url, image } };
+    return { props: { html, newTitle, preview, url, image }, revalidate: 86400 };
 };
+
+export async function getStaticPaths() {
+    const api = new NotionAPI();
+
+    const page = await api.getPage(process.env.NOTION_PAGE);
+
+    const collectionId = Object.keys(page.collection)[0];
+    const collectionViewId = Object.keys(page.collection_view)[0];
+
+    const collectionData = await api.getCollectionData(collectionId, collectionViewId);
+    const recordMap = collectionData.recordMap;
+    const blocks = collectionData.result.blockIds;
+
+    let paths = [];
+    for (let i = 0; i < blocks.length; i++) {
+        let title = recordMap.block[blocks[i]].value.properties?.title[0][0];
+
+        paths.push("/blog/" + title.replace(/\s/gi, "-"));
+    }
+    console.log(paths);
+    return { paths, fallback: true };
+}
 
 const Post = ({ html, newTitle, preview, url, image }) => {
     const classes = useStyles();
