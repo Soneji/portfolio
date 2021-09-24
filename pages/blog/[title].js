@@ -49,7 +49,7 @@ export const getStaticProps = async ({ params }) => {
             id = item.replace(/-/gi, "");
         }
     }
-    console.log(id);
+    // console.log(id);
     const image = `api/og_image?id=${id}`;
     try {
         const a = await NotionPageToHtml.convert(
@@ -98,7 +98,7 @@ export async function getStaticPaths() {
 
         paths.push("/blog/" + title.replace(/\s/gi, "-"));
     }
-    console.log(paths);
+    // console.log(paths);
     return { paths, fallback: true };
 }
 
