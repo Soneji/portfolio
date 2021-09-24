@@ -272,8 +272,11 @@ li {
     }
 }
 code {
-    background: rgba(135, 131, 120, 0.15);
+    background: #1b1b1b;
     color: #eb5757;
+}
+pre {
+    background: #1b1b1b !important;
 }
 .page-cover-image {
     display: none;
