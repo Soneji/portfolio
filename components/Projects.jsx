@@ -24,6 +24,7 @@ const reposFilter = [
     { field: "name", value: "uptime" },
     { field: "name", value: /github\.io/i },
     { field: "owner.login", value: "lenamd" },
+    { field: "owner.login", value: "JoshanParmar" },
     // { field: "name", value: "ctf" },
 ];
 
