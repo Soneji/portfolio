@@ -15,7 +15,7 @@
         "@material-ui/icons": "^4.11.2",
         "@material-ui/lab": "4.0.0-alpha.60",
         "@octokit/graphql": "^4.8.0",
-        "capture-website": "^2.0.2",
+        "capture-website": "^2.1.1",
         "dangerously-set-html-content": "^1.0.9",
         "html-loader": "^2.1.2",
         "html-to-text": "^8.0.0",
