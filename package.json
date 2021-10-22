@@ -17,7 +17,7 @@
         "@octokit/graphql": "^4.8.0",
         "capture-website": "^2.0.2",
         "dangerously-set-html-content": "^1.0.9",
-        "html-loader": "^2.1.2",
+        "html-loader": "^3.0.0",
         "html-to-text": "^8.0.0",
         "isomorphic-fetch": "^3.0.0",
         "markdown-loader": "^6.0.0",
