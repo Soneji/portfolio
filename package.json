@@ -31,7 +31,7 @@
         "react-notion-x": "^4.9.0",
         "remark": "^14.0.1",
         "sass": "^1.42.1",
-        "sharp": "^0.29.1"
+        "sharp": "^0.30.0"
     },
     "devDependencies": {
         "eslint": "7.32.0",
