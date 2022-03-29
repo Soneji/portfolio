@@ -21,7 +21,7 @@
         "html-to-text": "^8.0.0",
         "isomorphic-fetch": "^3.0.0",
         "markdown-loader": "^6.0.0",
-        "next": "11.1.2",
+        "next": "12.1.2",
         "notion-client": "^4.8.6",
         "notion-page-to-html": "^1.1.1",
         "notion-page-to-html-cover-page-fix": "^1.1.3",
