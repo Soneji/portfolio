@@ -24,15 +24,15 @@ const send = async (fname, lname, email, message) => {
         subject: "Nice Nodemailer test",
         text: "New submission on 'Do you need a website?' form",
         html: `<b>Hey there! </b><br> <p>There is a new submission on 'Do you need a website?' form</p>
-        <p>First Name: ${fname}</p>
-        <p>Last Name: ${lname}</p>
-        <p>Email: ${email}</p>
-        <p>Message: ${message}</p>
+        <p><b>First Name:</b> ${fname}</p>
+        <p><b>Last Name:</b> ${lname}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Message:</b> ${message}</p>
         <br><br>
         <p>Thanks!</p>`,
     };
     return new Promise((resolve, _reject) => {
-        transporter.sendMail(mailOptions, function (error, info) {
+        transport.sendMail(mailOptions, function (error, info) {
             if (error) {
                 console.log("error is " + error);
                 resolve(false);
@@ -58,6 +58,7 @@ export default async function handler(req, res) {
                 await send(fname, lname, email, message);
                 res.status(200).json({ message: "OK" });
             } catch (err) {
+                console.log(err);
                 res.status(405).json({ error: err });
             }
         }
