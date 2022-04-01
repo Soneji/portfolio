@@ -92,7 +92,7 @@ const Projects = classes => {
                     </Grid>
                 ))}
             </Grid>
-            <WebsitesForm classes={classes}></WebsitesForm>
+            {WebsitesForm(classes)}
         </Container>
     );
 };
