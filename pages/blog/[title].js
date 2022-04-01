@@ -27,29 +27,30 @@ export const getStaticProps = async ({ params }) => {
 
     let html = "<div></div>";
     let preview = "No Preview";
-
     let newTitle = title.replace(/-/gi, " ");
+
     const api = new NotionAPI();
-
     const page = await api.getPage(process.env.NOTION_PAGE);
-
     const collectionId = Object.keys(page.collection)[0];
     const collectionViewId = Object.keys(page.collection_view)[0];
-
     const collectionData = await api.getCollectionData(collectionId, collectionViewId);
-    const recordMap = collectionData.recordMap;
-    const blocks = collectionData.result.blockIds;
+    const blocks = collectionData.recordMap.block;
 
     let data = [];
     let id;
-    for (let i = 0; i < blocks.length; i++) {
-        const item = blocks[i];
-        let apititle = recordMap.block[blocks[i]].value.properties?.title[0][0];
+    for (var key of Object.keys(blocks)) {
+        const item = blocks[key].value;
+        // if not page
+        if (item?.type !== "page") {
+            continue;
+        }
+
+        let apititle = item.properties?.title[0][0];
         if (apititle === newTitle) {
-            id = item.replace(/-/gi, "");
+            id = item.id.replace(/-/gi, "");
         }
     }
-    // console.log(id);
+
     const image = `api/og_image?id=${id}`;
     try {
         const a = await NotionPageToHtml.convert(
@@ -67,7 +68,7 @@ export const getStaticProps = async ({ params }) => {
             }
         );
         html = a.html.replace(/prism\.css/gi, "prism-okaidia.css");
-        html = html.replace(/prismjs@1\.22\.0/gi, "prismjs@1.25.0");
+        html = html.replace(/prismjs@1\.22\.0/gi, "prismjs@1.27.0");
         preview =
             convert(b.html)
                 .replace(/[\n]{2,}/gi, "\n")
@@ -89,13 +90,17 @@ export async function getStaticPaths() {
     const collectionViewId = Object.keys(page.collection_view)[0];
 
     const collectionData = await api.getCollectionData(collectionId, collectionViewId);
-    const recordMap = collectionData.recordMap;
-    const blocks = collectionData.result.blockIds;
+    const blocks = collectionData.recordMap.block;
 
     let paths = [];
-    for (let i = 0; i < blocks.length; i++) {
-        let title = recordMap.block[blocks[i]].value.properties?.title[0][0];
+    for (var key of Object.keys(blocks)) {
+        const item = blocks[key].value;
+        // if not page
+        if (item?.type !== "page") {
+            continue;
+        }
 
+        let title = item.properties?.title[0][0];
         paths.push("/blog/" + title.replace(/\s/gi, "-"));
     }
     // console.log(paths);

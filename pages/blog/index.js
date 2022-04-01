@@ -11,43 +11,37 @@ import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
 
 import { NotionAPI } from "notion-client";
-// const NotionPageToHtml = require("notion-page-to-html");
-// const { convert } = require("html-to-text");
 
 export const getStaticProps = async () => {
     const api = new NotionAPI();
-
     const page = await api.getPage(process.env.NOTION_PAGE);
-
     const collectionId = Object.keys(page.collection)[0];
     const collectionViewId = Object.keys(page.collection_view)[0];
-
     const collectionData = await api.getCollectionData(collectionId, collectionViewId);
-    const recordMap = collectionData.recordMap;
-    const blocks = collectionData.result.blockIds;
+    const blocks = collectionData.recordMap.block;
 
     let data = [];
-    for (let i = 0; i < blocks.length; i++) {
-        const item = blocks[i];
+    for (var key of Object.keys(blocks)) {
+        const item = blocks[key].value;
 
-        let title = recordMap.block[blocks[i]].value.properties?.title[0][0];
-        let image = recordMap.block[blocks[i]].value.format?.page_cover || "/box.jpg";
+        // if not page, ignore
+        if (item?.type !== "page") {
+            continue;
+        }
+
+        let title = item.properties?.title[0][0];
+        let image = item.format?.page_cover || "/box.jpg";
 
         if (image.includes("amazonaws.com") && image.includes("secure.notion-static.com")) {
             image =
                 "https://www.notion.so/image/" +
                 encodeURIComponent(image) +
                 "?table=block&cache=v2&id=" +
-                recordMap.block[blocks[i]].value.id;
+                item.id;
         }
-        // console.log(image)
-
-        let created = recordMap.block[blocks[i]].value.created_time || 0;
-        let edited = recordMap.block[blocks[i]].value.last_edited_time || 0;
-        let shortform =
-            recordMap.block[blocks[i]].value.properties["EU?>"][0][0].replace(/\n/g, "<br>") || "";
-
-        // console.log(recordMap.block[blocks[i]].value.id)
+        let created = item.created_time || 0;
+        let edited = item.last_edited_time || 0;
+        let shortform = item.properties["EU?>"][0][0].replace(/\n/g, "<br>") || "";
 
         if (!image.includes("http") && image !== "/box.jpg") {
             image = "https://notion.so" + image;
