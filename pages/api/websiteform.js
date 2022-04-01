@@ -49,7 +49,7 @@ export default async function handler(req, res) {
         // Process a POST request
         console.log(req.body);
 
-        const { fname, lname, email } = req.body;
+        const { fname, lname, email, message } = req.body;
         if (!fname || !lname || !email || !message) {
             res.status(405).json({ error: "Missing Full Name, Email, or Message" });
             res.end();
