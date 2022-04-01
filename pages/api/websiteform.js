@@ -21,9 +21,9 @@ const send = async (fname, lname, email, message) => {
     const mailOptions = {
         from: '"dhavalsoneji.com" <robot@soneji.xyz>',
         to: "dhaval@soneji.xyz",
-        subject: "Nice Nodemailer test",
-        text: "New submission on 'Do you need a website?' form",
-        html: `<b>Hey there! </b><br> <p>There is a new submission on 'Do you need a website?' form</p>
+        subject: "New submission on your 'Do you need a website?' form",
+        // text: "New submission on 'Do you need a website?' form",
+        html: `<b>Hey there! </b>There is a new submission on your 'Do you need a website?' form
         <p><b>First Name:</b> ${fname}</p>
         <p><b>Last Name:</b> ${lname}</p>
         <p><b>Email:</b> ${email}</p>
