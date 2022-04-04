@@ -18,16 +18,11 @@ export default class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
-                    <noscript>
-                        <img
-                            alt=""
-                            src="https://shynetanalytics.com/ingress/501b2e8c-d31d-4401-819b-f9a4f2955ddc/pixel.gif"
-                        />
-                    </noscript>
-                    <script
-                        defer
-                        src="https://shynetanalytics.com/ingress/501b2e8c-d31d-4401-819b-f9a4f2955ddc/script.js"
-                    />
+                    <script 
+                        defer 
+                        data-domain="dhavalsoneji.com" 
+                        src="https://plausible.cc/js/plausible.js"
+                    ></script>
                 </body>
             </Html>
         );
