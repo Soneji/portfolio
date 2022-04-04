@@ -21,7 +21,7 @@ export default class MyDocument extends Document {
                     <script 
                         defer 
                         data-domain="dhavalsoneji.com" 
-                        src="https://plausible.cc/js/plausible.js"
+                        src="https://plausible.cc/js/script.js"
                     ></script>
                 </body>
             </Html>
