@@ -2,7 +2,7 @@
   Dhaval's Personal Portfolio and Notion Blog
 </h1>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f3c4bc45-2b8d-4bfa-8ed4-1a3ec1840b28/deploy-status)](https://app.netlify.com/sites/soneji/deploys)
+<!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/f3c4bc45-2b8d-4bfa-8ed4-1a3ec1840b28/deploy-status)](https://app.netlify.com/sites/soneji/deploys) -->
 
 ## 🌐 Live site
 
