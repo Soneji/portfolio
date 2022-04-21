@@ -16,7 +16,7 @@
     git clone ...
     ```
 
-1.  **Copy `.env.sample` to `.env.local` and add your [GitHub PAT](https://github.com/settings/tokens) with repo scope, as well as the other values.**
+1.  **Copy `.env.sample` to `.env.local` and add your [GitHub PAT](https://github.com/settings/tokens) with repo scope, as well as all the other values.**
 
 1.  **Start developing.**
 
@@ -24,7 +24,8 @@
 
     ```shell
     cd portfolio/
-    npm run dev
+    npm install # to install required dependencies
+    npm run dev # runs next.js local development server
     ```
 
 1.  **Open the code and start customizing!**
