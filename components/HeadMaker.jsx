@@ -2,11 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 export default function HeadMaker({ title, description, url, image }) {
-    const deploy =
-        process.env.URL ||
-        process.env.VERCEL_URL ||
-        process.env.NEXT_PUBLIC_VERCEL_URL ||
-        `http://localhost:3000`;
+    const deploy = process.env.URL || `http://localhost:3000`;
 
     return (
         <Head>
