@@ -11,21 +11,33 @@ export default async function handler(req, res) {
     // get image URL parameter from request (eg /api/instagramify?i=...)
     const { id } = req.query;
 
-    const api = new NotionAPI();
+    // const api = new NotionAPI();
 
+    // const page = await api.getPage(process.env.NOTION_PAGE);
+    // const collectionId = Object.keys(page.collection)[0];
+    // const collectionViewId = Object.keys(page.collection_view)[0];
+
+    // const collectionData = await api.getCollectionData(collectionId, collectionViewId);
+    // const recordMap = collectionData.recordMap;
+    // const blocks = collectionData.result.blockIds;
+    const api = new NotionAPI();
     const page = await api.getPage(process.env.NOTION_PAGE);
     const collectionId = Object.keys(page.collection)[0];
     const collectionViewId = Object.keys(page.collection_view)[0];
-
     const collectionData = await api.getCollectionData(collectionId, collectionViewId);
-    const recordMap = collectionData.recordMap;
-    const blocks = collectionData.result.blockIds;
+    const blocks = collectionData.recordMap.block;
 
-    for (let i = 0; i < blocks.length; i++) {
-        const item = blocks[i];
+    let data = [];
+    for (var key of Object.keys(blocks)) {
+        const item = blocks[key].value;
+        console.log(item);
+        // if not page
+        if (item?.type !== "page") {
+            continue;
+        }
 
-        if (item.replace(/-/gi, "") === id) {
-            let url = recordMap.block[blocks[i]].value.format?.page_cover || `${deploy}/box.jpg`;
+        if (item.id.replace(/-/gi, "") === id) {
+            let url = item.format?.page_cover || `${deploy}/box.jpg`;
 
             if (url.includes("amazonaws.com") && url.includes("secure.notion-static.com")) {
                 url =
