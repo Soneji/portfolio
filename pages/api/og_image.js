@@ -1,7 +1,7 @@
 import { NotionAPI } from "notion-client";
 const fetch = require("isomorphic-fetch");
 const sharp = require("sharp");
-const deploy = process.env.URL || `http://localhost:3000`;
+const deploy = process.env.URL || process.env.NEXT_PUBLIC_URL || `http://localhost:3000`;
 
 const downloadImage = async url => {
     return await fetch(url).then(res => res.buffer());
