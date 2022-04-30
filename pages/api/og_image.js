@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     let data = [];
     for (var key of Object.keys(blocks)) {
         const item = blocks[key].value;
-        console.log(item);
+        // console.log(item);
         // if not page
         if (item?.type !== "page") {
             continue;
