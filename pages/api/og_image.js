@@ -44,7 +44,7 @@ export default async function handler(req, res) {
                     "https://www.notion.so/image/" +
                     encodeURIComponent(url) +
                     "?table=block&cache=v2&id=" +
-                    recordMap.block[blocks[i]].value.id;
+                    item.id;
             }
 
             console.log(`Downloading image from ${url}`);
