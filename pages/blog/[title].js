@@ -23,7 +23,7 @@ const errorMessage = `<p align='center'>There was an error :(
 
 export const getStaticProps = async ({ params }) => {
     const { title } = params;
-    const url = `${params.resolvedUrl}`;
+    const url = `https://dhavalsoneji.com/blog/${title}`;
 
     let html = "<div></div>";
     let preview = "No Preview";
