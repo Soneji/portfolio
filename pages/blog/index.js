@@ -23,13 +23,13 @@ export const getStaticProps = async () => {
     let data = [];
     for (var key of Object.keys(blocks)) {
         const item = blocks[key].value;
-
         // if not page, ignore
         if (item?.type !== "page") {
             continue;
         }
 
         let title = item.properties?.title[0][0];
+        let emoji = item.format?.page_icon;
         let image = item.format?.page_cover || "/box.jpg";
 
         if (image.includes("amazonaws.com") && image.includes("secure.notion-static.com")) {
@@ -49,6 +49,7 @@ export const getStaticProps = async () => {
 
         data.push({
             title: title,
+            emoji: emoji,
             image: image,
             url: `/blog/${title.replace(/\s/gi, "-")}`,
             // html: html,

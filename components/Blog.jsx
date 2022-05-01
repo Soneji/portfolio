@@ -75,7 +75,7 @@ const Blog = (classes, data) => {
                                                 component="h2"
                                                 color="primary"
                                             >
-                                                {post.title}
+                                                {post.emoji + " " + post.title}
                                             </Typography>
                                             <div
                                                 style={{
