@@ -1,8 +1,8 @@
 import { React, useState } from "react";
-import { Button, Card, CardContent, Typography, TextField } from "@material-ui/core";
-import BuildIcon from "@material-ui/icons/Build";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
+import { Button, Card, CardContent, Typography, TextField } from "@mui/material";
+import BuildIcon from "@mui/icons-material/Build";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;

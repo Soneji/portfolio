@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Container, Grid, Typography, Divider } from "@material-ui/core";
-import PersonIcon from "@material-ui/icons/Person";
-import CodeIcon from "@material-ui/icons/Code";
+import { Box, Container, Grid, Typography, Divider } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import CodeIcon from "@mui/icons-material/Code";
 
 import about from "../data/about.md";
 import technologies from "../data/technologies.json";

@@ -10,13 +10,13 @@ import {
     Grid,
     Button,
     ButtonBase,
-} from "@material-ui/core";
+} from "@mui/material";
 
-import CodeIcon from "@material-ui/icons/Code";
-import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
-import AppsIcon from "@material-ui/icons/Apps";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import WebIcon from "@material-ui/icons/Web";
+import CodeIcon from "@mui/icons-material/Code";
+import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
+import AppsIcon from "@mui/icons-material/Apps";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import WebIcon from "@mui/icons-material/Web";
 
 const contribFilter = [
     { field: "owner.login", value: "education" },

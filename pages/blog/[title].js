@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "../../components/Header";
 
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useStyles } from "../../styles/styles";
-import { ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../mui-theme";
 import Footer from "../../components/Footer";
 
-import { Container, Grid, Button } from "@material-ui/core";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import { Container, Grid, Button } from "@mui/material";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Link from "next/link";
 import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
@@ -139,16 +139,15 @@ const Post = ({ html, newTitle, preview, url, image }) => {
                                 sm={12}
                                 md={12}
                             >
-                                <Link href="/blog" passHref>
-                                    <Button
-                                        variant="outlined"
-                                        color="default"
-                                        className={classes.button}
-                                        startIcon={<ArrowBackIosIcon />}
-                                    >
-                                        Back
-                                    </Button>
-                                </Link>
+                                <Button
+                                    component={Link}
+                                    href="/blog"
+                                    variant="outlined"
+                                    color="inherit"
+                                    startIcon={<ArrowBackIosIcon />}
+                                >
+                                    Back
+                                </Button>
                             </Grid>
 
                             <Grid item xs={12} sm={12} md={12}>

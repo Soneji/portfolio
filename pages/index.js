@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "../components/Header";
 
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useStyles } from "../styles/styles";
-import { ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import theme from "../mui-theme";
 import Footer from "../components/Footer";
 import Info from "../components/Info";

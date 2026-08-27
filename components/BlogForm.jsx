@@ -1,8 +1,8 @@
 import { React, useState } from "react";
-import { Button, Card, CardContent, Typography, TextField } from "@material-ui/core";
-import MailIcon from "@material-ui/icons/Mail";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
+import { Button, Card, CardContent, Typography, TextField } from "@mui/material";
+import MailIcon from "@mui/icons-material/Mail";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;

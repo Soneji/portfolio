@@ -9,10 +9,10 @@ import {
     Grid,
     Button,
     ButtonBase,
-} from "@material-ui/core";
+} from "@mui/material";
 
-import WebIcon from "@material-ui/icons/Web";
-import LanguageIcon from "@material-ui/icons/Language";
+import WebIcon from "@mui/icons-material/Web";
+import LanguageIcon from "@mui/icons-material/Language";
 import Image from "next/image";
 import data from "../data/websites/websites.json";
 

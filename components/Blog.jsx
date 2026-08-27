@@ -1,13 +1,12 @@
 import React from "react";
 
-import { Box, Card, CardContent, Typography, Container, Grid, ButtonBase } from "@material-ui/core";
+import { Box, Card, CardContent, Typography, Container, Grid, ButtonBase } from "@mui/material";
 
-import BookIcon from "@material-ui/icons/Book";
-import TodayIcon from "@material-ui/icons/Today";
+import BookIcon from "@mui/icons-material/Book";
+import TodayIcon from "@mui/icons-material/Today";
 
 import Link from "next/link";
 
-import "react-notion-x/src/styles.css";
 import { WhichImage } from "./WhichImage";
 
 function formatDate(date) {
@@ -45,7 +44,7 @@ const Blog = (classes, data) => {
                 {data.map(post => (
                     <Grid item key={post.title} xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
-                            <Link href={post.url}>
+                            <Link href={post.url} legacyBehavior>
                                 <a style={{ height: 200 }}>
                                     <ButtonBase style={{ height: "100%", width: "100%" }}>
                                         <WhichImage image={post.image} classes={classes} />
@@ -53,7 +52,7 @@ const Blog = (classes, data) => {
                                 </a>
                             </Link>
                             <CardContent className={(classes.cardContent, classes.noTopPadding)}>
-                                <Link href={post.url}>
+                                <Link href={post.url} legacyBehavior>
                                     <a
                                         style={{
                                             textDecoration: "none",

@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, Grid, Typography } from "@material-ui/core";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import EmailIcon from "@material-ui/icons/Email";
+import { Button, Grid, Typography } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import EmailIcon from "@mui/icons-material/Email";
 
 const Contact = classes => {
     const socials = [

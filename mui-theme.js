@@ -1,13 +1,19 @@
-import { createTheme } from "@material-ui/core/styles";
-import cyan from "@material-ui/core/colors/cyan";
+import { createTheme } from "@mui/material/styles";
+import { cyan } from "@mui/material/colors";
 
+// MUI v6: `palette.type` -> `palette.mode`; `secondary` must expose `main`
+// (v5+ augmentColor rejects a bare hue map), so pin it explicitly.
 const theme = createTheme({
     palette: {
-        type: "dark",
+        mode: "dark",
         primary: {
             main: cyan[400],
         },
-        secondary: cyan,
+        secondary: {
+            main: cyan[600],
+            light: cyan[300],
+            dark: cyan[800],
+        },
     },
 });
 

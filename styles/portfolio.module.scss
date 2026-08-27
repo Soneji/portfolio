@@ -1,0 +1,92 @@
+/* Migrated from the v4 makeStyles() JSS block in styles/styles.js.
+   Class names are preserved so the useStyles()/classes.x call sites are unchanged.
+   MUI theme.spacing(n) === n * 8px. */
+
+.icon { margin-right: 16px; }               /* spacing(2) */
+.lower { text-transform: capitalize; }
+.caps { text-transform: capitalize; }
+
+.heroContent {
+    background-position: center;
+    width: 100vw;
+    height: 60vh;
+    min-height: 450px;
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.backgroundDiv {
+    grid-area: 1 / 1;
+    position: relative;
+    display: grid;
+    background-image: url(/bg.jpg);
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: overlay;
+    background-size: cover;
+}
+
+.footerBackgroundDiv {
+    grid-area: 1 / 1;
+    position: relative;
+    display: grid;
+    background-image: url(/bg.jpg);
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: overlay;
+    background-size: cover;
+}
+
+.profilePic {
+    grid-area: 1 / 1;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.heroButtons { margin-top: 32px; }          /* spacing(4) */
+
+.cardGrid {
+    padding-top: 48px;                       /* spacing(6) */
+    padding-bottom: 48px;
+}
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardMedia {
+    width: 400px;
+    object-fit: contain;
+}
+
+.cardMediaPlaceholder {
+    width: 400px;
+    height: 200px;
+    opacity: 0.9;
+}
+
+.cardContent { flex-grow: 1; }
+.noTopPadding { padding-top: 0; }
+
+.footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.myIcon {
+    width: 100%;
+    height: 100%;
+    fill: #fff;
+}
+
+.chevron {
+    padding: 30px;
+    text-align: center;
+    margin: auto;
+}
+
+.linky { color: red; }

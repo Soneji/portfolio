@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, Typography, Container } from "@material-ui/core";
+import { Button, Grid, Typography, Container } from "@mui/material";
 import Image from "next/image";
 import Roots from "./Roots";
 
