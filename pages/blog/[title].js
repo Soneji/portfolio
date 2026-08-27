@@ -29,26 +29,29 @@ export const getStaticProps = async ({ params }) => {
     let preview = "No Preview";
     let newTitle = title.replace(/-/gi, " ");
 
-    const api = new NotionAPI();
-    const page = await api.getPage(process.env.NOTION_PAGE);
-    const collectionId = Object.keys(page.collection)[0];
-    const collectionViewId = Object.keys(page.collection_view)[0];
-    const collectionData = await api.getCollectionData(collectionId, collectionViewId);
-    const blocks = collectionData.recordMap.block;
-
-    let data = [];
     let id;
-    for (var key of Object.keys(blocks)) {
-        const item = blocks[key].value;
-        // if not page
-        if (item?.type !== "page") {
-            continue;
-        }
+    try {
+        const api = new NotionAPI();
+        const page = await api.getPage(process.env.NOTION_PAGE);
+        const collectionId = Object.keys(page.collection)[0];
+        const collectionViewId = Object.keys(page.collection_view)[0];
+        const collectionData = await api.getCollectionData(collectionId, collectionViewId);
+        const blocks = collectionData.recordMap.block;
 
-        let apititle = item.properties?.title[0][0];
-        if (apititle === newTitle) {
-            id = item.id.replace(/-/gi, "");
+        for (var key of Object.keys(blocks)) {
+            const item = blocks[key].value;
+            // if not page
+            if (item?.type !== "page") {
+                continue;
+            }
+
+            let apititle = item.properties?.title[0][0];
+            if (apititle === newTitle) {
+                id = item.id.replace(/-/gi, "");
+            }
         }
+    } catch (e) {
+        console.error("blog article: Notion lookup failed:", e?.message || e);
     }
 
     const image = `api/og_image?id=${id}`;
@@ -82,29 +85,32 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export async function getStaticPaths() {
-    const api = new NotionAPI();
+    try {
+        const api = new NotionAPI();
+        const page = await api.getPage(process.env.NOTION_PAGE);
+        const collectionId = Object.keys(page.collection)[0];
+        const collectionViewId = Object.keys(page.collection_view)[0];
+        const collectionData = await api.getCollectionData(collectionId, collectionViewId);
+        const blocks = collectionData.recordMap.block;
 
-    const page = await api.getPage(process.env.NOTION_PAGE);
+        let paths = [];
+        for (var key of Object.keys(blocks)) {
+            const item = blocks[key].value;
+            // if not page
+            if (item?.type !== "page") {
+                continue;
+            }
 
-    const collectionId = Object.keys(page.collection)[0];
-    const collectionViewId = Object.keys(page.collection_view)[0];
-
-    const collectionData = await api.getCollectionData(collectionId, collectionViewId);
-    const blocks = collectionData.recordMap.block;
-
-    let paths = [];
-    for (var key of Object.keys(blocks)) {
-        const item = blocks[key].value;
-        // if not page
-        if (item?.type !== "page") {
-            continue;
+            let title = item.properties?.title[0][0];
+            paths.push("/blog/" + title.replace(/\s/gi, "-"));
         }
-
-        let title = item.properties?.title[0][0];
-        paths.push("/blog/" + title.replace(/\s/gi, "-"));
+        return { paths, fallback: true };
+    } catch (e) {
+        // Notion unreachable at build (e.g. 403): don't fail the build. Pre-render no
+        // article pages; they render on-demand once Notion is reachable again.
+        console.error("blog paths: Notion fetch failed, no static article pages:", e?.message || e);
+        return { paths: [], fallback: "blocking" };
     }
-    // console.log(paths);
-    return { paths, fallback: true };
 }
 
 const Post = ({ html, newTitle, preview, url, image }) => {

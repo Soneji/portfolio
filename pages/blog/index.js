@@ -13,50 +13,57 @@ import HeadMaker from "../../components/HeadMaker";
 import { NotionAPI } from "notion-client";
 
 export const getStaticProps = async () => {
-    const api = new NotionAPI();
-    const page = await api.getPage(process.env.NOTION_PAGE);
-    const collectionId = Object.keys(page.collection)[0];
-    const collectionViewId = Object.keys(page.collection_view)[0];
-    const collectionData = await api.getCollectionData(collectionId, collectionViewId);
-    const blocks = collectionData.recordMap.block;
-
+    // Build-resilient: the blog is sourced from Notion's unofficial API, which can
+    // return 403 (expired token / rate limit). Never let that fail the whole site
+    // build -- fall back to an empty list; it repopulates on the next revalidate.
     let data = [];
-    for (var key of Object.keys(blocks)) {
-        const item = blocks[key].value;
-        // if not page, ignore
-        if (item?.type !== "page") {
-            continue;
+    try {
+        const api = new NotionAPI();
+        const page = await api.getPage(process.env.NOTION_PAGE);
+        const collectionId = Object.keys(page.collection)[0];
+        const collectionViewId = Object.keys(page.collection_view)[0];
+        const collectionData = await api.getCollectionData(collectionId, collectionViewId);
+        const blocks = collectionData.recordMap.block;
+
+        for (var key of Object.keys(blocks)) {
+            const item = blocks[key].value;
+            // if not page, ignore
+            if (item?.type !== "page") {
+                continue;
+            }
+
+            let title = item.properties?.title[0][0];
+            let emoji = item.format?.page_icon;
+            let image = item.format?.page_cover || "/box.jpg";
+
+            if (image.includes("amazonaws.com") && image.includes("secure.notion-static.com")) {
+                image =
+                    "https://www.notion.so/image/" +
+                    encodeURIComponent(image) +
+                    "?table=block&cache=v2&id=" +
+                    item.id;
+            }
+            let created = item.created_time || 0;
+            let edited = item.last_edited_time || 0;
+            let shortform = item.properties["EU?>"][0][0].replace(/\n/g, "<br>") || "";
+
+            if (!image.includes("http") && image !== "/box.jpg") {
+                image = "https://notion.so" + image;
+            }
+
+            data.push({
+                title: title,
+                emoji: emoji,
+                image: image,
+                url: `/blog/${title.replace(/\s/gi, "-")}`,
+                // html: html,
+                created: created,
+                edited: edited,
+                shortform: shortform,
+            });
         }
-
-        let title = item.properties?.title[0][0];
-        let emoji = item.format?.page_icon;
-        let image = item.format?.page_cover || "/box.jpg";
-
-        if (image.includes("amazonaws.com") && image.includes("secure.notion-static.com")) {
-            image =
-                "https://www.notion.so/image/" +
-                encodeURIComponent(image) +
-                "?table=block&cache=v2&id=" +
-                item.id;
-        }
-        let created = item.created_time || 0;
-        let edited = item.last_edited_time || 0;
-        let shortform = item.properties["EU?>"][0][0].replace(/\n/g, "<br>") || "";
-
-        if (!image.includes("http") && image !== "/box.jpg") {
-            image = "https://notion.so" + image;
-        }
-
-        data.push({
-            title: title,
-            emoji: emoji,
-            image: image,
-            url: `/blog/${title.replace(/\s/gi, "-")}`,
-            // html: html,
-            created: created,
-            edited: edited,
-            shortform: shortform,
-        });
+    } catch (e) {
+        console.error("blog index: Notion fetch failed, serving empty blog list:", e?.message || e);
     }
 
     return { props: { data }, revalidate: 300 };

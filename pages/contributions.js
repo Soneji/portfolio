@@ -10,6 +10,7 @@ import Contributions from "../components/Contributions";
 import HeadMaker from "../components/HeadMaker";
 
 export async function getStaticProps({ params }) {
+    try {
     const { graphql } = require("@octokit/graphql");
     const graphqlWithAuth = graphql.defaults({
         headers: {
@@ -72,6 +73,12 @@ export async function getStaticProps({ params }) {
     });
 
     return { props: { repositories }, revalidate: 86400 };
+    } catch (e) {
+        // GitHub API unreachable/unauthorised at build: serve an empty list rather
+        // than failing the whole build; it repopulates on the next revalidate.
+        console.error("contributions: GitHub fetch failed, serving empty list:", e?.message || e);
+        return { props: { repositories: [] }, revalidate: 86400 };
+    }
 }
 
 export default function ContributionsPage({ repositories }) {
