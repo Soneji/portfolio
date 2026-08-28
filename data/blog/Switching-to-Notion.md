@@ -3,7 +3,7 @@ title: "Switching to Notion"
 slug: "Switching-to-Notion"
 date: "2021-10-22"
 emoji: "🔁"
-cover: "/box.jpg"
+cover: "/blog/Switching-to-Notion/cover.jpg"
 preview: "For a while now I've been using a variety of apps to manage my life * TickTick as a To Do list * Notability for univer"
 ---
 

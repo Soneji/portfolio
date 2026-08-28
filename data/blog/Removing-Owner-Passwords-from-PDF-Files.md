@@ -3,7 +3,7 @@ title: "Removing Owner Passwords from PDF Files"
 slug: "Removing-Owner-Passwords-from-PDF-Files"
 date: "2022-07-03"
 emoji: "🔐"
-cover: "/box.jpg"
+cover: "/blog/Removing-Owner-Passwords-from-PDF-Files/cover.jpg"
 preview: "Here’s a quick blog post on a neat trick I figured out, seemingly undocumented elsewhere across the web, for removing ow"
 ---
 

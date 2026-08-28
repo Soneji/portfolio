@@ -3,7 +3,7 @@ title: "Uploading files using FormData and Axios in NodeJS"
 slug: "Uploading-files-using-FormData-and-Axios-in-NodeJS"
 date: "2021-10-22"
 emoji: "📝"
-cover: "/box.jpg"
+cover: "/blog/Uploading-files-using-FormData-and-Axios-in-NodeJS/cover.jpg"
 preview: "Hey everyone!! I indeed managed to migrate my life to notion! I'll probably write a little about my notion setup soon. F"
 ---
 
