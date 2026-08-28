@@ -1,72 +1,39 @@
 import React from "react";
-import Header from "../../components/Header";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import { useStyles } from "../../styles/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../mui-theme";
 import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 import Blog from "../../components/Blog";
 import BlogForm from "../../components/BlogForm";
 import HeadMaker from "../../components/HeadMaker";
 
-import { NotionAPI } from "notion-client";
-
 export const getStaticProps = async () => {
-    // Build-resilient: the blog is sourced from Notion's unofficial API, which can
-    // return 403 (expired token / rate limit). Never let that fail the whole site
-    // build -- fall back to an empty list; it repopulates on the next revalidate.
-    let data = [];
-    try {
-        const api = new NotionAPI();
-        const page = await api.getPage(process.env.NOTION_PAGE);
-        const collectionId = Object.keys(page.collection)[0];
-        const collectionViewId = Object.keys(page.collection_view)[0];
-        const collectionData = await api.getCollectionData(collectionId, collectionViewId);
-        const blocks = collectionData.recordMap.block;
+    const dir = path.join(process.cwd(), "data/blog");
+    const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith(".md")) : [];
 
-        for (var key of Object.keys(blocks)) {
-            const item = blocks[key].value;
-            // if not page, ignore
-            if (item?.type !== "page") {
-                continue;
-            }
+    const data = files
+        .map(f => {
+            const { data: fm } = matter(fs.readFileSync(path.join(dir, f), "utf8"));
+            const slug = fm.slug || f.replace(/\.md$/, "");
+            return {
+                title: fm.title || slug.replace(/-/gi, " "),
+                emoji: fm.emoji || "📝",
+                image: fm.cover || "/box.jpg",
+                url: `/blog/${slug}`,
+                created: fm.date || null,
+                edited: fm.date || null,
+                shortform: fm.preview || "",
+            };
+        })
+        .sort((a, b) => new Date(b.created) - new Date(a.created));
 
-            let title = item.properties?.title[0][0];
-            let emoji = item.format?.page_icon;
-            let image = item.format?.page_cover || "/box.jpg";
-
-            if (image.includes("amazonaws.com") && image.includes("secure.notion-static.com")) {
-                image =
-                    "https://www.notion.so/image/" +
-                    encodeURIComponent(image) +
-                    "?table=block&cache=v2&id=" +
-                    item.id;
-            }
-            let created = item.created_time || 0;
-            let edited = item.last_edited_time || 0;
-            let shortform = item.properties["EU?>"][0][0].replace(/\n/g, "<br>") || "";
-
-            if (!image.includes("http") && image !== "/box.jpg") {
-                image = "https://notion.so" + image;
-            }
-
-            data.push({
-                title: title,
-                emoji: emoji,
-                image: image,
-                url: `/blog/${title.replace(/\s/gi, "-")}`,
-                // html: html,
-                created: created,
-                edited: edited,
-                shortform: shortform,
-            });
-        }
-    } catch (e) {
-        console.error("blog index: Notion fetch failed, serving empty blog list:", e?.message || e);
-    }
-
-    return { props: { data }, revalidate: 300 };
+    return { props: { data } };
 };
 
 export default function BlogPage({ data }) {
