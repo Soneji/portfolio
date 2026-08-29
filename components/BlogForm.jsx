@@ -49,7 +49,7 @@ const BlogForm = classes => {
                 .join("&");
         };
 
-        fetch("/api/sendinblue", {
+        fetch("/api/subscribe", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: encode({
