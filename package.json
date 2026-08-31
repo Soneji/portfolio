@@ -18,7 +18,7 @@
         "@mui/icons-material": "^6.4.0",
         "@mui/material": "^6.4.0",
         "@octokit/graphql": "^4.8.0",
-        "capture-website": "^2.0.2",
+        "capture-website": "^5.1.0",
         "dangerously-set-html-content": "^1.1.0",
         "gray-matter": "^4.0.3",
         "html-loader": "^2.1.2",
