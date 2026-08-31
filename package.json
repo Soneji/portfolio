@@ -36,7 +36,7 @@
         "react-dom": "^19.0.0",
         "remark": "^14.0.1",
         "sass": "^1.42.1",
-        "sharp": "^0.33.5"
+        "sharp": "^0.35.0"
     },
     "devDependencies": {
         "eslint": "^8.57.1",
