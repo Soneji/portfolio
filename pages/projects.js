@@ -11,7 +11,7 @@ import HeadMaker from "../components/HeadMaker";
 
 export async function getStaticProps({ params }) {
     try {
-    const { graphql } = require("@octokit/graphql");
+    const { graphql } = await import("@octokit/graphql");
     const graphqlWithAuth = graphql.defaults({
         headers: {
             authorization: `token ${process.env.GITHUB_TOKEN}`,
