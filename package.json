@@ -18,16 +18,14 @@
         "@mui/icons-material": "^6.4.0",
         "@mui/material": "^6.4.0",
         "@octokit/graphql": "^4.8.0",
-        "capture-website": "^2.0.2",
+        "capture-website": "^5.1.0",
         "dangerously-set-html-content": "^1.1.0",
         "gray-matter": "^4.0.3",
-        "html-loader": "^2.1.2",
         "html-to-text": "^8.0.0",
         "isomorphic-fetch": "^3.0.0",
-        "markdown-loader": "^8.0.0",
         "marked": "^12.0.2",
-        "next": "^15.5.24",
-        "nodemailer": "^6.7.3",
+        "next": "^16.3.4",
+        "nodemailer": "^9.0.1",
         "notion-client": "^6.1.0",
         "notion-page-to-html": "^1.1.1",
         "notion-page-to-html-cover-page-fix": "^1.1.3",
@@ -36,7 +34,7 @@
         "react-dom": "^19.0.0",
         "remark": "^14.0.1",
         "sass": "^1.42.1",
-        "sharp": "^0.33.5"
+        "sharp": "^0.35.0"
     },
     "devDependencies": {
         "eslint": "^8.57.1",

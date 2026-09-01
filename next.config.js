@@ -16,16 +16,9 @@ const nextConfig = {
             { protocol: "https", hostname: "**.amazonaws.com" },
         ],
     },
-    // Migration in progress (MUI v4->v6): don't let lint block the production build.
-    eslint: { ignoreDuringBuilds: true },
-    webpack: config => {
-        config.module.rules.push({
-            test: /\.md$/,
-            use: [{ loader: "html-loader" }, { loader: "markdown-loader" }],
-        });
-        config.externals.push({ sharp: "commonjs sharp" });
-        return config;
-    },
+    // sharp is only pulled in by the standalone `npm run websitegen` script; keep it
+    // external so it is never bundled into the app.
+    serverExternalPackages: ["sharp"],
 };
 
 module.exports = nextConfig;

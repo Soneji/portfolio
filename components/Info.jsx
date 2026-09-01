@@ -3,10 +3,9 @@ import { Box, Container, Grid, Typography, Divider } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import CodeIcon from "@mui/icons-material/Code";
 
-import about from "../data/about.md";
 import technologies from "../data/technologies.json";
 
-const Info = classes => {
+const Info = (classes, about) => {
     return (
         <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={3}>
