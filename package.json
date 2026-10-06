@@ -25,7 +25,7 @@
         "isomorphic-fetch": "^3.0.0",
         "marked": "^12.0.2",
         "next": "^16.3.4",
-        "nodemailer": "^9.0.1",
+        "nodemailer": "^10.0.9",
         "notion-client": "^6.1.0",
         "notion-page-to-html": "^1.1.1",
         "notion-page-to-html-cover-page-fix": "^1.1.3",
